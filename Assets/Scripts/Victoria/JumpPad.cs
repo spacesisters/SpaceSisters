@@ -9,7 +9,8 @@ public class JumpPad : MonoBehaviour
 
     void OnTriggerEnter(Collider WhatHitMe)
     {
-        if(WhatHitMe.CompareTag("Agent"))
+        Debug.Log("was los");
+        if (WhatHitMe.CompareTag("Agent"))
         {
             PlayerCharacterController agent = WhatHitMe.gameObject.GetComponent<PlayerCharacterController>();
             agent.moveDirection = new Vector3(Input.GetAxisRaw("Horizontal") * agent.movementVelocity, agent.moveDirection.y, 0f);

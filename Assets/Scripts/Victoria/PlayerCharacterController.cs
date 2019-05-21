@@ -13,6 +13,8 @@ public class PlayerCharacterController : BasicMovement
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        size  = controller.bounds.size;
+        bottomCenter = controller.bounds.center;
     }
 
     void Update()
