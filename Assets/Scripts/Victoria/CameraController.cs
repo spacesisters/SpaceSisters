@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController_ : MonoBehaviour
+namespace Victoria
 {
-    public Transform target;
-    public Vector3 offset;
-
-    void Update()
+    public class CameraController_ : MonoBehaviour
     {
-        transform.position = target.position - offset;
-        transform.LookAt(target);
+        public Transform target;
+        public Vector3 offset;
+
+        void Update()
+        {
+            transform.position = target.position - offset;
+            transform.LookAt(target);
+        }
     }
+
 }
