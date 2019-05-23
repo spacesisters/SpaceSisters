@@ -22,11 +22,11 @@ public class ProjectileController : MonoBehaviour
         effectAmount = Mathf.Lerp(effectAmount, 0, Time.deltaTime);
         meshRender.material.SetFloat("_Amount", effectAmount);
     }
-    public void setDirection(float direction)
+    public void setDirection(Vector3 direction)
     {
         if (rb != null)
         {
-            rb.velocity = new Vector3(direction, .0f, .0f) * speed;
+            rb.velocity = direction * speed;
         }
     }
 

@@ -26,19 +26,20 @@ namespace Julius
 
         void Update()
         {
-            if(Time.time>=nextFire && Input.GetButton("Fire1"))
+            
+            if (Time.time >= nextFire && Input.GetButtonDown("Fire1"))
             {
-                float projectileDir = Input.GetAxis("Horizontal");
-                if (projectileDir > .0f)
-                    projectileDir = 1.0f;
-                else if (projectileDir < .0f)
-                    projectileDir = -1.0f;
-                if (projectileDir != .0f)
-                {
-                    GameObject tmp = Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-                    tmp.GetComponent<ProjectileController>().setDirection(projectileDir);
-                    nextFire = Time.time + fireRate;
-                }
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition-shotSpawn.position);
+                Debug.Log(ray);
+                Debug.Log(mousePosition);
+                Debug.Log(transform.position);
+                Vector3 newDir = new Vector3(ray.direction.x, ray.direction.y, .0f);
+                Debug.Log(newDir);
+                GameObject tmp = Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+                tmp.GetComponent<ProjectileController>().setDirection(newDir);
+                nextFire = Time.time + fireRate;
+               
             }
         }
 

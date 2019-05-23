@@ -20,7 +20,6 @@ public class ActionReverseGravity : MonoBehaviour
         if (isReversed)
         {
             timePassed += Time.deltaTime;
-            Debug.Log(timePassed);
             if(timePassed >= waitFor)
             {
                 isReversed = false;
