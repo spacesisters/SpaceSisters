@@ -36,7 +36,6 @@ public class ArturPlayerController : MonoBehaviour
         playerInput.SetInput();
         moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
         Move();
-        print(playerInfo.isFalling);
     }
 
 
@@ -101,7 +100,6 @@ public class ArturPlayerController : MonoBehaviour
 
         public void Update(Vector3 center, Vector3 moveDirection, LayerMask groundLayers)
         {
-            print(moveDirection);
             bottom = center - new Vector3(0, size.y * 0.5f, 0f);
             top = center + new Vector3(0, size.y * 0.5f, 0f);
             right = center + new Vector3(size.x * 0.5f, 0f, 0f);
@@ -110,17 +108,11 @@ public class ArturPlayerController : MonoBehaviour
             if (Physics.OverlapBox(bottom, size / 2, Quaternion.identity, groundLayers).Length > 0)
             {
                 isGrounded = true;
-                isFalling = false;
             }
             else
             {
                 isGrounded = false;
             } 
-
-            if (moveDirection.y < 0)
-            {
-                isFalling = true;
-            }
         }
 
         public bool isColldingWith(string side, LayerMask layer)
