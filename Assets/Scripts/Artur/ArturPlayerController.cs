@@ -9,7 +9,7 @@ public class ArturPlayerController : MonoBehaviour
     public float jumpForce;
 
     public float gravity;
-
+    public float maxMovementSpeed;
     public bool rawInput;
 
     public LayerMask groundLayers;
@@ -19,9 +19,11 @@ public class ArturPlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterController controller;
     private Vector3 moveDirection;
+    private int gravityReversed;
 
     private void Start()
     {
+        gravityReversed = 1;
         controller = GetComponent<CharacterController>();
         rigidBody = GetComponent<Rigidbody>();
         playerInput = new PlayerInput();
@@ -32,24 +34,42 @@ public class ArturPlayerController : MonoBehaviour
 
     private void Update()
     {
-        playerInfo.Update(controller.bounds.center, moveDirection, groundLayers);
+        
+        playerInfo.Update(controller.bounds.center, groundLayers, gravityReversed);
         playerInput.SetInput();
-        moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
         Move();
+
     }
 
 
     private void Move ()
     {
+        moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
+
         if (playerInput.jumpInput && playerInfo.isGrounded)
         {
-            moveDirection.y = jumpForce;
+            moveDirection.y = jumpForce * gravityReversed;
+        }
+        if (playerInfo.isColldingWith("top", groundLayers) && gravityReversed == 1)
+        {
+            moveDirection.y = 0;
+        }
+        else if(playerInfo.isColldingWith("bottom", groundLayers) && gravityReversed == -1)
+        {
+            moveDirection.y = 0;
         }
 
         if (!playerInfo.isGrounded)
         {
             moveDirection.y += gravity * Time.deltaTime;
         }
+        else if ((playerInfo.isGrounded && !playerInput.jumpInput))
+        {
+            moveDirection.y = 0;
+        }
+
+        moveDirection.x = Mathf.Clamp(moveDirection.x, -1 * maxMovementSpeed, maxMovementSpeed);
+        moveDirection.y = Mathf.Clamp(moveDirection.y, -1 * maxMovementSpeed, maxMovementSpeed);
 
         controller.Move(moveDirection * Time.deltaTime);
     }
@@ -88,7 +108,6 @@ public class ArturPlayerController : MonoBehaviour
     public struct PlayerInfo
     {
         public bool isGrounded;
-        public bool isFalling;
 
         public Vector3 size;
         public Vector3 bottom, top, left, right;
@@ -98,21 +117,32 @@ public class ArturPlayerController : MonoBehaviour
             this.size = size;
         }
 
-        public void Update(Vector3 center, Vector3 moveDirection, LayerMask groundLayers)
+        public void Update(Vector3 center, LayerMask groundLayers, int gravityReversed)
         {
             bottom = center - new Vector3(0, size.y * 0.5f, 0f);
             top = center + new Vector3(0, size.y * 0.5f, 0f);
             right = center + new Vector3(size.x * 0.5f, 0f, 0f);
             left = center - new Vector3(size.x * 0.5f, 0f, 0f);
+            
+            Vector3 groundedChecker = Vector3.zero;
+            if (gravityReversed == 1)
+            {
+                groundedChecker = bottom;
+            }
+            else if (gravityReversed == -1)
+            {
+                groundedChecker = top;
+            }
 
-            if (Physics.OverlapBox(bottom, size / 2, Quaternion.identity, groundLayers).Length > 0)
+
+            if (Physics.OverlapBox(groundedChecker, size / 2, Quaternion.identity, groundLayers).Length > 0)
             {
                 isGrounded = true;
             }
             else
             {
                 isGrounded = false;
-            } 
+            }
         }
 
         public bool isColldingWith(string side, LayerMask layer)
@@ -133,6 +163,14 @@ public class ArturPlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Reversable"))
+        {
+            StartCoroutine(ReverseGravity(0.25f));
+        }
+    }
+
 
     /*
     
@@ -145,4 +183,13 @@ public class ArturPlayerController : MonoBehaviour
     }
     
     */
+
+    IEnumerator ReverseGravity(float time)
+    {
+        yield return new WaitForSeconds(time);
+        print("Reversing gravity");
+        gravityReversed *= -1;
+        gravity *= -1;
+    }
+
 }
