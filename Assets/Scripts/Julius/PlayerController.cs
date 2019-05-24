@@ -31,11 +31,8 @@ namespace Julius
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition-shotSpawn.position);
-                Debug.Log(ray);
-                Debug.Log(mousePosition);
-                Debug.Log(transform.position);
                 Vector3 newDir = new Vector3(ray.direction.x, ray.direction.y, .0f);
-                Debug.Log(newDir);
+                
                 GameObject tmp = Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
                 tmp.GetComponent<ProjectileController>().setDirection(newDir);
                 nextFire = Time.time + fireRate;
