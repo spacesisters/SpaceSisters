@@ -13,11 +13,10 @@ public class ArturPlayerController : MonoBehaviour
     public bool rawInput;
 
     public LayerMask groundLayers;
-
+    public PlayerInfo playerInfo;
 
     private Rigidbody rigidBody;
     private PlayerInput playerInput;
-    private GroundedChecker groundedChecker;
     private CharacterController controller;
     private Vector3 moveDirection;
 
@@ -27,37 +26,34 @@ public class ArturPlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         playerInput = new PlayerInput();
         playerInput.SetRaw(rawInput);
-        groundedChecker = new GroundedChecker();
-        groundedChecker.Initialize(controller.bounds.size);
+        playerInfo = new PlayerInfo();
+        playerInfo.Initialize(controller.bounds.size);
     }
 
     private void Update()
     {
-        groundedChecker.Update(controller.bounds.center, groundLayers);
+        playerInfo.Update(controller.bounds.center, moveDirection, groundLayers);
         playerInput.SetInput();
-
+        moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
         Move();
+        print(playerInfo.isFalling);
     }
 
 
     private void Move ()
     {
-        moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
-        if (playerInput.jumpInput && groundedChecker.isGrounded)
+        if (playerInput.jumpInput && playerInfo.isGrounded)
         {
             moveDirection.y = jumpForce;
         }
 
-        if (!groundedChecker.isGrounded)
+        if (!playerInfo.isGrounded)
         {
             moveDirection.y += gravity * Time.deltaTime;
         }
 
         controller.Move(moveDirection * Time.deltaTime);
     }
-
-
-
 
 
     public struct PlayerInput
@@ -89,45 +85,72 @@ public class ArturPlayerController : MonoBehaviour
         }   
     }
 
-    public struct GroundedChecker
+    
+    public struct PlayerInfo
     {
-        public Vector3 bottomCenter, size;
         public bool isGrounded;
+        public bool isFalling;
+
+        public Vector3 size;
+        public Vector3 bottom, top, left, right;
 
         public void Initialize(Vector3 size)
         {
             this.size = size;
-            this.size.x *= 0.95f;
-            this.size.y *= 0.5f;
         }
 
-        public void Update(Vector3 center, LayerMask groundLayers)
+        public void Update(Vector3 center, Vector3 moveDirection, LayerMask groundLayers)
         {
-            bottomCenter = center - new Vector3(0, size.y, 0f);
-            if (Physics.OverlapBox(bottomCenter, size / 2, Quaternion.identity, groundLayers).Length > 0)
+            print(moveDirection);
+            bottom = center - new Vector3(0, size.y * 0.5f, 0f);
+            top = center + new Vector3(0, size.y * 0.5f, 0f);
+            right = center + new Vector3(size.x * 0.5f, 0f, 0f);
+            left = center - new Vector3(size.x * 0.5f, 0f, 0f);
+
+            if (Physics.OverlapBox(bottom, size / 2, Quaternion.identity, groundLayers).Length > 0)
             {
                 isGrounded = true;
+                isFalling = false;
             }
             else
             {
                 isGrounded = false;
+            } 
+
+            if (moveDirection.y < 0)
+            {
+                isFalling = true;
             }
         }
+
+        public bool isColldingWith(string side, LayerMask layer)
+        {
+            Vector3 collisionSide = Vector3.zero;
+            if (side == "top")
+                collisionSide = top;
+            else if (side == "bottom")
+                collisionSide = bottom;
+            else if (side == "left")
+                collisionSide = left;
+            else if (side == "right")
+                collisionSide = right;
+            if (Physics.OverlapBox(collisionSide, size / 2, Quaternion.identity, layer).Length > 0)
+                return true;
+            return false;
+        }
+
     }
-    
-
-
 
 
     /*
+    
     private void OnDrawGizmos()
     {
         controller = GetComponent<CharacterController>();
-        groundedChecker.Initialize(controller.bounds.size);
-        groundedChecker.Update(controller.bounds.center, groundLayers);
+        playerInfo = new PlayerInfo(controller.bounds.center, controller.bounds.size);
         Gizmos.color = Color.white;
-        Gizmos.DrawCube(groundedChecker.bottomCenter, groundedChecker.size);
+        Gizmos.DrawCube(playerInfo.right, playerInfo.size);
     }
+    
     */
-
 }
