@@ -8,24 +8,20 @@ public class ArturPlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
-    public float gravity;
-    public float maxMovementSpeed;
     public bool rawInput;
+    public int gravityReversed;
 
     public LayerMask groundLayers;
     public PlayerInfo playerInfo;
+    public Vector3 moveDirection;
 
-    private Rigidbody rigidBody;
     private PlayerInput playerInput;
     private CharacterController controller;
-    private Vector3 moveDirection;
-    private int gravityReversed;
 
     private void Start()
     {
         gravityReversed = 1;
         controller = GetComponent<CharacterController>();
-        rigidBody = GetComponent<Rigidbody>();
         playerInput = new PlayerInput();
         playerInput.SetRaw(rawInput);
         playerInfo = new PlayerInfo();
@@ -33,23 +29,26 @@ public class ArturPlayerController : MonoBehaviour
     }
 
     private void Update()
-    {
-        
+    {   
         playerInfo.Update(controller.bounds.center, groundLayers, gravityReversed);
         playerInput.SetInput();
         Move();
+        UpdateFacingDirection();
 
     }
 
 
     private void Move ()
     {
+            
         moveDirection = new Vector3(playerInput.horizontalInput * moveSpeed, moveDirection.y, moveDirection.z);
 
         if (playerInput.jumpInput && playerInfo.isGrounded)
         {
             moveDirection.y = jumpForce * gravityReversed;
         }
+
+
         if (playerInfo.isColldingWith("top", groundLayers) && gravityReversed == 1)
         {
             moveDirection.y = 0;
@@ -61,17 +60,18 @@ public class ArturPlayerController : MonoBehaviour
 
         if (!playerInfo.isGrounded)
         {
-            moveDirection.y += gravity * Time.deltaTime;
+            moveDirection.y += ArturSceneManager.gravity * Time.deltaTime * gravityReversed;
         }
         else if ((playerInfo.isGrounded && !playerInput.jumpInput))
         {
             moveDirection.y = 0;
         }
 
-        moveDirection.x = Mathf.Clamp(moveDirection.x, -1 * maxMovementSpeed, maxMovementSpeed);
-        moveDirection.y = Mathf.Clamp(moveDirection.y, -1 * maxMovementSpeed, maxMovementSpeed);
+        moveDirection.x = Mathf.Clamp(moveDirection.x, -1 * ArturSceneManager.maxGroundVelocity, ArturSceneManager.maxGroundVelocity);
+        moveDirection.y = Mathf.Clamp(moveDirection.y, -1 * ArturSceneManager.maxAirVelocity, ArturSceneManager.maxAirVelocity);
 
         controller.Move(moveDirection * Time.deltaTime);
+        
     }
 
 
@@ -91,16 +91,16 @@ public class ArturPlayerController : MonoBehaviour
         {
             if (!raw)
             {
-                horizontalInput = Input.GetAxis("Horizontal");
-                verticalInput = Input.GetAxis("Vertical");
+                horizontalInput = Input.GetAxis("LeftJoystickHorizontal");
+                verticalInput = Input.GetAxis("LeftJoystickVertical");
             }
             else
             {
-                horizontalInput = Input.GetAxisRaw("Horizontal");
-                verticalInput = Input.GetAxisRaw("Vertical");
+                horizontalInput = Input.GetAxisRaw("LeftJoystickHorizontal");
+                verticalInput = Input.GetAxisRaw("LeftJoystickVertical");
             }
             
-            jumpInput = Input.GetButtonDown("Jump");
+            jumpInput = Input.GetButtonDown("XButton");
         }   
     }
 
@@ -161,16 +161,23 @@ public class ArturPlayerController : MonoBehaviour
             return false;
         }
 
+
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void UpdateFacingDirection()
     {
-        if (other.CompareTag("Reversable"))
+        if (Input.GetAxis("RightJoystickHorizontal") > 0)
         {
-            StartCoroutine(ReverseGravity(0.25f));
+            // Facing right
+            transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0f, transform.localRotation.z);
+        }
+        else if (Input.GetAxis("RightJoystickHorizontal") < 0)
+        {
+            // Facing left
+            transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180f, transform.localRotation.z);
         }
     }
-
 
     /*
     
@@ -184,12 +191,6 @@ public class ArturPlayerController : MonoBehaviour
     
     */
 
-    IEnumerator ReverseGravity(float time)
-    {
-        yield return new WaitForSeconds(time);
-        print("Reversing gravity");
-        gravityReversed *= -1;
-        gravity *= -1;
-    }
+
 
 }

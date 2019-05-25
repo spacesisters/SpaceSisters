@@ -8,6 +8,7 @@ TagManager:
   - Reversable
   - Agent
   - JumpPad
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - PostProcessing
   - Ground
   - Player
-  - 
+  - JumpPad
   - Shot
-  - 
+  - Enemy
   - 
   - 
   - 
