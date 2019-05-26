@@ -9,6 +9,7 @@ TagManager:
   - Agent
   - JumpPad
   - Bullet
+  - PlayerCapsule
   layers:
   - Default
   - TransparentFX

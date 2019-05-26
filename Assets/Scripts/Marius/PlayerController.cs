@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private int shotDir;
     private float magnetRadius;
 
+    private bool isReversed;
     private bool isGrounded;
     private bool isPulling;
     private bool isPushing;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         forceSphere.transform.localScale = new Vector3(magnetRadius, magnetRadius, 1.5f);
         mat = forceSphere.GetComponent<Renderer>().material;
         audioSource = GetComponent<AudioSource>();
+        isReversed = false;
     }
 
     public void playImpactSound()
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = true;
     }
 
-    private void OnCollisionExit()
+    private void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
     }
@@ -164,8 +166,27 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float xDirection = Input.GetAxisRaw("Horizontal");
+        if (isReversed)
+        {
+            rb.AddForce(new Vector3(0, 19.6f, 0));
+        }
+
+        //float xDirection = Input.GetAxisRaw("Horizontal");
         //float move_Y = Input.GetAxisRaw("Vertical");
+        float xDirection = 0;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            xDirection = -1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            xDirection = 1;
+        }
+        else
+        {
+            xDirection = 0;
+        }
 
         if (xDirection > 0)
         {
@@ -196,5 +217,11 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isMoving", false);
         }
+    }
+
+    public void ReverseGravity()
+    {
+        jumpForce *= -1;
+        isReversed = !isReversed;
     }
 }
