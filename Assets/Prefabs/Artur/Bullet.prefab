@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyLayer:
     serializedVersion: 2
-    m_Bits: 11776
+    m_Bits: 10752
   bulletSpeed: 9
   lifetime: 3
   knockback: 3

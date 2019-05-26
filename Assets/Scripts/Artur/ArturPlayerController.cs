@@ -22,8 +22,10 @@ public class ArturPlayerController : MonoBehaviour
     {
         gravityReversed = 1;
         controller = GetComponent<CharacterController>();
+
         playerInput = new PlayerInput();
         playerInput.SetRaw(rawInput);
+
         playerInfo = new PlayerInfo();
         playerInfo.Initialize(controller.bounds.size);
     }
@@ -178,19 +180,5 @@ public class ArturPlayerController : MonoBehaviour
             transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180f, transform.localRotation.z);
         }
     }
-
-    /*
-    
-    private void OnDrawGizmos()
-    {
-        controller = GetComponent<CharacterController>();
-        playerInfo = new PlayerInfo(controller.bounds.center, controller.bounds.size);
-        Gizmos.color = Color.white;
-        Gizmos.DrawCube(playerInfo.right, playerInfo.size);
-    }
-    
-    */
-
-
 
 }
