@@ -19,7 +19,6 @@ public class ArturGravityReverser : MonoBehaviour
     public IEnumerator ReverseGravity(float time, Collider c)
     {
         yield return new WaitForSeconds(time);
-        print("Reversing gravity");
         c.GetComponent<ArturPlayerController>().gravityReversed *= -1;
         c.GetComponent<ArturPlayerController>().moveDirection.y *= ArturSceneManager.gravityReverserDamping;
     }
