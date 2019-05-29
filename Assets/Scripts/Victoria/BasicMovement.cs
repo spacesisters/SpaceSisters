@@ -6,9 +6,9 @@ public class BasicMovement : MonoBehaviour
     public float gravity;
     public float jumpVelocity;
     public LayerMask groundLayers;
-    
+    protected bool gravityIsReversed;
 
-    protected Vector3 bottomCenter, size;
+    protected Vector3 bottomCenter, size, topCenter;
 
     protected bool isGrounded;
 
@@ -16,13 +16,27 @@ public class BasicMovement : MonoBehaviour
 
     public void SetGrounded()
     {
-        if (Physics.OverlapBox(bottomCenter, size / 2, Quaternion.identity, groundLayers).Length > 0)
+        if (gravityIsReversed)
         {
-            isGrounded = true;
-        }
-        else
+            if (Physics.OverlapBox(topCenter, size / 2, Quaternion.identity, groundLayers).Length > 0)
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+        } else
         {
-            isGrounded = false;
+            if (Physics.OverlapBox(bottomCenter, size / 2, Quaternion.identity, groundLayers).Length > 0)
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
         }
+        
     }
 }
