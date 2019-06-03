@@ -41,14 +41,16 @@ public class controller_binding : MonoBehaviour
                     controller1.set_controller(2, "DS4");
                     controller1_number = 2;
                 }
-                /*
-                else if( xbox_p1_...)
+                else if(Input.GetButton("xbox_p1_button_a"))
                 {
+                    controller1.set_controller(1, "Xbox");
+                    controller1_number = 1;
                 }
-                else if( xbox_p2_...)
+                else if(Input.GetButton("xbox_p2_button_a"))
                 {
-                }
-                */
+                    controller1.set_controller(2, "Xbox");
+                    controller1_number = 2;
+                }  
             }
             else if(controller2.controller == null && controller_names.Length > 1)
             {
@@ -66,14 +68,18 @@ public class controller_binding : MonoBehaviour
                     controllers_assigned = true;
                     text_component.text = "";
                 }
-                /*
-                else if( xbox_p1_...)
+                else if (Input.GetButton("xbox_p1_button_a") && controller1_number != 1)
                 {
+                    controller2.set_controller(1, "Xbox");
+                    controllers_assigned = true;
+                    text_component.text = "";
                 }
-                else if( xbox_p2_...)
+                else if (Input.GetButton("xbox_p2_button_a") && controller1_number != 2)
                 {
+                    controller2.set_controller(2, "Xbox");
+                    controllers_assigned = true;
+                    text_component.text = "";
                 }
-                */
             }
         }
 

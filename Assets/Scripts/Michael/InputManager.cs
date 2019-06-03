@@ -59,9 +59,38 @@ public class InputManager
                 r2               = "ds4_p2_r2";
             }
         }
-        else if(String.Compare(type, "XboxOne") == 0)
+        else if(String.Compare(type, "Xbox") == 0)
         {
-            //TODO
+            if (number == 1)
+            {
+                left_horizontal = "xbox_p1_left_horizontal";
+                left_vertical = "xbox_p1_left_vertical";
+                right_horizontal = "xbox_p1_right_horizontal";
+                right_vertical = "xbox_p1_right_vertical";
+                button0 = "xbox_p1_button_a";
+                button1 = "xbox_p1_button_x";
+                button2 = "xbox_p1_button_y";
+                button3 = "xbox_p1_button_b";
+                l1 = "xbox_p1_l1";
+                l2 = "xbox_p1_l2";
+                r1 = "xbox_p1_r1";
+                r2 = "xbox_p1_r2";
+            }
+            else if (number == 2)
+            {
+                left_horizontal = "xbox_p2_left_horizontal";
+                left_vertical = "xbox_p2_left_vertical";
+                right_horizontal = "xbox_p2_right_horizontal";
+                right_vertical = "xbox_p2_right_vertical";
+                button0 = "xbox_p2_button_a";
+                button1 = "xbox_p2_button_x";
+                button2 = "xbox_p2_button_y";
+                button3 = "xbox_p2_button_b";
+                l1 = "xbox_p2_l1";
+                l2 = "xbox_p2_l2";
+                r1 = "xbox_p2_r1";
+                r2 = "xbox_p2_r2";
+            }
         }
     }
 
