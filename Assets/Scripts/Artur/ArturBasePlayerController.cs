@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class ArturBasePlayerController : MonoBehaviour
 {
-
+    public int playerNumber;
+    public string controllerType;
     public float jumpForce;
     public float dashForce;
     public float maxMovementSpeedGrounded;
@@ -18,6 +19,8 @@ public class ArturBasePlayerController : MonoBehaviour
     [SerializeField]
     public float energy;
     public float energyDrainPerSecond;
+    public float shootCooldown;
+
 
 
     protected ConstantForce constForce;
@@ -26,19 +29,29 @@ public class ArturBasePlayerController : MonoBehaviour
     protected PlayerInput playerInput;
     protected bool isGrounded;
     protected bool doForcefield;
+    protected InputManager controller;
+
 
     [SerializeField]
     private LayerMask groundLayers;
     private Vector3 size;
+    private ArturGunScript gunScript;
     private float currentMaxSpeed;
     private float currentMaxAcceleration;
     private float dashTime;
+    private float shootTimer;
     private bool doDash;
     private bool doJump;
+    private bool doShoot;
+
 
     protected void Initialize()
     {
+        gunScript = GetComponent<ArturGunScript>();
+        controller = new InputManager(playerNumber, controllerType);
+
         playerInput = new PlayerInput();
+        playerInput.SetInputManager(controller);
         rBody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         constForce = GetComponent<ConstantForce>();
@@ -85,7 +98,14 @@ public class ArturBasePlayerController : MonoBehaviour
             dashTime = 0;
         }
 
-
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        }
+        else if (shootTimer < 0)
+        {
+            shootTimer = 0;
+        }
     }
 
     protected void FixedUpdate()
@@ -106,27 +126,37 @@ public class ArturBasePlayerController : MonoBehaviour
             dashTime = dashCooldown;
             doDash = false;
         }
+        if (doShoot)
+        {
+            gunScript.Shoot();
+            shootTimer = shootCooldown;
+        }
     }
 
 
     public struct PlayerInput
     {
-
+        public InputManager input;
         public float horizontalLeft;
         public float verticalLeft;
         public bool jumpButton;
         public bool dashButton;
         public bool forcefieldButton;
-        public bool specialButton;
+        public bool shootButton;
+
+        public void SetInputManager(InputManager input)
+        {
+            this.input = input;
+        }
 
         public void Update()
         {
-            horizontalLeft = Input.GetAxis("LeftJoystickHorizontal");
-            verticalLeft = Input.GetAxis("LeftJoystickVertical");
-            jumpButton = Input.GetButton("XButton");
-            dashButton = Input.GetButton("AButton");
-            forcefieldButton = Input.GetButton("BButton");
-            specialButton = Input.GetButton("YButton");
+            horizontalLeft = Input.GetAxis(input.left_horizontal);
+            verticalLeft = Input.GetAxis(input.left_vertical);
+            jumpButton = Input.GetButton(input.button1);
+            dashButton = Input.GetButton(input.button0);
+            forcefieldButton = Input.GetButton(input.button3);
+            shootButton = Input.GetButton(input.button2);
         }
     }
 
@@ -168,6 +198,13 @@ public class ArturBasePlayerController : MonoBehaviour
         }
         else
             doForcefield = false;
+
+        if (playerInput.shootButton && shootTimer == 0)
+        {
+            doShoot = true;
+        }
+        else
+            doShoot = false;
     }
 
 }

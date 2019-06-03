@@ -252,6 +252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArturMainCharacter1
       objectReference: {fileID: 0}
+    - target: {fileID: 2481691363141289076, guid: df8c11d6a05ae1345b9ea753c4371449,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7313800083650665617, guid: df8c11d6a05ae1345b9ea753c4371449,
         type: 3}
       propertyPath: groundLayer.m_Bits
@@ -367,6 +372,16 @@ PrefabInstance:
       propertyPath: shootCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7313800083650665617, guid: df8c11d6a05ae1345b9ea753c4371449,
+        type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313800083650665617, guid: df8c11d6a05ae1345b9ea753c4371449,
+        type: 3}
+      propertyPath: controllerType
+      value: Xbox
+      objectReference: {fileID: 0}
     - target: {fileID: 4649240445346174469, guid: df8c11d6a05ae1345b9ea753c4371449,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,11 +456,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseGravity
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2481691363141289076, guid: df8c11d6a05ae1345b9ea753c4371449,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8c11d6a05ae1345b9ea753c4371449, type: 3}

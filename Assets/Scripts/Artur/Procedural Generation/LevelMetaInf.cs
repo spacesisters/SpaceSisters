@@ -7,7 +7,5 @@ using UnityEngine;
 
 public class LevelMetaInf : MonoBehaviour
 {
-    public int beginning;
-    public int ending;
-
+    public Vector2 lastBlock;
 }

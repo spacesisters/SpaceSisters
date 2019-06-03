@@ -8,22 +8,20 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
     public float levelWidth;
 
     void Awake()
-    {
+    {   
         System.Random rand = new System.Random();
-        GameObject start = Resources.Load<GameObject>("Rooms/0" + (rand.Next(1, 1)) + "/" + (rand.Next(1, 1)));
+        GameObject start = Resources.Load<GameObject>("Rooms/00" + (rand.Next(1, 1)));
         Instantiate(start);
-        Vector3 roomPosition = new Vector3(levelWidth, 0, 0);
+        Vector3 roomPosition = new Vector3(start.GetComponent<LevelMetaInf>().lastBlock.x, start.GetComponent<LevelMetaInf>().lastBlock.y, 0);
         GameObject previousGameObject = start;
         for (int i = 1; i < numberOfRooms; i++)
         {
-            int prevousEnding = previousGameObject.GetComponent<LevelMetaInf>().ending;
-            int nextEnding = rand.Next(1, 1);
-            int nextVersion = rand.Next(1, 3);
-            print("Room: " + i + " " + "Version: " + nextVersion);
-            GameObject nextRoom = Resources.Load<GameObject>("Rooms/" + prevousEnding + "" + nextEnding + "/" + nextVersion);
+            GameObject nextRoom = Resources.Load<GameObject>("Rooms/" + rand.Next(1, 5));
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
-            previousGameObject = nextRoom;
-            roomPosition.x += levelWidth;
+            roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
+            roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
+
+            print(roomPosition);
         }
     }
 
