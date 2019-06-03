@@ -10,7 +10,6 @@ public class ArturGunScript : MonoBehaviour
 
     public void Shoot()
     {
-        print(firePosition.rotation);
         Instantiate(bullet, firePosition.position, firePosition.rotation);
     }
 }

@@ -19,7 +19,6 @@ public class ArturForcefieldController : MonoBehaviour
 
     public void ActivateForcefield()
     {
-        print("Forcefield is active!");
 
         Collider[] objects = Physics.OverlapSphere(transform.position, radius, reactToForcefieldLayer);
         foreach (Collider c in objects)
