@@ -5,11 +5,13 @@ public class menuAppearGameOver : MonoBehaviour
 {
 
     public GameObject gameover;
+    public GameObject backToMenu;
     public VictoriaPlayerController player;
 
     private void Start()
     {
         gameover.SetActive(false);
+        backToMenu.SetActive(false);
     }
     void Update()
     {
