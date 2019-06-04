@@ -81,11 +81,11 @@ public class ArturBasePlayerController : MonoBehaviour
         //Setting rotation
         if (playerInput.horizontalLeft > 0)
         {
-            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 0, transform.eulerAngles.z);
         }
         else if (playerInput.horizontalLeft < 0)
         {
-            transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 180, transform.eulerAngles.z);
         }
 
         // Managing dash cooldown
@@ -116,7 +116,7 @@ public class ArturBasePlayerController : MonoBehaviour
 
         if (doJump)
         {
-            rBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.VelocityChange);
+            rBody.AddForce(new Vector3(0, jumpForce, 0) * transform.up.y, ForceMode.VelocityChange);
             doJump = false;
         }
 
