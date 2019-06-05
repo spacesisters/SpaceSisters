@@ -22,14 +22,14 @@ TagManager:
   - 
   - PostProcessing
   - Ground
-  - Player
+  - PlayerOne
   - JumpPad
   - PlayerShot
   - Enemy
   - ReactsToForcefields
   - EnemyShot
-  - 
-  - 
+  - PlayerTwo
+  - Wall
   - 
   - 
   - 

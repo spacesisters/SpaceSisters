@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Julius/Test1.unity
     guid: a7bc01604653650468df080ac22a37bb
+  - enabled: 1
+    path: Assets/Scenes/Victoria/Menu.unity
+    guid: 5c4907a1c0e271d4b83c4ead7aa4db1e
+  - enabled: 1
+    path: Assets/Scenes/Victoria/Game.unity
+    guid: fdc9f8287b59a7048884f63ffd855360
+  - enabled: 1
+    path: Assets/Scenes/Victoria/Highscore.unity
+    guid: c9d27e9063eee574dafb2ab1c03f1eed
+  - enabled: 1
+    path: Assets/Scenes/Artur/Procedural.unity
+    guid: f81a94a92e446b54494c3c91a8274754
   m_configObjects: {}

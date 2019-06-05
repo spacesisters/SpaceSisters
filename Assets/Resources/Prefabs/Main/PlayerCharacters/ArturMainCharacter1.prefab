@@ -168,6 +168,10 @@ MonoBehaviour:
   energy: 1
   energyDrainPerSecond: 0.1
   shootCooldown: 1
+  score: 0
+  dead: 0
+  improvedAmmo: 0
+  improvedSpeed: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 66048

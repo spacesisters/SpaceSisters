@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class menuSaveScore : MonoBehaviour
 {
-    public VictoriaPlayerController player;
+    private ArturPlayerOneController player1;
+    private ArturPlayerTwoController player2;
     public GameObject saveScore;
     public GameObject backToMenu;
     private menuHighscoreTable menuHighscoreTable;
 
     public void scoresave(string name)
     {
-        AddHighscoreEntry(player.score, GameObject.Find("InputNames").GetComponent<InputField>().text);
+        player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
+        AddHighscoreEntry(player1.score, GameObject.Find("InputNames").GetComponent<InputField>().text);
         saveScore.SetActive(false);
         backToMenu.SetActive(true);
 

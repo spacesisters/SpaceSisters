@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class menuEnergyBar : MonoBehaviour
 {
-    public VictoriaPlayerController player;
+
     public GameObject speedBonus;
     private Transform barContainer;
     private Transform barTemplate;
     private List<barItem> barList = new List<barItem>();
     private float templateHeight = 100f;
+    private ArturPlayerOneController player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
         barContainer = GameObject.Find("right corner").GetComponent<Transform>();
         barTemplate = GameObject.Find("energybar").GetComponent<Transform>();
         barTemplate.gameObject.SetActive(false);

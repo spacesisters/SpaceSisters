@@ -5,10 +5,14 @@ using UnityEngine;
 public class menuPause : MonoBehaviour
 {
     public GameObject pause;
-    public VictoriaPlayerController player;
+    private ArturPlayerOneController player1;
+    private ArturPlayerTwoController player2;
+
 
     public void Start()
     {
+        player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         pause.SetActive(false);
     }
 
@@ -22,13 +26,13 @@ public class menuPause : MonoBehaviour
 
     public void startPause()
     {
-        player.pause();
+        player1.pause();
         pause.SetActive(true);
     }
 
     public void endPause()
     {
-        player.endPause();
+        player1.endPause();
         pause.SetActive(false);
     }
 }

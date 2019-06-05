@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7377910226796747958}
   m_Layer: 16
   m_Name: ArturMainCharacter2
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,6 +178,10 @@ MonoBehaviour:
   energy: 1
   energyDrainPerSecond: 0.1
   shootCooldown: 1
+  score: 0
+  dead: 0
+  improvedAmmo: 0
+  improvedSpeed: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 1536

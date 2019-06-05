@@ -22,6 +22,13 @@ public class ArturBasePlayerController : MonoBehaviour
     public float shootCooldown;
 
 
+    public int score; // **
+    public bool dead;  // **
+    public float improvedAmmo; // between 0 and 1 // **
+    public float improvedSpeed; // between 0 and 1 // **
+    private bool isPaused; // **
+
+
 
     protected ConstantForce constForce;
     protected Rigidbody rBody;
@@ -43,11 +50,19 @@ public class ArturBasePlayerController : MonoBehaviour
     private bool doDash;
     private bool doJump;
     private bool doShoot;
-    private float groundCheckRadius = 0.5f;
+    private float groundCheckRadius = 0.1f;
 
 
     protected void Initialize()
     {
+        score = 0; // **
+        improvedAmmo = 0; // **
+        improvedSpeed = 0; // **
+        energy = 1f; // **
+        dead = false; // **
+        isPaused = false; // **
+
+
 
         gunScript = GetComponent<ArturGunScript>();
         controller = new InputManager(playerNumber, controllerType);
@@ -166,7 +181,7 @@ public class ArturBasePlayerController : MonoBehaviour
 
     private void UpdateGrounded()
     {
-        Vector3 bottomCenter = new Vector3(transform.position.x, transform.position.y - (capsuleCollider.height * 0.45f), rBody.position.z);
+        Vector3 bottomCenter = new Vector3(transform.position.x, transform.position.y - (capsuleCollider.height * 0.5f), rBody.position.z);
         
         if (Physics.OverlapSphere(bottomCenter, groundCheckRadius, groundLayers).Length > 0)
         {
@@ -215,8 +230,20 @@ public class ArturBasePlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         Gizmos.color = Color.cyan;
         Vector3 center = transform.position;
-        center.y -= capsuleCollider.height * 0.45f;
-        Gizmos.DrawSphere(center, 0.5f);
+        center.y -= capsuleCollider.height * 0.5f;
+        Gizmos.DrawSphere(center, 0.1f);
+    }
+
+    //TODO
+
+    public void pause() // **
+    {
+        isPaused = true; // **
+    }
+
+    public void endPause() // **
+    {
+        isPaused = false; // **
     }
 }
 
