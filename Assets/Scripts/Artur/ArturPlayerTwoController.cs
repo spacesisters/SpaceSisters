@@ -11,7 +11,7 @@ public class ArturPlayerTwoController : ArturBasePlayerController
     private void Start()
     {
         forcefieldController = transform.GetChild(0).GetComponent<ArturForcefieldController>();
-        forcefieldController.Initialize(-1);
+        forcefieldController.Initialize(1);
         base.Initialize();
     }
 

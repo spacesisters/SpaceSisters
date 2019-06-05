@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7961289838581611523}
   - component: {fileID: 1344596641814286601}
   - component: {fileID: 7377910226796747958}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: ArturMainCharacter2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5479917335307823501}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Fireposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6110690981406672439}
   - component: {fileID: 7961289837172731685}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Forcefield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

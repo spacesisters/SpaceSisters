@@ -170,7 +170,7 @@ MonoBehaviour:
   shootCooldown: 1
   groundLayers:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 66048
 --- !u!75 &8995053400560641806
 ConstantForce:
   m_ObjectHideFlags: 0
