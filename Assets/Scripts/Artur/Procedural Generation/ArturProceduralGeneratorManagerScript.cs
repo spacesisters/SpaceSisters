@@ -5,12 +5,13 @@ using UnityEngine;
 public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 {
     public int numberOfRooms;
-    public float levelWidth;
 
     void Awake()
-    {   
+    {  
+
         System.Random rand = new System.Random();
         GameObject start = Resources.Load<GameObject>("Rooms/00" + (rand.Next(1, 1)));
+        GameObject playerOne = Resources.Load<GameObject>("Prefabs/Main/PlayerCharacters/ArturMainCharacter1");
         Instantiate(start);
         Vector3 roomPosition = new Vector3(start.GetComponent<LevelMetaInf>().lastBlock.x, start.GetComponent<LevelMetaInf>().lastBlock.y, 0);
         GameObject previousGameObject = start;
@@ -20,9 +21,11 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
             roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
             roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
-
-            print(roomPosition);
         }
+
+
+        Instantiate(playerOne);
+
     }
 
 }

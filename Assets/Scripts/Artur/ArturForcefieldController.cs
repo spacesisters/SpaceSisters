@@ -33,10 +33,11 @@ public class ArturForcefieldController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        /*
         radius = 4;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
-       
+       */
     }
 
 }

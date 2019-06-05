@@ -25,7 +25,7 @@ public class ArturBasePlayerController : MonoBehaviour
 
     protected ConstantForce constForce;
     protected Rigidbody rBody;
-    protected BoxCollider boxCollider;
+    protected CapsuleCollider capsuleCollider;
     protected PlayerInput playerInput;
     protected bool isGrounded;
     protected bool doForcefield;
@@ -43,20 +43,22 @@ public class ArturBasePlayerController : MonoBehaviour
     private bool doDash;
     private bool doJump;
     private bool doShoot;
+    private float groundCheckRadius = 0.5f;
 
 
     protected void Initialize()
     {
+
         gunScript = GetComponent<ArturGunScript>();
         controller = new InputManager(playerNumber, controllerType);
 
         playerInput = new PlayerInput();
         playerInput.SetInputManager(controller);
         rBody = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         constForce = GetComponent<ConstantForce>();
 
-        size = new Vector3(boxCollider.size.x * 0.975f, boxCollider.size.y * 0.025f, boxCollider.size.z);
+        //size = new Vector3(boxCollider.size.x * 0.975f, boxCollider.size.y * 0.025f, boxCollider.size.z);
         constForce.force = new Vector3(0, ArturSceneManager.gravity, 0);
 
     }
@@ -164,15 +166,15 @@ public class ArturBasePlayerController : MonoBehaviour
 
     private void UpdateGrounded()
     {
-        Vector3 bottomCenter = new Vector3(rBody.position.x, rBody.position.y - boxCollider.size.y / 2, rBody.position.z);
-
-        if (Physics.OverlapBox(bottomCenter, size / 2, Quaternion.identity, groundLayers).Length > 0)
+        Vector3 bottomCenter = new Vector3(transform.position.x, transform.position.y - (capsuleCollider.height * 0.45f), rBody.position.z);
+        
+        if (Physics.OverlapSphere(bottomCenter, groundCheckRadius, groundLayers).Length > 0)
         {
             isGrounded = true;
         }
         else
             isGrounded = false;
-
+          
     }
 
 
@@ -207,5 +209,14 @@ public class ArturBasePlayerController : MonoBehaviour
             doShoot = false;
     }
 
+
+    private void OnDrawGizmos()
+    {
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        Gizmos.color = Color.cyan;
+        Vector3 center = transform.position;
+        center.y -= capsuleCollider.height * 0.45f;
+        Gizmos.DrawSphere(center, 0.5f);
+    }
 }
 

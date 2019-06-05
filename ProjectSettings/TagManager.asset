@@ -24,10 +24,10 @@ TagManager:
   - Ground
   - Player
   - JumpPad
-  - Shot
+  - PlayerShot
   - Enemy
   - ReactsToForcefields
-  - 
+  - EnemyShot
   - 
   - 
   - 
