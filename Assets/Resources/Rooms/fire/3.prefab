@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 5158457382868476683}
   m_Layer: 0
   m_Name: 3
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,6 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastBlock: {x: 20, y: -4}
+  respawnLocation: {x: 0, y: 0, z: 0}
+  instantiatedAt: {x: 0, y: 0, z: 0}
+  roomNumber: 
 --- !u!1 &5354105249945476647
 GameObject:
   m_ObjectHideFlags: 0

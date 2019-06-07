@@ -9,5 +9,6 @@ public class LevelMetaInf : MonoBehaviour
 {
     public Vector2 lastBlock;
     public Vector3 respawnLocation;
-    public int roomNumber;
+    public Vector3 instantiatedAt;
+    public string roomNumber;
 }

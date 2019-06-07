@@ -10,9 +10,10 @@ public class ArturDeathScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
-            ArturMetaInf metaInf = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>();
-            LevelMetaInf levelMetaInf = transform.GetComponentInParent<LevelMetaInf>();
+            GameObject arturSceneManager = GameObject.FindGameObjectWithTag("SceneManager");
 
+            ArturMetaInf metaInf = arturSceneManager.GetComponent<ArturMetaInf>();
+            LevelMetaInf levelMetaInf = transform.GetComponentInParent<LevelMetaInf>();
 
             Vector3 respawnPosition = levelMetaInf.respawnLocation;
 
@@ -23,6 +24,23 @@ public class ArturDeathScript : MonoBehaviour
             p2.transform.position = respawnPosition + new Vector3(2, 3, 0);
 
             metaInf.playerLives--;
+
+
+            GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
+
+            foreach (GameObject g in rooms)
+            {
+                Vector3 instantiateAt = g.GetComponent<LevelMetaInf>().instantiatedAt;
+                GameObject room = Resources.Load<GameObject>("Rooms/" + ArturSceneManager.currentLevel + "/" + g.GetComponent<LevelMetaInf>().roomNumber);
+                room.GetComponent<LevelMetaInf>().instantiatedAt = instantiateAt;
+                room.GetComponent<LevelMetaInf>().lastBlock = g.GetComponent<LevelMetaInf>().lastBlock;
+                room.GetComponent<LevelMetaInf>().respawnLocation = g.GetComponent<LevelMetaInf>().respawnLocation;
+
+                Instantiate(room, instantiateAt, Quaternion.identity);
+                Destroy(g);
+
+            }
+
         }
     }
 }

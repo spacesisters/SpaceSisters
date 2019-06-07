@@ -23,6 +23,7 @@ public class ArturForcefieldController : MonoBehaviour
         Collider[] objects = Physics.OverlapSphere(transform.position, radius, reactToForcefieldLayer);
         foreach (Collider c in objects)
         {
+
             Vector3 direction = transform.position - c.transform.position;
             float distance = direction.magnitude;
              
@@ -33,11 +34,11 @@ public class ArturForcefieldController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*
-        radius = 4;
+        
+        radius = 5;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
-       */
+       
     }
 
 }

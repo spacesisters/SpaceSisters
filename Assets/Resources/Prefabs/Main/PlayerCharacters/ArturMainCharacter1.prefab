@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b14351662fe53c448665f24f8f581de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  forceMagnitude: 25
+  radius: 5
+  forceMagnitude: 75
   reactToForcefieldLayer:
     serializedVersion: 2
     m_Bits: 20480

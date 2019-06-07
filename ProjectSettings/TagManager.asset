@@ -14,6 +14,7 @@ TagManager:
   - Player2
   - SceneManager
   - Player1
+  - MovableBlock
   layers:
   - Default
   - TransparentFX

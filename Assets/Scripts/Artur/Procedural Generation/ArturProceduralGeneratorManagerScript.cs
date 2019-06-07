@@ -14,7 +14,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         System.Random rand = new System.Random();
         GameObject firstRoom = Resources.Load<GameObject>(roomPath + "start" + (rand.Next(1, 1)));
         firstRoom.GetComponent<LevelMetaInf>().respawnLocation = Vector3.zero;
-        firstRoom.GetComponent<LevelMetaInf>().roomNumber = 0;
+        firstRoom.GetComponent<LevelMetaInf>().instantiatedAt = Vector3.zero;
 
         Instantiate(firstRoom);
         Vector3 roomPosition = new Vector3(firstRoom.GetComponent<LevelMetaInf>().lastBlock.x, 
@@ -25,7 +25,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, 5));
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
-            nextRoom.GetComponent<LevelMetaInf>().roomNumber = i;
+            nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
 
 
@@ -35,6 +35,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         }
 
         GameObject endRoom = Resources.Load<GameObject>(roomPath + "end");
+        endRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
         Instantiate(endRoom, roomPosition, Quaternion.identity);
 
         string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
