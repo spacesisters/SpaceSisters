@@ -13,7 +13,7 @@ public class ScoreBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 
         score.text = "0";

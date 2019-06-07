@@ -12,7 +12,10 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
         string roomPath = "Rooms/" + currentLevel + "/";
         System.Random rand = new System.Random();
-        GameObject firstRoom = Resources.Load<GameObject>(roomPath + "00" + (rand.Next(1, 1)));
+        GameObject firstRoom = Resources.Load<GameObject>(roomPath + "start" + (rand.Next(1, 1)));
+        firstRoom.GetComponent<LevelMetaInf>().respawnLocation = Vector3.zero;
+        firstRoom.GetComponent<LevelMetaInf>().roomNumber = 0;
+
         Instantiate(firstRoom);
         Vector3 roomPosition = new Vector3(firstRoom.GetComponent<LevelMetaInf>().lastBlock.x, 
                                             firstRoom.GetComponent<LevelMetaInf>().lastBlock.y, 0);
@@ -20,10 +23,19 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         for (int i = 1; i < numberOfRooms; i++)
         {
             GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, 5));
+            nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
+            nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
+            nextRoom.GetComponent<LevelMetaInf>().roomNumber = i;
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
+
+
+
             roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
             roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
         }
+
+        GameObject endRoom = Resources.Load<GameObject>(roomPath + "end");
+        Instantiate(endRoom, roomPosition, Quaternion.identity);
 
         string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
         string playerTwoPath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter2";

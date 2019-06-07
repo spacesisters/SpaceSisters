@@ -13,7 +13,7 @@ public class menuSaveScore : MonoBehaviour
 
     public void scoresave(string name)
     {
-        player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         AddHighscoreEntry(player1.score, GameObject.Find("InputNames").GetComponent<InputField>().text);
         saveScore.SetActive(false);

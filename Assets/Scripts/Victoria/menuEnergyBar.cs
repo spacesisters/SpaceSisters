@@ -17,7 +17,7 @@ public class menuEnergyBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         barContainer = GameObject.Find("right corner").GetComponent<Transform>();
         barTemplate = GameObject.Find("energybar").GetComponent<Transform>();
         barTemplate.gameObject.SetActive(false);

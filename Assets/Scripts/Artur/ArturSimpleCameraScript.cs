@@ -10,7 +10,7 @@ public class ArturSimpleCameraScript : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player1").transform;
     }
 
     void LateUpdate()

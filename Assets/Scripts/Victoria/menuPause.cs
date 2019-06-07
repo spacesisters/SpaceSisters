@@ -11,7 +11,7 @@ public class menuPause : MonoBehaviour
 
     public void Start()
     {
-        player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<ArturPlayerOneController>();
+        player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         pause.SetActive(false);
     }

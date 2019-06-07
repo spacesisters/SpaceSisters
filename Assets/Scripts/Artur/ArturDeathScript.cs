@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class ArturDeathScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
-            other.gameObject.GetComponent<ArturPlayerOneController>().dead = true;
+            ArturMetaInf metaInf = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>();
+            LevelMetaInf levelMetaInf = transform.GetComponentInParent<LevelMetaInf>();
+
+
+            Vector3 respawnPosition = levelMetaInf.respawnLocation;
+
+            ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
+            ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
+
+            p1.transform.position = respawnPosition + new Vector3(0, 3, 0);
+            p2.transform.position = respawnPosition + new Vector3(2, 3, 0);
+
+            metaInf.playerLives--;
         }
     }
 }

@@ -11,6 +11,9 @@ TagManager:
   - Bullet
   - PlayerCapsule
   - Ground
+  - Player2
+  - SceneManager
+  - Player1
   layers:
   - Default
   - TransparentFX
