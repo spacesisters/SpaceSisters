@@ -12,10 +12,11 @@ public class ArturEndZone : MonoBehaviour
         
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
+            GetComponent<ArturMetaInf>().endOfLevel = true;
             //TODO: Show final score of this lvl. 
             //TODO: Show short cutscene?
 
-            SceneManager.LoadScene(nextScene);
+            //SceneManager.LoadScene(nextScene);
         }
 
     }

@@ -22,8 +22,6 @@ public class ArturBasePlayerController : MonoBehaviour
     public float shootCooldown;
 
 
-    public int score; // **
-    public bool dead;  // **
     public float improvedAmmo; // between 0 and 1 // **
     public float improvedSpeed; // between 0 and 1 // **
     private bool isPaused; // **
@@ -55,12 +53,10 @@ public class ArturBasePlayerController : MonoBehaviour
 
     protected void Initialize()
     {
-        score = 0; // **
-        improvedAmmo = 0; // **
-        improvedSpeed = 0; // **
-        energy = 1f; // **
-        dead = false; // **
-        isPaused = false; // **
+        improvedAmmo = 0;
+        improvedSpeed = 0;
+        energy = 1f;
+        isPaused = false; 
 
 
 
