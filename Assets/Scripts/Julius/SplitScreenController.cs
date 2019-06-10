@@ -6,6 +6,7 @@ public class SplitScreenController : MonoBehaviour
 {
     public Camera cameraLeft;
     public Camera cameraRight;
+    public bool isSplitted;
 
     private GameObject player1;
     private GameObject player2;
@@ -24,6 +25,8 @@ public class SplitScreenController : MonoBehaviour
         player2 = cameraRight.GetComponent<Julius.CameraController>().player;
         cameraOffsetPlayer1 = cameraLeft.transform.position - player1.transform.position;
         cameraOffsetPlayer2 = cameraRight.transform.position - player2.transform.position;
+
+        isSplitted = false;
     }
 
     void Update()
@@ -37,7 +40,7 @@ public class SplitScreenController : MonoBehaviour
 
         if(Mathf.Abs(distance) < 20)
         {
-            Debug.Log("Single Screen");
+            isSplitted = false;
             Vector3 offset;
             if (leading == 1)
             {
@@ -62,6 +65,7 @@ public class SplitScreenController : MonoBehaviour
         else
         {
             // Split screen
+            isSplitted = true;
             if (needsSplitScreenTransition)
             {
                 cameraLeft.gameObject.SetActive(true);

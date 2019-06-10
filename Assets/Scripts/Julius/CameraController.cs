@@ -8,9 +8,19 @@ namespace Julius
     {
         public GameObject player;
         private Vector3 offset;
+        public int playerOneOrTwo;
         // Start is called before the first frame update
         void Start()
         {
+            if(playerOneOrTwo == 1)
+            {
+                player = GameObject.FindGameObjectWithTag("Player1");
+            }
+            else
+            {
+                player = player = GameObject.FindGameObjectWithTag("Player2");
+            }
+            
             //offset = transform.position - player.transform.position;
         }
 

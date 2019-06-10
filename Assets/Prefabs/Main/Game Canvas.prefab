@@ -2982,7 +2982,7 @@ GameObject:
   - component: {fileID: 4514926338657364302}
   m_Layer: 5
   m_Name: Livestext
-  m_TagString: Untagged
+  m_TagString: LiveText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3135,7 +3135,7 @@ GameObject:
   - component: {fileID: 8476962874102639700}
   m_Layer: 5
   m_Name: Livestext
-  m_TagString: Untagged
+  m_TagString: LiveText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3920,7 +3920,7 @@ GameObject:
   - component: {fileID: 4133957721849362157}
   m_Layer: 5
   m_Name: Livestext
-  m_TagString: Untagged
+  m_TagString: LiveText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

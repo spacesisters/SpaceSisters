@@ -7,8 +7,9 @@ public class ArturMetaInf : MonoBehaviour
     
     public int playerLives = 10;
     public int score = 0;
-    public bool screenIsSplitted;
     public bool endOfLevel;
+
+
     private void Update()
     {
         score += 1; // TODO 

@@ -8,8 +8,10 @@ public class BarUI : MonoBehaviour
     private ArturPlayerOneController player1;
     private ArturPlayerTwoController player2;
     private ArturMetaInf metaInf;
+    private SplitScreenController splitScreenController;
 
     private GameObject[] scoretexts;
+    private GameObject[] livetexts;
 
     private Transform barContainerRight;
     private Transform barContainerLeft;
@@ -20,7 +22,6 @@ public class BarUI : MonoBehaviour
     private float templateHeight = 100f;
     private Vector3 barPositionLeft;
     private Vector3 barPositionRight;
-
 
     private GameObject scorebarleft;
     private GameObject scorebarright;
@@ -33,6 +34,8 @@ public class BarUI : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         metaInf = GetComponent<ArturMetaInf>();
+
+        splitScreenController = GameObject.Find("SplitScreen").GetComponent<SplitScreenController>();
 
         barContainerRight = GameObject.Find("Right Corner").GetComponent<Transform>();
         barTemplate = GameObject.Find("TemplateBar").GetComponent<Transform>();
@@ -50,10 +53,16 @@ public class BarUI : MonoBehaviour
         AddNewBar(1, "energy");
         AddNewBar(2, "energy");
 
-        scoretexts = GameObject.FindGameObjectsWithTag("HighScoreText"); // TODO auh für livetext
+        scoretexts = GameObject.FindGameObjectsWithTag("HighScoreText");
         foreach (GameObject g in scoretexts)
         {
                g.GetComponent<Text>().text = "0";
+        }
+
+        livetexts = GameObject.FindGameObjectsWithTag("LiveText");
+        foreach (GameObject g in livetexts)
+        {
+            g.GetComponent<Text>().text = metaInf.playerLives.ToString();
         }
 
         // speedBonus.SetActive(false); // TODO hier nicht hin
@@ -96,7 +105,7 @@ public class BarUI : MonoBehaviour
     }
     void Update()
     {
-        if (metaInf.screenIsSplitted)
+        if (splitScreenController.isSplitted)
         {
             scorebarleft.SetActive(true);
             scorebarright.SetActive(true);
@@ -106,7 +115,7 @@ public class BarUI : MonoBehaviour
 
             middlecorner.SetActive(false);
         }
-        else if(!metaInf.screenIsSplitted)
+        else
         {
             scorebarleft.SetActive(false);
             scorebarright.SetActive(false);
@@ -122,7 +131,10 @@ public class BarUI : MonoBehaviour
             {
                 score.GetComponent<Text>().text = metaInf.score.ToString();
             }
-            
+            foreach (GameObject live in livetexts)
+            {
+                live.GetComponent<Text>().text = metaInf.playerLives.ToString();
+            }
 
             if (player1.improvedAmmo > 0 && !barList_playerOne.Contains(new barItem { itemTransform = null, barType = "improvedAmmo" }))
             {
