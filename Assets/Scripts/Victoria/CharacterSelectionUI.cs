@@ -39,32 +39,21 @@ public class CharacterSelectionUI : MonoBehaviour
 
                 if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
-                    player1 = new Player { playerNum = 1, controllertype = "DS4"};
-                    controller1_number = 1;
                     ArturControllerSettings.player1ControllerNumber = 1;
                     ArturControllerSettings.player1ControllerType = "DS4";
                 }
                 else if (Input.GetButtonDown("ds4_p2_button_x"))
                 {
-                    player1 = new Player { playerNum = 2, controllertype = "DS4"};
-                    controller1_number = 2;
-
                     ArturControllerSettings.player1ControllerNumber = 2;
                     ArturControllerSettings.player1ControllerType = "DS4";
                 }
                 else if (Input.GetButtonDown("xbox_p1_button_a"))
                 {
-                    player1 = new Player { playerNum = 1, controllertype = "Xbox"};
-                    controller1_number = 1;
-
                     ArturControllerSettings.player1ControllerNumber = 1;
                     ArturControllerSettings.player1ControllerType = "Xbox";
                 }
                 else if (Input.GetButtonDown("xbox_p2_button_a"))
                 {
-                    player1 = new Player { playerNum = 2, controllertype = "Xbox"};
-                    controller1_number = 2;
-
                     ArturControllerSettings.player1ControllerNumber = 2;
                     ArturControllerSettings.player1ControllerType = "Xbox";
                 }
@@ -78,65 +67,31 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer2.SetActive(true);
                 startgame.SetActive(false);
 
-                if (Input.GetButtonDown("ds4_p1_button_x") && controller1_number != 1)
+                if (Input.GetButtonDown("ds4_p1_button_x") && ArturControllerSettings.player1ControllerNumber != 1)
                 {
-                    player2 = new Player { playerNum = 1, controllertype = "DS4"};
                     controllers_assigned = true;
-
-                    Player[] players = { player1, player2 };
-                    string json = JsonUtility.ToJson(players);
-                    print(json);
-
-                    PlayerPrefs.SetString("Controllers", json);
-                    PlayerPrefs.Save();
 
                     ArturControllerSettings.player2ControllerNumber = 1;
                     ArturControllerSettings.player2ControllerType = "DS4";
 
                 }
-                else if (Input.GetButtonDown("ds4_p2_button_x") && controller1_number != 2)
+                else if (Input.GetButtonDown("ds4_p2_button_x") && ArturControllerSettings.player1ControllerNumber != 2)
                 {
-                    player2 = new Player { playerNum = 2, controllertype = "DS4"};
                     controllers_assigned = true;
-
-                    Player[] players = { player1, player2 };
-                    string json = JsonUtility.ToJson(players);
-                    print(json);
-
-                    PlayerPrefs.SetString("Controllers", json);
-                    PlayerPrefs.Save();
-
 
                     ArturControllerSettings.player2ControllerNumber = 2;
                     ArturControllerSettings.player2ControllerType = "DS4";
                 }
-                else if (Input.GetButtonDown("xbox_p1_button_a") && controller1_number != 1)
+                else if (Input.GetButtonDown("xbox_p1_button_a") && ArturControllerSettings.player1ControllerNumber != 1)
                 {
-                    print("player2 1");
-                    player2 = new Player { playerNum = 1, controllertype = "Xbox" };
                     controllers_assigned = true;
-
-                    Player[] players = { player1, player2 };
-                    string json = JsonUtility.ToJson(players);
-                    print(json);
-                    PlayerPrefs.SetString("Controllers", json);
-                    PlayerPrefs.Save();
 
                     ArturControllerSettings.player2ControllerNumber = 1;
                     ArturControllerSettings.player2ControllerType = "Xbox";
                 }
-                else if (Input.GetButtonDown("xbox_p2_button_a") && controller1_number != 2)
+                else if (Input.GetButtonDown("xbox_p2_button_a") && ArturControllerSettings.player1ControllerNumber != 2)
                 {
-                    print("player2 2");
-
-                    player2 = new Player { playerNum = 2, controllertype = "Xbox"};
                     controllers_assigned = true;
-
-                    Player[] players = { player1, player2 };
-                    string json = JsonUtility.ToJson(players);
-                    print(json);
-                    PlayerPrefs.SetString("Controllers", json);
-                    PlayerPrefs.Save();
 
                     ArturControllerSettings.player2ControllerNumber = 2;
                     ArturControllerSettings.player2ControllerType = "Xbox";

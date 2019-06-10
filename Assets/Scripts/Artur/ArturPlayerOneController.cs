@@ -13,10 +13,6 @@ public class ArturPlayerOneController : ArturBasePlayerController
         forcefieldController = transform.GetChild(0).GetComponent<ArturForcefieldController>();
         forcefieldController.Initialize(-1);
 
-        Player[] players = JsonUtility.FromJson<Player[]>(PlayerPrefs.GetString("Controllers"));
-        //this.controllerType = players[0].controllertype;
-        //this.playerNumber = players[0].playerNum;
-
         this.controllerType = ArturControllerSettings.player1ControllerType;
         this.playerNumber = ArturControllerSettings.player1ControllerNumber;
 
