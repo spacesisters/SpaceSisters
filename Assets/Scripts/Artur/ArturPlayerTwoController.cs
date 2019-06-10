@@ -14,8 +14,12 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         forcefieldController.Initialize(1);
 
         Player[] players = JsonUtility.FromJson<Player[]>(PlayerPrefs.GetString("Controllers"));
-        this.controllerType = players[1].controllertype;
-        this.playerNumber = players[1].playerNum;
+        print(PlayerPrefs.GetString("Controllers"));
+        //this.controllerType = players[1].controllertype;
+        //this.playerNumber = players[1].playerNum;
+
+        this.controllerType = ArturControllerSettings.player2ControllerType;
+        this.playerNumber = ArturControllerSettings.player2ControllerNumber;
 
         base.Initialize();
     }
