@@ -21,8 +21,9 @@ public class SplitScreenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1 = cameraLeft.GetComponent<Julius.CameraController>().player;
-        player2 = cameraRight.GetComponent<Julius.CameraController>().player;
+        //player1 = cameraLeft.GetComponent<Julius.CameraController>().player;
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
         cameraOffsetPlayer1 = cameraLeft.transform.position - player1.transform.position;
         cameraOffsetPlayer2 = cameraRight.transform.position - player2.transform.position;
 
