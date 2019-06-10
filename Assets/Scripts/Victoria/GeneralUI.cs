@@ -52,7 +52,31 @@ public class GeneralUI : MonoBehaviour
         {
             endLevelScore.text = metaInf.score.ToString();
             endOfLevelScreen.SetActive(true);
-            // ChangeMenuScene("ice"); // TODO
+            if(metaInf.score < 50)
+            {
+                GameObject.Find("Star1").SetActive(false);
+                GameObject.Find("Star2").SetActive(false);
+                GameObject.Find("Star3").SetActive(false);
+            }
+            else if(metaInf.score > 50 && metaInf.score < 100){
+                GameObject.Find("Star1").SetActive(true);
+                GameObject.Find("Star2").SetActive(false);
+                GameObject.Find("Star3").SetActive(false);
+            }
+            else if(metaInf.score > 100 && metaInf.score < 200)
+            {
+                GameObject.Find("Star1").SetActive(true);
+                GameObject.Find("Star2").SetActive(true);
+                GameObject.Find("Star3").SetActive(false);
+            }
+            else if(metaInf.score > 200)
+            {
+                GameObject.Find("Star1").SetActive(true);
+                GameObject.Find("Star2").SetActive(true);
+                GameObject.Find("Star3").SetActive(true);
+            }
+
+            if(Input.anyKey)  ChangeMenuScene("ice"); 
         }
     }
 
