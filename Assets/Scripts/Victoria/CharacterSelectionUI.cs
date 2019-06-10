@@ -12,11 +12,16 @@ public class CharacterSelectionUI : MonoBehaviour
     private int controller1_number;
 
     Player player1, player2;
+    GameObject selectplayer1, selectplayer2, startgame;
 
     void Start()
     {
         controller_names = Input.GetJoystickNames();
         controllers_assigned = false;
+
+        selectplayer1 = GameObject.Find("SelectPlayer1");
+        selectplayer2 = GameObject.Find("SelectPlayer2");
+        startgame = GameObject.Find("StartGame");
 
     }
 
@@ -27,9 +32,9 @@ public class CharacterSelectionUI : MonoBehaviour
             // SetUp of Player1
             if (player1 == null && controller_names.Length > 0)
             {
-                GameObject.Find("SelectPlayer1").SetActive(true);
-                GameObject.Find("SelectPlayer2").SetActive(false);
-                GameObject.Find("StartGame").SetActive(false);
+                selectplayer1.SetActive(true);
+                selectplayer2.SetActive(false);
+                startgame.SetActive(false);
 
                 if (Input.GetButton("ds4_p1_button_x"))
                 {
@@ -56,9 +61,9 @@ public class CharacterSelectionUI : MonoBehaviour
             // SetUp for Play
             else if (player2 == null && controller_names.Length > 1)
             {
-                GameObject.Find("SelectPlayer1").SetActive(false);
-                GameObject.Find("SelectPlayer2").SetActive(true);
-                GameObject.Find("StartGame").SetActive(false);
+                selectplayer1.SetActive(false);
+                selectplayer2.SetActive(true);
+                startgame.SetActive(false);
 
                 if (Input.GetButton("ds4_p1_button_x") && controller1_number != 1)
                 {
@@ -88,9 +93,9 @@ public class CharacterSelectionUI : MonoBehaviour
         }
         else
         {
-            GameObject.Find("SelectPlayer1").SetActive(false);
-            GameObject.Find("SelectPlayer2").SetActive(false);
-            GameObject.Find("StartGame").SetActive(true);
+            selectplayer1.SetActive(false);
+            selectplayer2.SetActive(false);
+            startgame.SetActive(true);
         }
     }
 
