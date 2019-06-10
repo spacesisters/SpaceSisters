@@ -76,7 +76,7 @@ public class GeneralUI : MonoBehaviour
                 GameObject.Find("Star3").SetActive(true);
             }
 
-            if(Input.anyKey)  ChangeMenuScene("ice"); 
+            if(Input.anyKeyDown)  ChangeMenuScene("ice"); 
         }
     }
 
