@@ -241,5 +241,13 @@ public class ArturBasePlayerController : MonoBehaviour
     {
         isPaused = false; // **
     }
+
+    [System.Serializable]
+    protected class Player
+    {
+        public int numForJulius;
+        public string controllertype;
+        public int numForGame;
+    }
 }
 
