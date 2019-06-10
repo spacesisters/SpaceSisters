@@ -247,7 +247,6 @@ public class ArturBasePlayerController : MonoBehaviour
     {
         public int numForJulius;
         public string controllertype;
-        public int numForGame;
     }
 }
 
