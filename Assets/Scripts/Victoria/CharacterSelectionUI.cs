@@ -35,22 +35,22 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer2.SetActive(false);
                 startgame.SetActive(false);
 
-                if (Input.GetButton("ds4_p1_button_x"))
+                if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
                     player1 = new Player { playerNum = 1, controllertype = "DS4"};
                     controller1_number = 1;
                 }
-                else if (Input.GetButton("ds4_p2_button_x"))
+                else if (Input.GetButtonDown("ds4_p2_button_x"))
                 {
                     player1 = new Player { playerNum = 2, controllertype = "DS4"};
                     controller1_number = 2;
                 }
-                else if (Input.GetButton("xbox_p1_button_a"))
+                else if (Input.GetButtonDown("xbox_p1_button_a"))
                 {
                     player1 = new Player { playerNum = 1, controllertype = "Xbox"};
                     controller1_number = 1;
                 }
-                else if (Input.GetButton("xbox_p2_button_a"))
+                else if (Input.GetButtonDown("xbox_p2_button_a"))
                 {
                     player1 = new Player { playerNum = 2, controllertype = "Xbox"};
                     controller1_number = 2;
@@ -64,19 +64,19 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer2.SetActive(true);
                 startgame.SetActive(false);
 
-                if (Input.GetButton("ds4_p1_button_x") && controller1_number != 1)
+                if (Input.GetButtonDown("ds4_p1_button_x") && controller1_number != 1)
                 {
                     player2 = new Player { playerNum = 1, controllertype = "DS4"};
                 }
-                else if (Input.GetButton("ds4_p2_button_x") && controller1_number != 2)
+                else if (Input.GetButtonDown("ds4_p2_button_x") && controller1_number != 2)
                 {
                     player2 = new Player { playerNum = 2, controllertype = "DS4"};
                 }
-                else if (Input.GetButton("xbox_p1_button_a") && controller1_number != 1)
+                else if (Input.GetButtonDown("xbox_p1_button_a") && controller1_number != 1)
                 {
                     player2 = new Player { playerNum = 1, controllertype = "Xbox" };
                 }
-                else // (Input.GetButton("xbox_p2_button_a") && controller1_number != 2)
+                else // (Input.GetButtonDown("xbox_p2_button_a") && controller1_number != 2)
                 {
                     player2 = new Player { playerNum = 2, controllertype = "Xbox"};
                     
