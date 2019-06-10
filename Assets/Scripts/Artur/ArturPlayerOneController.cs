@@ -15,7 +15,7 @@ public class ArturPlayerOneController : ArturBasePlayerController
 
         Player[] players = JsonUtility.FromJson<Player[]>(PlayerPrefs.GetString("Controllers"));
         this.controllerType = players[0].controllertype;
-        this.playerNumber = players[0].numForJulius;
+        this.playerNumber = players[0].playerNum;
         base.Initialize();
     }
 

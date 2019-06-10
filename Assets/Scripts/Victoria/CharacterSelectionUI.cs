@@ -16,7 +16,6 @@ public class CharacterSelectionUI : MonoBehaviour
 
     void Start()
     {
-        controller_names = Input.GetJoystickNames();
         controllers_assigned = false;
 
         selectplayer1 = GameObject.Find("SelectPlayer1");
@@ -30,7 +29,7 @@ public class CharacterSelectionUI : MonoBehaviour
         if (controllers_assigned == false)
         {
             // SetUp of Player1
-            if (player1 == null && controller_names.Length > 0)
+            if (player1 == null)
             {
                 selectplayer1.SetActive(true);
                 selectplayer2.SetActive(false);
@@ -38,28 +37,28 @@ public class CharacterSelectionUI : MonoBehaviour
 
                 if (Input.GetButton("ds4_p1_button_x"))
                 {
-                    player1 = new Player { numForJulius = 1, controllertype = "DS4"};
+                    player1 = new Player { playerNum = 1, controllertype = "DS4"};
                     controller1_number = 1;
                 }
                 else if (Input.GetButton("ds4_p2_button_x"))
                 {
-                    player1 = new Player { numForJulius = 2, controllertype = "DS4"};
+                    player1 = new Player { playerNum = 2, controllertype = "DS4"};
                     controller1_number = 2;
                 }
                 else if (Input.GetButton("xbox_p1_button_a"))
                 {
-                    player1 = new Player { numForJulius = 1, controllertype = "Xbox"};
+                    player1 = new Player { playerNum = 1, controllertype = "Xbox"};
                     controller1_number = 1;
                 }
                 else if (Input.GetButton("xbox_p2_button_a"))
                 {
-                    player1 = new Player { numForJulius = 2, controllertype = "Xbox"};
+                    player1 = new Player { playerNum = 2, controllertype = "Xbox"};
                     controller1_number = 2;
                 }
             }
 
-            // SetUp for Play
-            else if (player2 == null && controller_names.Length > 1)
+            // SetUp for Player2
+            else if (player1 != null && player2 == null)
             {
                 selectplayer1.SetActive(false);
                 selectplayer2.SetActive(true);
@@ -67,19 +66,19 @@ public class CharacterSelectionUI : MonoBehaviour
 
                 if (Input.GetButton("ds4_p1_button_x") && controller1_number != 1)
                 {
-                    player2 = new Player { numForJulius = 1, controllertype = "DS4"};
+                    player2 = new Player { playerNum = 1, controllertype = "DS4"};
                 }
                 else if (Input.GetButton("ds4_p2_button_x") && controller1_number != 2)
                 {
-                    player2 = new Player { numForJulius = 2, controllertype = "DS4"};
+                    player2 = new Player { playerNum = 2, controllertype = "DS4"};
                 }
                 else if (Input.GetButton("xbox_p1_button_a") && controller1_number != 1)
                 {
-                    player2 = new Player { numForJulius = 1, controllertype = "Xbox" };
+                    player2 = new Player { playerNum = 1, controllertype = "Xbox" };
                 }
                 else // (Input.GetButton("xbox_p2_button_a") && controller1_number != 2)
                 {
-                    player2 = new Player { numForJulius = 2, controllertype = "Xbox"};
+                    player2 = new Player { playerNum = 2, controllertype = "Xbox"};
                     
                 }
 
@@ -107,7 +106,7 @@ public class CharacterSelectionUI : MonoBehaviour
     [System.Serializable]
     private class Player
     {
-        public int numForJulius;
+        public int playerNum;
         public string controllertype;
     }
 

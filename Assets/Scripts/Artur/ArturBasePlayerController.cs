@@ -245,7 +245,7 @@ public class ArturBasePlayerController : MonoBehaviour
     [System.Serializable]
     protected class Player
     {
-        public int numForJulius;
+        public int playerNum;
         public string controllertype;
     }
 }
