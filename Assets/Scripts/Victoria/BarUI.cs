@@ -8,7 +8,8 @@ public class BarUI : MonoBehaviour
     private ArturPlayerOneController player1;
     private ArturPlayerTwoController player2;
     private ArturMetaInf metaInf;
-    private SplitScreenController splitScreenController;
+    //private SplitScreenController splitScreenController;
+    private ArturSplitScreenCamera splitScreenController;
 
     private GameObject[] scoretexts;
     private GameObject[] livetexts;
@@ -35,7 +36,8 @@ public class BarUI : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         metaInf = GetComponent<ArturMetaInf>();
 
-        splitScreenController = GameObject.Find("SplitScreen").GetComponent<SplitScreenController>();
+        //splitScreenController = GameObject.Find("SplitScreen").GetComponent<SplitScreenController>();
+        splitScreenController = GameObject.FindGameObjectWithTag("SplitScreenController").GetComponent<ArturSplitScreenCamera>();
 
         barContainerRight = GameObject.Find("Right Corner").GetComponent<Transform>();
         barTemplate = GameObject.Find("TemplateBar").GetComponent<Transform>();

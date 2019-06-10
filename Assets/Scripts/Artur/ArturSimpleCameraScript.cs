@@ -5,12 +5,14 @@ using UnityEngine;
 public class ArturSimpleCameraScript : MonoBehaviour
 {
 
-    public Transform target;
     public Vector3 offset;
+    public string targetTag;
+    private Transform target;
+
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player1").transform;
+        target = GameObject.FindGameObjectWithTag(targetTag).transform;
     }
 
     void LateUpdate()

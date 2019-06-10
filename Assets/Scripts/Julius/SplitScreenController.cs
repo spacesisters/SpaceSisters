@@ -32,7 +32,8 @@ public class SplitScreenController : MonoBehaviour
 
     void Update()
     {
-        float distance = player1.transform.position.x - player2.transform.position.x;
+        //float distance = player1.transform.position.x - player2.transform.position.x;
+        float distance = (player1.transform.position - player2.transform.position).magnitude;
         int leading = 1;
         if(distance < 0)
         {
@@ -57,6 +58,7 @@ public class SplitScreenController : MonoBehaviour
                 offset = cameraOffsetPlayer2;
                 cameraLeft.gameObject.SetActive(false);
             }
+            offset.z -= 10;
             mainCamera.gameObject.SetActive(true);
             mainCamera.rect = new Rect(0, 0, 1, 1);
             mainCamera.transform.position = new Vector3(leadingPlayer.transform.position.x, leadingPlayer.transform.position.y, distance) + offset;
