@@ -16,6 +16,15 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         this.controllerType = ArturControllerSettings.player2ControllerType;
         this.playerNumber = ArturControllerSettings.player2ControllerNumber;
 
+        // TODO: Remove this later. It's just to test the scenes without going through the main menu.
+        if (ArturControllerSettings.player2ControllerType != "Xbox" ||
+            ArturControllerSettings.player2ControllerType != "DS4")
+            this.controllerType = "Xbox";
+
+        if (ArturControllerSettings.player2ControllerNumber != 1 ||
+            ArturControllerSettings.player2ControllerNumber != 2)
+            this.playerNumber = 2;
+
         base.Initialize();
     }
 
