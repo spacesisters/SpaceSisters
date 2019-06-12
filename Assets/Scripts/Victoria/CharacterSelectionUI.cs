@@ -36,28 +36,42 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer1.SetActive(true);
                 selectplayer2.SetActive(false);
                 startgame.SetActive(false);
+                bool set = false;
+                int player1ControllerNumber = 1;
+                string player1ControllerType = "Xbox";
 
                 if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
-                    ArturControllerSettings.player1ControllerNumber = 1;
-                    ArturControllerSettings.player1ControllerType = "DS4";
+                    set = true;
+                    print("pressing");
+                    player1ControllerNumber = 1;
+                    player1ControllerType = "DS4";
                 }
                 else if (Input.GetButtonDown("ds4_p2_button_x"))
                 {
-                    ArturControllerSettings.player1ControllerNumber = 2;
-                    ArturControllerSettings.player1ControllerType = "DS4";
+                    set = true;
+                    player1ControllerNumber = 2;
+                    player1ControllerType = "DS4";
                 }
                 else if (Input.GetButtonDown("xbox_p1_button_a"))
                 {
-                    ArturControllerSettings.player1ControllerNumber = 1;
-                    ArturControllerSettings.player1ControllerType = "Xbox";
+                    set = true;
+                    player1ControllerNumber = 1;
+                    player1ControllerType = "Xbox";
                 }
                 else if (Input.GetButtonDown("xbox_p2_button_a"))
                 {
-                    ArturControllerSettings.player1ControllerNumber = 2;
-                    ArturControllerSettings.player1ControllerType = "Xbox";
+                    set = true;
+                    player1ControllerNumber = 2;
+                    player1ControllerType = "Xbox";
                 }
 
+                if(set)
+                {
+                    ArturControllerSettings.player1ControllerType = player1ControllerType;
+                    ArturControllerSettings.player1ControllerNumber = player1ControllerNumber;
+                    player1 = new Player(player1ControllerNumber, player1ControllerType);
+                }
             }
 
             // SetUp for Player2
@@ -66,37 +80,45 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer1.SetActive(false);
                 selectplayer2.SetActive(true);
                 startgame.SetActive(false);
+                int player2ControllerNumber = 2;
+                string player2ControllerType = "Xbox";
 
                 if (Input.GetButtonDown("ds4_p1_button_x") && ArturControllerSettings.player1ControllerNumber != 1)
                 {
                     controllers_assigned = true;
 
-                    ArturControllerSettings.player2ControllerNumber = 1;
-                    ArturControllerSettings.player2ControllerType = "DS4";
+                    player2ControllerNumber = 1;
+                    player2ControllerType = "DS4";
 
                 }
                 else if (Input.GetButtonDown("ds4_p2_button_x") && ArturControllerSettings.player1ControllerNumber != 2)
                 {
                     controllers_assigned = true;
 
-                    ArturControllerSettings.player2ControllerNumber = 2;
-                    ArturControllerSettings.player2ControllerType = "DS4";
+                    player2ControllerNumber = 2;
+                    player2ControllerType = "DS4";
                 }
                 else if (Input.GetButtonDown("xbox_p1_button_a") && ArturControllerSettings.player1ControllerNumber != 1)
                 {
                     controllers_assigned = true;
 
-                    ArturControllerSettings.player2ControllerNumber = 1;
-                    ArturControllerSettings.player2ControllerType = "Xbox";
+                    player2ControllerNumber = 1;
+                    player2ControllerType = "Xbox";
                 }
                 else if (Input.GetButtonDown("xbox_p2_button_a") && ArturControllerSettings.player1ControllerNumber != 2)
                 {
                     controllers_assigned = true;
 
-                    ArturControllerSettings.player2ControllerNumber = 2;
-                    ArturControllerSettings.player2ControllerType = "Xbox";
-                } 
-                
+                    player2ControllerNumber = 2;
+                    player2ControllerType = "Xbox";
+                }
+
+                if(controllers_assigned)
+                {
+                    ArturControllerSettings.player2ControllerNumber = player2ControllerNumber;
+                    ArturControllerSettings.player2ControllerType = player2ControllerType;
+                    player2 = new Player(player2ControllerNumber, player2ControllerType);
+                }
 
             }
         }
@@ -116,8 +138,16 @@ public class CharacterSelectionUI : MonoBehaviour
     [System.Serializable]
     private class Player
     {
+
         public int playerNum;
-        public string controllertype;
+        public string controllerType;
+
+        public Player(int num, string type)
+        {
+            this.playerNum = num;
+            this.controllerType = type;
+        }
+       
     }
 
 }
