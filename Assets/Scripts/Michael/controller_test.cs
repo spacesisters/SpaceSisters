@@ -53,6 +53,7 @@ public class controller_test : MonoBehaviour
         bool l2 = Input.GetButton(controller.l2);
         bool r1 = Input.GetButton(controller.r1);
         bool r2 = Input.GetButton(controller.r2);
+        bool options = Input.GetButton(controller.options);
 
         String output_text = "";
 
@@ -69,6 +70,7 @@ public class controller_test : MonoBehaviour
         output_text += "Button L2: " + l2 + "\n";
         output_text += "Button R1: " + r1 + "\n";
         output_text += "Button R2: " + r2 + "\n";
+        output_text += "Button Options: " + options + "\n";
 
         text_component.text = output_text;
     }

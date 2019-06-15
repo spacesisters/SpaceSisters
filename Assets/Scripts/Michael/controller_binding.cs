@@ -10,7 +10,6 @@ public class controller_binding : MonoBehaviour
     [SerializeField] controller_test controller2;
     [SerializeField] Text text_component;
 
-    private String[] controller_names;
     private bool controllers_assigned;
 
     private int controller1_number, controller2_number;
@@ -18,7 +17,6 @@ public class controller_binding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller_names = Input.GetJoystickNames();
         controllers_assigned = false;
     }
 
@@ -27,7 +25,7 @@ public class controller_binding : MonoBehaviour
     {
         if(controllers_assigned == false)
         {
-            if(controller1.controller == null && controller_names.Length > 0)
+            if(controller1.controller == null)
             {
                 text_component.text = "Player 1 press the assign button on your controller\n";
                 
@@ -51,8 +49,13 @@ public class controller_binding : MonoBehaviour
                     controller1.set_controller(2, "Xbox");
                     controller1_number = 2;
                 }  
+                else if(Input.GetButton("keyboard_button_0"))
+                {
+                    controller1.set_controller(1, "Keyboard");
+                    controller1_number = 0;
+                }
             }
-            else if(controller2.controller == null && controller_names.Length > 1)
+            else if(controller2.controller == null)
             {
                 text_component.text = "Player 2 press the assign button on your controller\n";
                 
@@ -80,10 +83,13 @@ public class controller_binding : MonoBehaviour
                     controllers_assigned = true;
                     text_component.text = "";
                 }
+                else if (Input.GetButton("keyboard_button_0") && controller1_number != 0)
+                {
+                    controller2.set_controller(2, "Keyboard");
+                    controllers_assigned = true;
+                    text_component.text = "";
+                }
             }
         }
-
-
-        
     }
 }

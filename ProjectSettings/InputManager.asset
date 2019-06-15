@@ -70,6 +70,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_left_horizontal
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_left_vertical
     descriptiveName: 
     descriptiveNegativeName: 
@@ -133,6 +149,22 @@ InputManager:
     type: 2
     axis: 1
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_left_vertical
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: s
+    positiveButton: w
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: ds4_p1_right_horizontal
     descriptiveName: 
@@ -198,6 +230,22 @@ InputManager:
     axis: 3
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_right_horizontal
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: h
+    positiveButton: l
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 3
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_right_vertical
     descriptiveName: 
     descriptiveNegativeName: 
@@ -261,6 +309,22 @@ InputManager:
     type: 2
     axis: 4
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_right_vertical
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: k
+    positiveButton: j
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 1
+    invert: 1
+    type: 0
+    axis: 4
+    joyNum: 0
   - serializedVersion: 3
     m_Name: ds4_p1_button_x
     descriptiveName: 
@@ -326,6 +390,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_button_0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: down
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_button_square
     descriptiveName: 
     descriptiveNegativeName: 
@@ -389,6 +469,22 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_button_1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: left
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
   - serializedVersion: 3
     m_Name: ds4_p1_button_triangle
     descriptiveName: 
@@ -454,6 +550,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_button_2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: up
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_button_circle
     descriptiveName: 
     descriptiveNegativeName: 
@@ -517,6 +629,22 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_button_3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
   - serializedVersion: 3
     m_Name: ds4_p1_r1
     descriptiveName: 
@@ -582,6 +710,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_r1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: e
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_r2
     descriptiveName: 
     descriptiveNegativeName: 
@@ -645,6 +789,22 @@ InputManager:
     type: 0
     axis: 9
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_r2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 4
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 9
+    joyNum: 0
   - serializedVersion: 3
     m_Name: ds4_p1_l1
     descriptiveName: 
@@ -710,6 +870,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: keyboard_l1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: q
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: ds4_p1_l2
     descriptiveName: 
     descriptiveNegativeName: 
@@ -773,6 +949,102 @@ InputManager:
     type: 0
     axis: 8
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_l2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: ds4_p1_options
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: ds4_p2_options
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: xbox_p1_options
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: xbox_p2_options
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: keyboard_options
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: tab
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 8
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Submit
     descriptiveName: 
