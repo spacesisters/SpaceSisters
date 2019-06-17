@@ -65,8 +65,14 @@ public class CharacterSelectionUI : MonoBehaviour
                     player1ControllerNumber = 2;
                     player1ControllerType = "Xbox";
                 }
+                else if (Input.GetButtonDown("keyboard_button_0"))
+                {
+                    set = true;
+                    player1ControllerNumber = 0;
+                    player1ControllerType = "Keyboard";
+                }
 
-                if(set)
+                if (set)
                 {
                     ArturControllerSettings.player1ControllerType = player1ControllerType;
                     ArturControllerSettings.player1ControllerNumber = player1ControllerNumber;
@@ -112,8 +118,16 @@ public class CharacterSelectionUI : MonoBehaviour
                     player2ControllerNumber = 2;
                     player2ControllerType = "Xbox";
                 }
+                else if (Input.GetButtonDown("keyboard_button_0") && ArturControllerSettings.player1ControllerNumber != 0)
+                {
+                    controllers_assigned = true;
 
-                if(controllers_assigned)
+                    player2ControllerNumber = 0;
+                    player2ControllerType = "Keyboard";
+                }
+
+
+                if (controllers_assigned)
                 {
                     ArturControllerSettings.player2ControllerNumber = player2ControllerNumber;
                     ArturControllerSettings.player2ControllerType = player2ControllerType;

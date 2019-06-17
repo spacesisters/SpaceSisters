@@ -42,42 +42,46 @@ public class GeneralUI : MonoBehaviour
         {
             StartPause();
         }
-
-        if (metaInf.playerLives == 0)
+        if (metaInf != null)
         {
-            gameoverScreen.SetActive(true);
-            afterSavingNamesScreen.SetActive(false);
-        }
-        if (metaInf.endOfLevel)
-        {
-            endLevelScore.text = metaInf.score.ToString();
-            endOfLevelScreen.SetActive(true);
-            if(metaInf.score < 50)
+            if (metaInf.playerLives == 0)
             {
-                GameObject.Find("Star1").SetActive(false);
-                GameObject.Find("Star2").SetActive(false);
-                GameObject.Find("Star3").SetActive(false);
+                gameoverScreen.SetActive(true);
+                afterSavingNamesScreen.SetActive(false);
             }
-            else if(metaInf.score > 50 && metaInf.score < 100){
-                GameObject.Find("Star1").SetActive(true);
-                GameObject.Find("Star2").SetActive(false);
-                GameObject.Find("Star3").SetActive(false);
-            }
-            else if(metaInf.score > 100 && metaInf.score < 200)
+            if (metaInf.endOfLevel)
             {
-                GameObject.Find("Star1").SetActive(true);
-                GameObject.Find("Star2").SetActive(true);
-                GameObject.Find("Star3").SetActive(false);
-            }
-            else if(metaInf.score > 200)
-            {
-                GameObject.Find("Star1").SetActive(true);
-                GameObject.Find("Star2").SetActive(true);
-                GameObject.Find("Star3").SetActive(true);
-            }
+                endLevelScore.text = metaInf.score.ToString();
+                endOfLevelScreen.SetActive(true);
+                if (metaInf.score < 50)
+                {
+                    GameObject.Find("Star1").SetActive(false);
+                    GameObject.Find("Star2").SetActive(false);
+                    GameObject.Find("Star3").SetActive(false);
+                }
+                else if (metaInf.score > 50 && metaInf.score < 100)
+                {
+                    GameObject.Find("Star1").SetActive(true);
+                    GameObject.Find("Star2").SetActive(false);
+                    GameObject.Find("Star3").SetActive(false);
+                }
+                else if (metaInf.score > 100 && metaInf.score < 200)
+                {
+                    GameObject.Find("Star1").SetActive(true);
+                    GameObject.Find("Star2").SetActive(true);
+                    GameObject.Find("Star3").SetActive(false);
+                }
+                else if (metaInf.score > 200)
+                {
+                    GameObject.Find("Star1").SetActive(true);
+                    GameObject.Find("Star2").SetActive(true);
+                    GameObject.Find("Star3").SetActive(true);
+                }
 
-            if(Input.anyKeyDown)  ChangeMenuScene("ice"); 
+                if (Input.anyKeyDown) ChangeMenuScene("ice");
+            }
         }
+            
     }
 
     public void ChangeMenuScene(string scenename)

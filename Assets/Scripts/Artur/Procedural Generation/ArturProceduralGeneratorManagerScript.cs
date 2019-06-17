@@ -22,7 +22,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
         for (int i = 1; i < numberOfRooms; i++)
         {
-            GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, 5));
+            GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, 6));
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
             nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;

@@ -168,8 +168,6 @@ MonoBehaviour:
   energy: 1
   energyDrainPerSecond: 0.1
   shootCooldown: 1
-  score: 0
-  dead: 0
   improvedAmmo: 0
   improvedSpeed: 0
   groundLayers:
@@ -262,4 +260,4 @@ MonoBehaviour:
   forceMagnitude: 75
   reactToForcefieldLayer:
     serializedVersion: 2
-    m_Bits: 20480
+    m_Bits: 86016
