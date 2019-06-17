@@ -20,6 +20,7 @@ public class ArturBasePlayerController : MonoBehaviour
     public float energy;
     public float energyDrainPerSecond;
     public float shootCooldown;
+    public float health;
 
 
     public float improvedAmmo; // between 0 and 1 // **

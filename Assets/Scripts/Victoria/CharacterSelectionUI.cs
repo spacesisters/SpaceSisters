@@ -43,7 +43,6 @@ public class CharacterSelectionUI : MonoBehaviour
                 if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
                     set = true;
-                    print("pressing");
                     player1ControllerNumber = 1;
                     player1ControllerType = "DS4";
                 }
