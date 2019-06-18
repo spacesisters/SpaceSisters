@@ -12,7 +12,7 @@ public class ArturMetaInf : MonoBehaviour
     public float speedBonusTime;
 
     [SerializeField]
-    private int initialPlayerHealth;
+    public int initialPlayerHealth;
 
     private void Awake()
     {
