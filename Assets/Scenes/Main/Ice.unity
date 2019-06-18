@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: _currentLevel
       value: ice
       objectReference: {fileID: 0}
+    - target: {fileID: 4609974761083426173, guid: a37e80459624d5a448031ddb854e5714,
+        type: 3}
+      propertyPath: playerHealth
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e80459624d5a448031ddb854e5714, type: 3}
 --- !u!1 &313062384
