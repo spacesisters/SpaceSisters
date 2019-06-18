@@ -22,10 +22,9 @@ public class ArturBasePlayerController : MonoBehaviour
     public float shootCooldown;
 
 
-    public float improvedAmmo; // between 0 and 1 // **
-    public float improvedSpeed; // between 0 and 1 // **
+   // public float improvedAmmo; // between 0 and 1 // **
     private bool isPaused; // **
-
+    public bool speedBonus;
 
 
     protected ConstantForce constForce;
@@ -53,11 +52,9 @@ public class ArturBasePlayerController : MonoBehaviour
 
     protected void Initialize()
     {
-        improvedAmmo = 0;
-        improvedSpeed = 0;
         energy = 1f;
-        isPaused = false; 
-
+        isPaused = false;
+        speedBonus = false;
 
 
         gunScript = GetComponent<ArturGunScript>();

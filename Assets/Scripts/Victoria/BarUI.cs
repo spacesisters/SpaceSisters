@@ -30,14 +30,22 @@ public class BarUI : MonoBehaviour
     private GameObject livesright;
     private GameObject middlecorner;
 
+    private float speedBonusTimePlayer1;
+    private float speedBonusTimePlayer2;
     void Start()
     {
+
+
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
         metaInf = GetComponent<ArturMetaInf>();
 
+        speedBonusTimePlayer1 = metaInf.speedBonusTime;
+        speedBonusTimePlayer2 = metaInf.speedBonusTime;
+
         //splitScreenController = GameObject.Find("SplitScreen").GetComponent<SplitScreenController>();
         splitScreenController = GameObject.FindGameObjectWithTag("SplitScreenController").GetComponent<ArturSplitScreenCamera>();
+        Debug.Log(splitScreenController);
 
         barContainerRight = GameObject.Find("Right Corner").GetComponent<Transform>();
         barTemplate = GameObject.Find("TemplateBar").GetComponent<Transform>();
@@ -96,7 +104,7 @@ public class BarUI : MonoBehaviour
             barPositionRight = new Vector3(barPositionRight.x, barPositionRight.y - templateHeight, barPositionRight.z);
         }
 
-        if (type.Equals("improvedAmmo"))
+        if (type.Equals("speedBonus"))
         {
             entryTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("menuScoreBar_GREEN");
             entryTransform.Find("Mask").GetComponent<Image>().sprite = Resources.Load<Sprite>("menuBarFill_GREEN");
@@ -138,26 +146,28 @@ public class BarUI : MonoBehaviour
                 live.GetComponent<Text>().text = metaInf.playerLives.ToString();
             }
 
-            if (player1.improvedAmmo > 0 && !barList_playerOne.Contains(new barItem { itemTransform = null, barType = "improvedAmmo" }))
+            if (player1.speedBonus && !barList_playerOne.Contains(new barItem { itemTransform = null, barType = "speedBonus" }))
             {
-                AddNewBar(1, "improvedAmmo");
+                AddNewBar(1, "speedBonus");
             }
-            else if (player1.improvedAmmo <= 0 && barList_playerOne.Contains(new barItem { itemTransform = null, barType = "improvedAmmo" }))
+            else if ((!player1.speedBonus || speedBonusTimePlayer1 == 0f) && barList_playerOne.Contains(new barItem { itemTransform = null, barType = "speedBonus" }))
             {
-                barItem bar = barList_playerOne.Find(x => x.barType == "improvedAmmo");
+                barItem bar = barList_playerOne.Find(x => x.barType == "speedBonus");
                 bar.itemTransform.gameObject.SetActive(false);
-                barList_playerOne.Remove(new barItem { itemTransform = null, barType = "improvedAmmo" });
+                barList_playerOne.Remove(new barItem { itemTransform = null, barType = "speedBonus" });
+                speedBonusTimePlayer1 = metaInf.speedBonusTime;
             }
 
-            if (player2.improvedAmmo > 0 && !barList_playerTwo.Contains(new barItem { itemTransform = null, barType = "improvedAmmo" }))
+            if (player2.speedBonus && !barList_playerTwo.Contains(new barItem { itemTransform = null, barType = "speedBonus" }))
             {
-                AddNewBar(2, "improvedAmmo");
+                AddNewBar(2, "speedBonus");
             }
-            else if (player2.improvedAmmo <= 0 && barList_playerTwo.Contains(new barItem { itemTransform = null, barType = "improvedAmmo" }))
+            else if ((!player2.speedBonus||speedBonusTimePlayer2==0f) && barList_playerTwo.Contains(new barItem { itemTransform = null, barType = "speedBonus" }))
             {
-                barItem bar = barList_playerTwo.Find(x => x.barType == "improvedAmmo");
+                barItem bar = barList_playerTwo.Find(x => x.barType == "speedBonus");
                 bar.itemTransform.gameObject.SetActive(false);
-                barList_playerTwo.Remove(new barItem { itemTransform = null, barType = "improvedAmmo" });
+                barList_playerTwo.Remove(new barItem { itemTransform = null, barType = "speedBonus" });
+                speedBonusTimePlayer2 = metaInf.speedBonusTime;
             }
 
 
@@ -167,10 +177,12 @@ public class BarUI : MonoBehaviour
                 {
                     case "energy":
                         bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.energy; break;
-                    case "improvedAmmo":
-                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.improvedAmmo; break;
-                    case "improvedSpeed":
-                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.improvedSpeed; break;
+                    //case "improvedAmmo":
+                    //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.improvedAmmo; break;
+                    case "speedBonus":
+                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = speedBonusTimePlayer1/metaInf.speedBonusTime;
+                        speedBonusTimePlayer1 -= Time.deltaTime;
+                            break;
                 }
 
             }
@@ -181,10 +193,12 @@ public class BarUI : MonoBehaviour
                 {
                     case "energy":
                         bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.energy; break;
-                    case "improvedAmmo":
-                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.improvedAmmo; break;
-                    case "improvedSpeed":
-                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.improvedSpeed; break;
+                    //case "improvedAmmo":
+                    //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.improvedAmmo; break;
+                    case "speedBonus":
+                        bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount =speedBonusTimePlayer2 / metaInf.speedBonusTime;
+                        speedBonusTimePlayer2 -= Time.deltaTime;
+                        break;
                 }
 
             }

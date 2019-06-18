@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GeneralUI : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
     private GameObject pauseScreen;
     private GameObject saveScoreScreen;

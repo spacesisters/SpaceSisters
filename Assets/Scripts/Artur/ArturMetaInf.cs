@@ -9,6 +9,7 @@ public class ArturMetaInf : MonoBehaviour
     public int score = 0;
     public bool endOfLevel;
     public int playerHealth;
+    public float speedBonusTime;
 
     private void Update()
     {
