@@ -18,7 +18,6 @@ public class HighscoreTableUI : MonoBehaviour
 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
-        Debug.Log(highscores);
 
 
         // Sort entry list by Score
