@@ -9,7 +9,9 @@ public class HealthPotion : Collectable
 
     public override void Effects(ArturBasePlayerController player)
     {
-        player.health += healthmod;
+        // player.health += healthmod;
+        ArturMetaInf arturMetaInf = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>();
+        arturMetaInf.playerHealth += healthmod;
         Destroy(gameObject);
     }
 }
