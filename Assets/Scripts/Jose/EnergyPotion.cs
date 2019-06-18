@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnergyPotion : Collectable
 {
     //Modifier quantity
-    public int energymod;
+    public float energymod;
 
     public override void Effects(ArturBasePlayerController player)
     {

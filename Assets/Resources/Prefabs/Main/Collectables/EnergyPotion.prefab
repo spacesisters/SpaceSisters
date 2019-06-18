@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: bf9e47244e1a64c049dcc56d68d97f68, type: 3}
-  energymod: 50
+  energymod: 0.3
