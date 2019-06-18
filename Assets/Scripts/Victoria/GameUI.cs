@@ -53,8 +53,8 @@ public class GameUI : MonoBehaviour
         }
         else if (player1.controllerType == "Xbox" && player1.playerNumber == 1)
         {
-            inputModule.cancelButton = "xbox_p1_button_circle";
-            inputModule.submitButton = "xbox_p1_button_x";
+            inputModule.cancelButton = "xbox_p1_button_x";
+            inputModule.submitButton = "xbox_p1_button_a";
             inputModule.verticalAxis = "xbox_p1_left_vertical";
             inputModule.horizontalAxis = "xbox_p1_left_horizontal";
         }
