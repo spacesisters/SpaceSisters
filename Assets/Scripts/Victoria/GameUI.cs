@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameUI : MonoBehaviour
 {
@@ -34,6 +35,38 @@ public class GameUI : MonoBehaviour
         gameoverScreen.SetActive(false);
         endOfLevelScreen.SetActive(false);
 
+        StandaloneInputModule inputModule = EventSystem.current.gameObject.GetComponent<StandaloneInputModule>();
+
+        if(player1.controllerType == "DS4" && player1.playerNumber == 1)
+        {
+            inputModule.cancelButton = "ds4_p1_button_circle";
+            inputModule.submitButton = "ds4_p1_button_x";
+            inputModule.verticalAxis = "ds4_p1_left_vertical";
+            inputModule.horizontalAxis = "ds4_p1_left_horizontal";
+        }
+        else if (player1.controllerType == "DS4" && player1.playerNumber == 2)
+        {
+            inputModule.cancelButton = "ds4_p2_button_circle";
+            inputModule.submitButton = "ds4_p2_button_x";
+            inputModule.verticalAxis = "ds4_p2_left_vertical";
+            inputModule.horizontalAxis = "ds4_p2_left_horizontal";
+        }
+        else if (player1.controllerType == "Xbox" && player1.playerNumber == 1)
+        {
+            inputModule.cancelButton = "xbox_p1_button_circle";
+            inputModule.submitButton = "xbox_p1_button_x";
+            inputModule.verticalAxis = "xbox_p1_left_vertical";
+            inputModule.horizontalAxis = "xbox_p1_left_horizontal";
+        }
+        else if (player1.controllerType == "Xbox" && player1.playerNumber == 2)
+        {
+            inputModule.cancelButton = "xbox_p2_button_x";
+            inputModule.submitButton = "xbox_p2_button_a";
+            inputModule.verticalAxis = "xbox_p2_left_vertical";
+            inputModule.horizontalAxis = "xbox_p2_left_horizontal";
+        }
+
+
     }
 
     public void Update()
@@ -49,10 +82,22 @@ public class GameUI : MonoBehaviour
                 gameoverScreen.SetActive(true);
                 afterSavingNamesScreen.SetActive(false);
             }
-            if (metaInf.endOfLevel)
+            if (metaInf.endOfLevel && !endOfLevelScreen.active)
             {
                 endLevelScore.text = metaInf.score.ToString();
                 endOfLevelScreen.SetActive(true);
+                player1.enabled = false;
+                // TODO for all objects with rigidbody
+                player1.GetComponent<Rigidbody>().isKinematic = true;
+                player1.GetComponent<Rigidbody>().detectCollisions = false;
+
+                player2.enabled = false;
+                // TODO for all objects with rigidbody
+                player2.GetComponent<Rigidbody>().isKinematic = true;
+                player2.GetComponent<Rigidbody>().detectCollisions = false;
+                metaInf.enabled = false;
+                // TODO do this for all objects with rigid body
+
                 if (metaInf.score < 50)
                 {
                     GameObject.Find("Star1").SetActive(false);
@@ -77,8 +122,11 @@ public class GameUI : MonoBehaviour
                     GameObject.Find("Star2").SetActive(true);
                     GameObject.Find("Star3").SetActive(true);
                 }
-
-                if (Input.anyKeyDown) ChangeMenuScene("ice");
+            else if(metaInf.endOfLevel && endOfLevelScreen.active)
+                {
+                    if (Input.anyKeyDown) ChangeMenuScene("ice");
+                }
+                
             }
         }
             
@@ -91,15 +139,34 @@ public class GameUI : MonoBehaviour
 
     public void StartPause()
     {
-        player1.pause();
-        player2.pause();
+        player1.enabled = false;
+        // TODO for all objects with rigidbody
+        player1.GetComponent<Rigidbody>().isKinematic = true;
+        player1.GetComponent<Rigidbody>().detectCollisions = false;
+
+        player2.enabled = false;
+        // TODO for all objects with rigidbody
+        player2.GetComponent<Rigidbody>().isKinematic = true;
+        player2.GetComponent<Rigidbody>().detectCollisions = false;
+        metaInf.enabled = false;
         pauseScreen.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(pauseScreen.transform.Find("Menu").Find("Pause-Back").gameObject);
     }
 
     public void EndPause()
     {
-        player1.endPause();
-        player2.endPause();
+        player1.enabled = true;
+        // TODO for all objects with rigidbody
+        player1.GetComponent<Rigidbody>().isKinematic = false;
+        player1.GetComponent<Rigidbody>().detectCollisions = true;
+
+        player2.enabled = true;
+        // TODO for all objects with rigidbody
+        player2.GetComponent<Rigidbody>().isKinematic = false;
+        player2.GetComponent<Rigidbody>().detectCollisions = true;
+
+        metaInf.enabled = true;
         pauseScreen.SetActive(false);
     }
 

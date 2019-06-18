@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 
 public class CharacterSelectionUI : MonoBehaviour
 {
@@ -37,8 +37,8 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer2.SetActive(false);
                 startgame.SetActive(false);
                 bool set = false;
-                int player1ControllerNumber = 1;
-                string player1ControllerType = "Xbox";
+                int player1ControllerNumber = 0;
+                string player1ControllerType = null;
 
                 if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
@@ -64,7 +64,7 @@ public class CharacterSelectionUI : MonoBehaviour
                     player1ControllerNumber = 2;
                     player1ControllerType = "Xbox";
                 }
-                else if (Input.GetButtonDown("keyboard_button_0"))
+                else if (Input.GetKeyDown(KeyCode.P))
                 {
                     set = true;
                     player1ControllerNumber = 0;
@@ -140,6 +140,7 @@ public class CharacterSelectionUI : MonoBehaviour
             selectplayer1.SetActive(false);
             selectplayer2.SetActive(false);
             startgame.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(startgame.gameObject);
         }
     }
 
