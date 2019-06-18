@@ -165,6 +165,7 @@ public class BarUI : MonoBehaviour
                 barItem bar = barList_playerOne.Find(x => x.barType == "speedBonus");
                 bar.itemTransform.gameObject.SetActive(false);
                 barList_playerOne.Remove(new barItem { itemTransform = null, barType = "speedBonus" });
+                barPositionLeft = new Vector3(barPositionLeft.x, barPositionLeft.y + templateHeight, barPositionLeft.z);
                 speedBonusTimePlayer1 = metaInf.speedBonusTime;
             }
 
@@ -177,6 +178,7 @@ public class BarUI : MonoBehaviour
                 barItem bar = barList_playerTwo.Find(x => x.barType == "speedBonus");
                 bar.itemTransform.gameObject.SetActive(false);
                 barList_playerTwo.Remove(new barItem { itemTransform = null, barType = "speedBonus" });
+                barPositionRight = new Vector3(barPositionRight.x, barPositionRight.y + templateHeight, barPositionRight.z);
                 speedBonusTimePlayer2 = metaInf.speedBonusTime;
             }
 
@@ -193,8 +195,12 @@ public class BarUI : MonoBehaviour
                     //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.improvedAmmo; break;
                     case "speedBonus":
                         bar.itemTransform.Find("OuterBar").Find("InnerBar").GetComponent<Image>().fillAmount = (float)speedBonusTimePlayer1 / (float)metaInf.speedBonusTime;
-                        speedBonusTimePlayer1 -= Time.deltaTime;
-                            break;
+                        if (speedBonusTimePlayer1 - Time.deltaTime > 0)
+                        {
+                            speedBonusTimePlayer1 -= Time.deltaTime;
+                        }
+                        else speedBonusTimePlayer1 = 0;
+                        break;
                 }
 
             }
@@ -211,7 +217,12 @@ public class BarUI : MonoBehaviour
                     //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.improvedAmmo; break;
                     case "speedBonus":
                         bar.itemTransform.Find("OuterBar").Find("InnerBar").GetComponent<Image>().fillAmount = (float)speedBonusTimePlayer2 / (float)metaInf.speedBonusTime;
-                        speedBonusTimePlayer2 -= Time.deltaTime;
+                        if (speedBonusTimePlayer2 - Time.deltaTime > 0)
+                        {
+                            speedBonusTimePlayer2 -= Time.deltaTime;
+                        }
+                        else speedBonusTimePlayer2 = 0;
+
                         break;
                 }
 
