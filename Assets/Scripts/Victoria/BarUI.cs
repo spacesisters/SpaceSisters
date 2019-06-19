@@ -73,6 +73,9 @@ public class BarUI : MonoBehaviour
         {
             g.GetComponent<Text>().text = metaInf.playerLives.ToString();
         }
+        livesleft.transform.Find("Health").GetComponent<Image>().fillAmount = 1;
+        livesright.transform.Find("Health").GetComponent<Image>().fillAmount = 1;
+        middlecorner.transform.Find("LivesMiddle").Find("Health").GetComponent<Image>().fillAmount = 1;
     }
     private void AddNewBar(int player, string type)
     {
@@ -109,14 +112,11 @@ public class BarUI : MonoBehaviour
         {
             baritem.itemTransform.Find("EnergySymbol").gameObject.SetActive(true);
             baritem.itemTransform.Find("SpeedSymbol").gameObject.SetActive(false);
-            baritem.itemTransform.Find("Health").gameObject.SetActive(true);
-            baritem.itemTransform.Find("Health").GetComponent<Image>().fillAmount = 1;
         }
         else if (type.Equals("speedBonus"))
         {
             baritem.itemTransform.Find("EnergySymbol").gameObject.SetActive(false);
             baritem.itemTransform.Find("SpeedSymbol").gameObject.SetActive(true);
-            baritem.itemTransform.Find("Health").gameObject.SetActive(false);
 
             baritem.itemTransform.Find("OuterBar").GetComponent<Image>().sprite = Resources.Load<Sprite>("menuScoreBar_GREEN");
             baritem.itemTransform.Find("OuterBar").Find("InnerBar").GetComponent<Image>().sprite = Resources.Load<Sprite>("menuBarFill_GREEN");
@@ -155,6 +155,10 @@ public class BarUI : MonoBehaviour
             {
                 live.GetComponent<Text>().text = metaInf.playerLives.ToString();
             }
+            livesleft.transform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
+            livesright.transform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
+            middlecorner.transform.Find("LivesMiddle").Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
+
 
             if (player1.speedBonus && !barList_playerOne.Contains(new barItem { itemTransform = null, barType = "speedBonus" }))
             {
@@ -189,7 +193,6 @@ public class BarUI : MonoBehaviour
                 {
                     case "energy":
                         bar.itemTransform.Find("OuterBar").Find("InnerBar").GetComponent<Image>().fillAmount = player1.energy;
-                        bar.itemTransform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
                         break;
                     //case "improvedAmmo":
                     //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player1.improvedAmmo; break;
@@ -211,7 +214,6 @@ public class BarUI : MonoBehaviour
                 {
                     case "energy":
                         bar.itemTransform.Find("OuterBar").Find("InnerBar").GetComponent<Image>().fillAmount = player2.energy;
-                        bar.itemTransform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth/ (float)metaInf.initialPlayerHealth;
                         break;
                     //case "improvedAmmo":
                     //    bar.itemTransform.Find("Mask").GetComponent<Image>().fillAmount = player2.improvedAmmo; break;
