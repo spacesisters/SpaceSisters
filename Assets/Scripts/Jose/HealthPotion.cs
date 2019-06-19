@@ -11,7 +11,14 @@ public class HealthPotion : Collectable
     {
         // player.health += healthmod;
         ArturMetaInf arturMetaInf = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>();
-        arturMetaInf.playerHealth += healthmod;
+        if (arturMetaInf.playerHealth + healthmod > arturMetaInf.initialPlayerHealth)
+        {
+            arturMetaInf.playerHealth = arturMetaInf.initialPlayerHealth;
+        }
+        else
+        {
+            arturMetaInf.playerHealth += healthmod;
+        }
         Destroy(gameObject);
     }
 }

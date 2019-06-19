@@ -255,16 +255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7878800080710484704, guid: 3b09858f2f61b8443a7ed8490d5269c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Cameras
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878800080710484704, guid: 3b09858f2f61b8443a7ed8490d5269c5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3307713543774507108, guid: 3b09858f2f61b8443a7ed8490d5269c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -320,6 +310,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4295146972145084994, guid: 3b09858f2f61b8443a7ed8490d5269c5,
+        type: 3}
+      propertyPath: playerOneOrTwo
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295146972145084994, guid: 3b09858f2f61b8443a7ed8490d5269c5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4295146973213511418, guid: 3b09858f2f61b8443a7ed8490d5269c5,
         type: 3}
       propertyPath: m_Name
@@ -340,14 +340,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4295146972145084994, guid: 3b09858f2f61b8443a7ed8490d5269c5,
+    - target: {fileID: 7878800080710484704, guid: 3b09858f2f61b8443a7ed8490d5269c5,
         type: 3}
-      propertyPath: playerOneOrTwo
-      value: 2
+      propertyPath: m_Name
+      value: Cameras
       objectReference: {fileID: 0}
-    - target: {fileID: 4295146972145084994, guid: 3b09858f2f61b8443a7ed8490d5269c5,
+    - target: {fileID: 7878800080710484704, guid: 3b09858f2f61b8443a7ed8490d5269c5,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -953,12 +953,12 @@ PrefabInstance:
     - target: {fileID: 4609974761083426173, guid: a37e80459624d5a448031ddb854e5714,
         type: 3}
       propertyPath: initialPlayerHealth
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4609974761083426173, guid: a37e80459624d5a448031ddb854e5714,
         type: 3}
       propertyPath: playerHealth
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e80459624d5a448031ddb854e5714, type: 3}

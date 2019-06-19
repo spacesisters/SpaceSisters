@@ -9,7 +9,12 @@ public class EnergyPotion : Collectable
 
     public override void Effects(ArturBasePlayerController player)
     {
-        player.energy += energymod;
+        if (player.energy + energymod > 1)
+        {
+            player.energy = 1;
+        }
+        else
+            player.energy += energymod;
         Destroy(gameObject);
     }
 }
