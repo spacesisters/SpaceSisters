@@ -62,20 +62,23 @@ public class BarUI : MonoBehaviour
         AddNewBar(1, "energy");
         AddNewBar(2, "energy");
 
+        // Initialize Scoretexts
         scoretexts = GameObject.FindGameObjectsWithTag("HighScoreText");
         foreach (GameObject g in scoretexts)
         {
-               g.GetComponent<Text>().text = "0";
+            g.GetComponent<Text>().text = "0";
         }
 
+        // Initialize Livetexts
         livetexts = GameObject.FindGameObjectsWithTag("LiveText");
         foreach (GameObject g in livetexts)
         {
             g.GetComponent<Text>().text = metaInf.playerLives.ToString();
         }
-        livesleft.transform.Find("Health").GetComponent<Image>().fillAmount = 1;
-        livesright.transform.Find("Health").GetComponent<Image>().fillAmount = 1;
-        middlecorner.transform.Find("LivesMiddle").Find("Health").GetComponent<Image>().fillAmount = 1;
+        // Initialize Health
+        livesleft.transform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
+        livesright.transform.Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
+        middlecorner.transform.Find("LivesMiddle").Find("Health").GetComponent<Image>().fillAmount = (float)metaInf.playerHealth / (float)metaInf.initialPlayerHealth;
     }
     private void AddNewBar(int player, string type)
     {

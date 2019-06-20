@@ -144,7 +144,7 @@ public class CharacterSelectionUI : MonoBehaviour
         }
     }
 
-        public void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene("Scenes/Main/Ice");
     }

@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 1253708360}
   - component: {fileID: 1253708363}
   - component: {fileID: 1253708365}
+  - component: {fileID: 1253708364}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -814,6 +815,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128e6c2a68454204f9aae10805243dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1253708364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253708359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4360db995abe05046a158f418ee43d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 5332f6494f5ee244c87730867630e059, type: 3}
+  method: Scenes/Main/Menu
 --- !u!114 &1253708365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1142,6 @@ GameObject:
   - component: {fileID: 2146437557}
   - component: {fileID: 2146437556}
   - component: {fileID: 2146437559}
-  - component: {fileID: 2146437560}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1260,33 +1274,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 5332f6494f5ee244c87730867630e059, type: 3}
---- !u!114 &2146437560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146437554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 16
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1253708365}
-          m_MethodName: ChangeMenuScene
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Scenes/Main/Menu
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null

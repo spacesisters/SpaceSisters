@@ -419,7 +419,6 @@ GameObject:
   - component: {fileID: 1017624051}
   - component: {fileID: 1017624050}
   - component: {fileID: 1017624053}
-  - component: {fileID: 1017624055}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -552,36 +551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 5332f6494f5ee244c87730867630e059, type: 3}
---- !u!114 &1017624055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017624048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 16
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1183985339}
-          m_MethodName: ChangeMenuScene
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Scenes/Main/Menu
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1034442005
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +741,7 @@ GameObject:
   - component: {fileID: 1183985337}
   - component: {fileID: 1183985336}
   - component: {fileID: 1183985339}
+  - component: {fileID: 1183985340}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -839,6 +809,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970f03ecd03fdfd49b376372f11e4b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1183985340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183985335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4360db995abe05046a158f418ee43d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 5332f6494f5ee244c87730867630e059, type: 3}
+  method: Scenes/Main/Menu
 --- !u!1 &1292509797
 GameObject:
   m_ObjectHideFlags: 0

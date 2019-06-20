@@ -23,7 +23,6 @@ public class ArturBasePlayerController : MonoBehaviour
 
 
    // public float improvedAmmo; // between 0 and 1 // **
-    private bool isPaused; // **
     public bool speedBonus;
 
 
@@ -53,7 +52,6 @@ public class ArturBasePlayerController : MonoBehaviour
     protected void Initialize()
     {
         energy = 1f;
-        isPaused = false;
         speedBonus = false;
 
 
@@ -225,18 +223,6 @@ public class ArturBasePlayerController : MonoBehaviour
         Vector3 center = transform.position;
         center.y -= capsuleCollider.height * 0.5f;
         Gizmos.DrawSphere(center, 0.1f);
-    }
-
-    //TODO
-
-    public void pause() // **
-    {
-        isPaused = true; // **
-    }
-
-    public void endPause() // **
-    {
-        isPaused = false; // **
     }
 
     [System.Serializable]

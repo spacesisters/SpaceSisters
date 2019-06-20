@@ -152,10 +152,13 @@ public class GameUI : MonoBehaviour
         pauseScreen.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(pauseScreen.transform.Find("Menu").Find("Pause-Back").gameObject);
+        pauseScreen.transform.Find("Menu").Find("Pause-Back").GetComponent<Button>().OnSelect(null);
     }
 
     public void EndPause()
-    {
+    {     
+        //AudioSource.PlayClipAtPoint(GameObject.Find("PauseScreen").transform.Find("Menu").Find("Pause-Back").gameObject.GetComponent<ClickSound>().sound, transform.position);
+
         player1.enabled = true;
         // TODO for all objects with rigidbody
         player1.GetComponent<Rigidbody>().isKinematic = false;
