@@ -178,8 +178,8 @@ MonoBehaviour:
   energy: 1
   energyDrainPerSecond: 0.1
   shootCooldown: 1
-  improvedAmmo: 0
-  improvedSpeed: 0
+  maxJumpAcceleration: 5000
+  speedBonus: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 17920
@@ -260,4 +260,4 @@ MonoBehaviour:
   forceMagnitude: 75
   reactToForcefieldLayer:
     serializedVersion: 2
-    m_Bits: 86016
+    m_Bits: 21504

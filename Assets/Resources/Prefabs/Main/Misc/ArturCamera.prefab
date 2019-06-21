@@ -213,7 +213,7 @@ MonoBehaviour:
   maxPlayerDistance: 30
   smoothTime: 0.05
   minZoom: 100
-  maxZoom: 20
+  maxZoom: 40
   zoomLimiter: 50
   isSplitted: 0
 --- !u!1 &3728897160443548106

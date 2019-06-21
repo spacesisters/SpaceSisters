@@ -20,7 +20,7 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         // TODO: Remove this later. It's just to test the scenes without going through the main menu.
         if (ArturControllerSettings.player2ControllerType == string.Empty)
         {
-            this.controllerType = "Xbox";
+            this.controllerType = "Keyboard";
         }
 
         if (ArturControllerSettings.player2ControllerNumber == -1)

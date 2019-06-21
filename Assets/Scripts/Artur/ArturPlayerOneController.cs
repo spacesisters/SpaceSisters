@@ -20,7 +20,7 @@ public class ArturPlayerOneController : ArturBasePlayerController
         // TODO: Remove this later. It's just to test the scenes without going through the main menu.
         if (ArturControllerSettings.player1ControllerType == string.Empty) 
         {
-            this.controllerType = "DS4";
+            this.controllerType = "Xbox";
         }
 
         if (ArturControllerSettings.player1ControllerNumber == -1)

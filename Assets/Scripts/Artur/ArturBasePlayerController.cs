@@ -20,9 +20,10 @@ public class ArturBasePlayerController : MonoBehaviour
     public float energy;
     public float energyDrainPerSecond;
     public float shootCooldown;
+    public float maxJumpAcceleration;
 
 
-   // public float improvedAmmo; // between 0 and 1 // **
+    // public float improvedAmmo; // between 0 and 1 // **
     public bool speedBonus;
 
 
@@ -116,6 +117,7 @@ public class ArturBasePlayerController : MonoBehaviour
         }
     }
 
+
     protected void FixedUpdate()
     {
         ArturHelper.AccelerateTo(rBody, new Vector3(playerInput.horizontalLeft * currentMaxSpeed, 
@@ -124,7 +126,10 @@ public class ArturBasePlayerController : MonoBehaviour
 
         if (doJump)
         {
-            rBody.AddForce(new Vector3(0, jumpForce, 0) * transform.up.y, ForceMode.VelocityChange);
+            
+            //rBody.AddForce(new Vector3(0, jumpForce, 0) * transform.up.y, ForceMode.VelocityChange);
+            ArturHelper.AccelerateTo(rBody, new Vector3(rBody.velocity.x, jumpForce, rBody.velocity.z),
+                                 maxJumpAcceleration);
             doJump = false;
         }
 
@@ -214,6 +219,12 @@ public class ArturBasePlayerController : MonoBehaviour
         else
             doShoot = false;
     }
+
+    public PlayerInput GetPlayerInput()
+    {
+        return playerInput;
+    }
+
 
 
     private void OnDrawGizmos()
