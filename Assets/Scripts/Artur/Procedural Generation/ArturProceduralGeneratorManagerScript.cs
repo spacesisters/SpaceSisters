@@ -31,6 +31,12 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             numberOfRandomRooms = 1;
             numberOfPuzzleRooms = 1;
         }
+        else if (currentLevel == "michael_test")
+        {
+            numberOfStartRooms = 1;
+            numberOfRandomRooms = 1;
+            numberOfPuzzleRooms = 1;
+        }
 
 
         string roomPath = "Rooms/" + currentLevel + "/";
