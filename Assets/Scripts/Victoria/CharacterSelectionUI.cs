@@ -64,7 +64,7 @@ public class CharacterSelectionUI : MonoBehaviour
                     player1ControllerNumber = 2;
                     player1ControllerType = "Xbox";
                 }
-                else if (Input.GetKeyDown(KeyCode.P))
+                else if (Input.GetButtonDown("keyboard_button_0"))
                 {
                     set = true;
                     player1ControllerNumber = 0;
