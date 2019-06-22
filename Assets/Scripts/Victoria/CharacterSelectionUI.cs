@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 
 public class CharacterSelectionUI : MonoBehaviour
 {
@@ -37,13 +37,12 @@ public class CharacterSelectionUI : MonoBehaviour
                 selectplayer2.SetActive(false);
                 startgame.SetActive(false);
                 bool set = false;
-                int player1ControllerNumber = 1;
-                string player1ControllerType = "Xbox";
+                int player1ControllerNumber = 0;
+                string player1ControllerType = null;
 
                 if (Input.GetButtonDown("ds4_p1_button_x"))
                 {
                     set = true;
-                    print("pressing");
                     player1ControllerNumber = 1;
                     player1ControllerType = "DS4";
                 }
@@ -141,10 +140,11 @@ public class CharacterSelectionUI : MonoBehaviour
             selectplayer1.SetActive(false);
             selectplayer2.SetActive(false);
             startgame.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(startgame.gameObject);
         }
     }
 
-        public void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene("Scenes/Main/Ice");
     }

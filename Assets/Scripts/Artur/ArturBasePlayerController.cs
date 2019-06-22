@@ -20,12 +20,11 @@ public class ArturBasePlayerController : MonoBehaviour
     public float energy;
     public float energyDrainPerSecond;
     public float shootCooldown;
+    public float maxJumpAcceleration;
 
 
-    public float improvedAmmo; // between 0 and 1 // **
-    public float improvedSpeed; // between 0 and 1 // **
-    private bool isPaused; // **
-
+    // public float improvedAmmo; // between 0 and 1 // **
+    public bool speedBonus;
 
 
     protected ConstantForce constForce;
@@ -53,11 +52,8 @@ public class ArturBasePlayerController : MonoBehaviour
 
     protected void Initialize()
     {
-        improvedAmmo = 0;
-        improvedSpeed = 0;
         energy = 1f;
-        isPaused = false; 
-
+        speedBonus = false;
 
 
         gunScript = GetComponent<ArturGunScript>();
@@ -121,6 +117,7 @@ public class ArturBasePlayerController : MonoBehaviour
         }
     }
 
+
     protected void FixedUpdate()
     {
         ArturHelper.AccelerateTo(rBody, new Vector3(playerInput.horizontalLeft * currentMaxSpeed, 
@@ -129,7 +126,10 @@ public class ArturBasePlayerController : MonoBehaviour
 
         if (doJump)
         {
-            rBody.AddForce(new Vector3(0, jumpForce, 0) * transform.up.y, ForceMode.VelocityChange);
+            
+            //rBody.AddForce(new Vector3(0, jumpForce, 0) * transform.up.y, ForceMode.VelocityChange);
+            ArturHelper.AccelerateTo(rBody, new Vector3(rBody.velocity.x, jumpForce, rBody.velocity.z),
+                                 maxJumpAcceleration);
             doJump = false;
         }
 
@@ -220,6 +220,12 @@ public class ArturBasePlayerController : MonoBehaviour
             doShoot = false;
     }
 
+    public PlayerInput GetPlayerInput()
+    {
+        return playerInput;
+    }
+
+
 
     private void OnDrawGizmos()
     {
@@ -228,18 +234,6 @@ public class ArturBasePlayerController : MonoBehaviour
         Vector3 center = transform.position;
         center.y -= capsuleCollider.height * 0.5f;
         Gizmos.DrawSphere(center, 0.1f);
-    }
-
-    //TODO
-
-    public void pause() // **
-    {
-        isPaused = true; // **
-    }
-
-    public void endPause() // **
-    {
-        isPaused = false; // **
     }
 
     [System.Serializable]

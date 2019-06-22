@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Fire.unity
     guid: d1d5bb8ac58de9c49ac03db5186056fd
+  - enabled: 1
+    path: Assets/Scenes/Main/CharacterSelection.unity
+    guid: b1a348fea43c6c04b8f9a5414ceb3769
   m_configObjects: {}
