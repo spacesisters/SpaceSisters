@@ -35,7 +35,7 @@ public class ArturBasePlayerController : MonoBehaviour
     protected bool doForcefield;
     protected InputManager controller;
 
-
+    private bool gravityReversed;
     [SerializeField]
     private LayerMask groundLayers;
     private Vector3 size;
@@ -67,6 +67,7 @@ public class ArturBasePlayerController : MonoBehaviour
 
         //size = new Vector3(boxCollider.size.x * 0.975f, boxCollider.size.y * 0.025f, boxCollider.size.z);
         constForce.force = new Vector3(0, ArturSceneManager.gravity, 0);
+        gravityReversed = false;
 
     }
 
@@ -177,7 +178,16 @@ public class ArturBasePlayerController : MonoBehaviour
 
     private void UpdateGrounded()
     {
-        Vector3 bottomCenter = new Vector3(transform.position.x, transform.position.y - (capsuleCollider.height * 0.5f), rBody.position.z);
+        Vector3 bottomCenter;
+
+        if(!gravityReversed)
+        {
+            bottomCenter = new Vector3(transform.position.x, transform.position.y - (capsuleCollider.height * 0.5f), rBody.position.z);
+        }
+        else
+        {
+            bottomCenter = new Vector3(transform.position.x, transform.position.y + (capsuleCollider.height * 0.5f), rBody.position.z);
+        }
         
         if (Physics.OverlapSphere(bottomCenter, groundCheckRadius, groundLayers).Length > 0)
         {
@@ -225,7 +235,12 @@ public class ArturBasePlayerController : MonoBehaviour
         return playerInput;
     }
 
-
+    public void ReverseGravity()
+    {
+        constForce.force = -constForce.force;
+        jumpForce = -jumpForce;
+        gravityReversed = !gravityReversed;
+    }
 
     private void OnDrawGizmos()
     {
