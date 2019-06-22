@@ -15,6 +15,7 @@ public class ArturBasePlayerController : MonoBehaviour
     public float maxAccelerationGrounded;
     public float maxMovementSpeedAir;
     public float maxAccelerationAir;
+    public float maxVerticalSpeed;
     public float dashCooldown;
     [SerializeField]
     public float energy;
@@ -68,7 +69,6 @@ public class ArturBasePlayerController : MonoBehaviour
         //size = new Vector3(boxCollider.size.x * 0.975f, boxCollider.size.y * 0.025f, boxCollider.size.z);
         constForce.force = new Vector3(0, ArturSceneManager.gravity, 0);
         gravityReversed = false;
-
     }
 
     protected void Update()
@@ -144,6 +144,16 @@ public class ArturBasePlayerController : MonoBehaviour
         {
             gunScript.Shoot();
             shootTimer = shootCooldown;
+        }
+
+        // Limit the vertical speed
+        if(rBody.velocity.y < -maxVerticalSpeed)
+        {
+            rBody.velocity = new Vector3(rBody.velocity.x, -maxVerticalSpeed, 0);
+        }
+        else if(rBody.velocity.y > maxVerticalSpeed)
+        {
+            rBody.velocity = new Vector3(rBody.velocity.x, maxVerticalSpeed, 0);
         }
     }
 

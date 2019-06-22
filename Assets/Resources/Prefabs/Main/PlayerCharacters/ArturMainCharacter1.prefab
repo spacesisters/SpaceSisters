@@ -164,6 +164,7 @@ MonoBehaviour:
   maxAccelerationGrounded: 150
   maxMovementSpeedAir: 8
   maxAccelerationAir: 115
+  maxVerticalSpeed: 25
   dashCooldown: 1
   energy: 1
   energyDrainPerSecond: 0.1
