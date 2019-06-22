@@ -37,6 +37,13 @@ public class MenuUI : MonoBehaviour
                 inputModule.verticalAxis = "xbox_p2_left_vertical";
                 inputModule.horizontalAxis = "xbox_p2_left_horizontal";
             }
+            else if (Input.GetAxis("keyboard_left_vertical") != 0 || Input.GetButtonDown("keyboard_button_0"))
+            {
+                inputModule.cancelButton = "keyboard_button_3";
+                inputModule.submitButton = "keyboard_button_0";
+                inputModule.verticalAxis = "keyboard_left_vertical";
+                inputModule.horizontalAxis = "keyboard_left_horizontal";
+            }
     }
     public void ChangeMenuScene(string scenename)
     {
