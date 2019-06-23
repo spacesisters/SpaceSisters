@@ -13,6 +13,9 @@ public class EnemyController : MonoBehaviour
     // Attributes
     public float energyDrainPerSecond = 10.0f;
     public float energy = 100.0f;
+    public float fireRate = 1.0f;
+    public Transform shotSpawn;
+    public GameObject projectile;
 
     private Vector3[] waypoints;
     private NavMeshAgent agent;
@@ -21,6 +24,8 @@ public class EnemyController : MonoBehaviour
     private Transform target;
     private GameObject eyes;
     private ArturForcefieldController forcefieldController;
+    private float nextFire;
+
     private enum Actions
     {
         WALK,
@@ -35,6 +40,7 @@ public class EnemyController : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2").transform;
         forcefieldController = GetComponent<ArturForcefieldController>();
         forcefieldController.Initialize(-1);
+
 
         eyes = GameObject.Find("Eyes");
         agent = GetComponent<NavMeshAgent>();
@@ -56,10 +62,9 @@ public class EnemyController : MonoBehaviour
         nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
     }
 
-    Vector3[] PlayerHits()
+    List<Vector3> PlayerHits()
     {
-        Vector3[] hits = new Vector3[3];
-        int hit_counter = 0;
+        List<Vector3> hits = new List<Vector3>();
         Vector2[] targets = new Vector2[3];
         targets[0] = target.position - eyes.transform.position;
         targets[1] = target.position + new Vector3(0, target.localScale.y / 2, 0) - eyes.transform.position;
@@ -70,8 +75,7 @@ public class EnemyController : MonoBehaviour
             {
                 if(hit.transform.CompareTag("Player1") || hit.transform.CompareTag("Player2"))
                 {
-                    hits[hit_counter] = hit.point;
-                    ++hit_counter;
+                    hits.Add(hit.point);
                     Debug.DrawLine(eyes.transform.position, hit.point, Color.red);
                 }
                 else
@@ -122,14 +126,22 @@ public class EnemyController : MonoBehaviour
                 float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.transform.forward);
                 if (angleToPlayer >= -fov && angleToPlayer <= fov)
                 {
-                    Vector3[] hits = PlayerHits();
-                    if (hits.Length > 0)
+                    List<Vector3> hits = PlayerHits();
+                    if (hits.Count > 0)
                     {
                         /*
                          * TODO: Enemy Attacks
                          */
                         //agent.destination = target.position;
                         action = Actions.ATTACK;
+                        agent.isStopped = true;
+                        if (Time.time >= nextFire)
+                        {
+                            GameObject tmp = Instantiate(projectile, shotSpawn.transform.position, shotSpawn.transform.rotation);
+                            tmp.layer = 0;
+                            tmp.GetComponent<ProjectileController>().setDirection(directionToPlayer); // TODO: Random/Pick from hits
+                            nextFire = Time.time + fireRate;
+                        }
                     }
                 }
             }
@@ -165,7 +177,12 @@ public class EnemyController : MonoBehaviour
             Debug.DrawRay(eyes.transform.position, rightRayDirection * viewingDistance);
         }
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+        if (action == Actions.WALK)
+        {
+            agent.isStopped = false;
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+        }
+        
     }
 }
