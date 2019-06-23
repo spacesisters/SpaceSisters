@@ -26,7 +26,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.velocity = direction * speed;
+            rb.velocity = direction * speed;       
         }
     }
 

@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public GameObject[] waypointsInitial;
     public float viewingDistance = 20.0f;
     public float fov = 65.0f;
+    public float minDistancePlayer = 5.0f;
 
     private Vector3[] waypoints;
     private NavMeshAgent agent;
@@ -16,11 +17,13 @@ public class EnemyController : MonoBehaviour
     private Transform target;
     private GameObject eyes;
     private bool attack = false;
+    private ArturForcefieldController forcefieldController;
 
     void Start()
     {
         player1 = GameObject.FindGameObjectWithTag("Player1").transform;
         player2 = GameObject.FindGameObjectWithTag("Player2").transform;
+        forcefieldController = GetComponent<ArturForcefieldController>();
 
         eyes = GameObject.Find("Eyes");
         agent = GetComponent<NavMeshAgent>();
@@ -87,8 +90,8 @@ public class EnemyController : MonoBehaviour
             distancePlayer = distancePlayer1;
         }
 
-        
 
+        //forcefieldController.ActivateForcefield();
         if (distancePlayer <= viewingDistance)
         {
             Vector2 directionToPlayer = target.position - eyes.transform.position;

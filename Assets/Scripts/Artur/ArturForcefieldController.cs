@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ArturForcefieldController : MonoBehaviour
 {
-    public float radius;
-    public float forceMagnitude;
+    public float radius = 5.0f;
+    public float forceMagnitude = 10.0f;
 
     [SerializeField]
     private LayerMask reactToForcefieldLayer;
@@ -26,19 +26,19 @@ public class ArturForcefieldController : MonoBehaviour
 
             Vector3 direction = transform.position - c.transform.position;
             float distance = direction.magnitude;
-             
-            c.GetComponent<Rigidbody>().AddForce(direction.normalized * forceMagnitude * fieldType * (radius - distance), ForceMode.Acceleration);
+            Rigidbody rb = c.GetComponent<Rigidbody>();
+            if (rb)
+            {
+                rb.AddForce(direction.normalized * forceMagnitude * fieldType * (radius - distance), ForceMode.Acceleration);
+            }
         }
 
     }
 
     private void OnDrawGizmos()
-    {
-        
-        radius = 5;
+    {    
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
-       
+        Gizmos.DrawWireSphere(transform.position, radius);    
     }
 
 }
