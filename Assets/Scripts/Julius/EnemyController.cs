@@ -139,7 +139,8 @@ public class EnemyController : MonoBehaviour
                         {
                             GameObject tmp = Instantiate(projectile, shotSpawn.transform.position, shotSpawn.transform.rotation);
                             tmp.layer = 0;
-                            tmp.GetComponent<ProjectileController>().setDirection(directionToPlayer); // TODO: Random/Pick from hits
+                            Vector2 aimAt = hits[Random.Range(0, hits.Count-1)] - shotSpawn.transform.position; // INFO: Random/Pick from hits
+                            tmp.GetComponent<ProjectileController>().setDirection(aimAt);
                             nextFire = Time.time + fireRate;
                         }
                     }
