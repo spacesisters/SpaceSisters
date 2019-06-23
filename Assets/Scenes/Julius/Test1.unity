@@ -841,6 +841,11 @@ MonoBehaviour:
   viewingDistance: 20
   fov: 90
   minDistancePlayer: 5
+  blockFromLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  energyDrainPerSecond: 10
+  energy: 100
 --- !u!114 &1135223001
 MonoBehaviour:
   m_ObjectHideFlags: 0

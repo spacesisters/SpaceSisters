@@ -9,6 +9,10 @@ public class EnemyController : MonoBehaviour
     public float viewingDistance = 20.0f;
     public float fov = 65.0f;
     public float minDistancePlayer = 5.0f;
+    public LayerMask blockFromLayer;
+    // Attributes
+    public float energyDrainPerSecond = 10.0f;
+    public float energy = 100.0f;
 
     private Vector3[] waypoints;
     private NavMeshAgent agent;
@@ -16,8 +20,14 @@ public class EnemyController : MonoBehaviour
     private Transform player1, player2;
     private Transform target;
     private GameObject eyes;
-    private bool attack = false;
     private ArturForcefieldController forcefieldController;
+    private enum Actions
+    {
+        WALK,
+        BLOCK,
+        ATTACK
+    }
+    private Actions action;
 
     void Start()
     {
@@ -70,44 +80,71 @@ public class EnemyController : MonoBehaviour
                 }                
             }
         }
-        
         return hits;
     }
 
     void Update()
     {
-        attack = false;
-        float distancePlayer;
-        float distancePlayer1 = Vector3.Distance(player1.position, eyes.transform.position);
-        float distancePlayer2 = Vector3.Distance(player2.position, eyes.transform.position);
-        if (distancePlayer1 > distancePlayer2)
+        // Default
+        action = Actions.WALK;
+
+        // Check for entering projectiles
+        Collider[] projectiles = Physics.OverlapSphere(eyes.transform.position, viewingDistance/2, blockFromLayer);
+        foreach (Collider c in projectiles)
         {
-            target = player2;
-            distancePlayer = distancePlayer2;
-        }
-        else
-        {
-            target = player1;
-            distancePlayer = distancePlayer1;
+            //Vector3 direction = transform.position - c.transform.position;
+            //float distance = direction.magnitude;
+            // TODO: Check direction
+            if(energy>0)
+                action = Actions.BLOCK;
         }
 
-
-        forcefieldController.ActivateForcefield();
-        if (distancePlayer <= viewingDistance)
+        if (action == Actions.WALK)
         {
-            Vector2 directionToPlayer = target.position - eyes.transform.position;
-            float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.transform.forward);
-            if (angleToPlayer >= -fov && angleToPlayer <= fov)
+            float distancePlayer;
+            float distancePlayer1 = Vector3.Distance(player1.position, eyes.transform.position);
+            float distancePlayer2 = Vector3.Distance(player2.position, eyes.transform.position);
+            if (distancePlayer1 > distancePlayer2)
             {
-                Vector3[] hits = PlayerHits();
-                if (hits.Length > 0)
+                target = player2;
+                distancePlayer = distancePlayer2;
+            }
+            else
+            {
+                target = player1;
+                distancePlayer = distancePlayer1;
+            }
+
+
+            if (distancePlayer <= viewingDistance)
+            {
+                Vector2 directionToPlayer = target.position - eyes.transform.position;
+                float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.transform.forward);
+                if (angleToPlayer >= -fov && angleToPlayer <= fov)
                 {
-                    /*
-                     * TODO: Enemy Attacks
-                     */
-                    //agent.destination = target.position;
+                    Vector3[] hits = PlayerHits();
+                    if (hits.Length > 0)
+                    {
+                        /*
+                         * TODO: Enemy Attacks
+                         */
+                        //agent.destination = target.position;
+                        action = Actions.ATTACK;
+                    }
                 }
             }
+        }
+
+        /*
+         * Perform actions
+         */
+        if (action == Actions.BLOCK)
+        {
+            forcefieldController.ActivateForcefield();
+            energy -= energyDrainPerSecond * Time.deltaTime;
+        }else if(action == Actions.ATTACK)
+        {
+            // TODO: Shoot bullet
         }
 
 
@@ -117,7 +154,7 @@ public class EnemyController : MonoBehaviour
         Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.back);
         Vector3 leftRayDirection = leftRayRotation * eyes.transform.forward;
         Vector3 rightRayDirection = rightRayRotation * eyes.transform.forward;
-        if (attack)
+        if (action == Actions.ATTACK)
         {
             Debug.DrawRay(eyes.transform.position, leftRayDirection * viewingDistance, Color.red);
             Debug.DrawRay(eyes.transform.position, rightRayDirection * viewingDistance, Color.red);
