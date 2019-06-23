@@ -857,7 +857,7 @@ MonoBehaviour:
   forceMagnitude: 10
   reactToForcefieldLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16384
 --- !u!1 &1411704568
 GameObject:
   m_ObjectHideFlags: 0

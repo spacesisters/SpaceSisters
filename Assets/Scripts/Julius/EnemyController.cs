@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1").transform;
         player2 = GameObject.FindGameObjectWithTag("Player2").transform;
         forcefieldController = GetComponent<ArturForcefieldController>();
+        forcefieldController.Initialize(-1);
 
         eyes = GameObject.Find("Eyes");
         agent = GetComponent<NavMeshAgent>();
@@ -91,7 +92,7 @@ public class EnemyController : MonoBehaviour
         }
 
 
-        //forcefieldController.ActivateForcefield();
+        forcefieldController.ActivateForcefield();
         if (distancePlayer <= viewingDistance)
         {
             Vector2 directionToPlayer = target.position - eyes.transform.position;
