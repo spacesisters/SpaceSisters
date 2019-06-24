@@ -6,7 +6,9 @@ public class ArturPlayerTwoController : ArturBasePlayerController
 {
     
     private ArturForcefieldController forcefieldController;
-    
+
+
+   
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class ArturPlayerTwoController : ArturBasePlayerController
 
         this.controllerType = ArturControllerSettings.player2ControllerType;
         this.playerNumber = ArturControllerSettings.player2ControllerNumber;
+
 
 
         // TODO: Remove this later. It's just to test the scenes without going through the main menu.
@@ -35,8 +38,10 @@ public class ArturPlayerTwoController : ArturBasePlayerController
     {
         base.Update();
         TranslateInput();
+
+
         if (doForcefield)
-        {
+        {           
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
         }

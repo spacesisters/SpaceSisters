@@ -267,5 +267,16 @@ public class ArturBasePlayerController : MonoBehaviour
         public int playerNum;
         public string controllertype;
     }
+    
+
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
+        energy = 1;
+        ArturMetaInf inf = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>();
+        inf.playerHealth = inf.initialPlayerHealth;
+        if(gravityReversed)
+            ReverseGravity();
+    }
 }
 
