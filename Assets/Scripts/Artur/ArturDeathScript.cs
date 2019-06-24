@@ -20,8 +20,9 @@ public class ArturDeathScript : MonoBehaviour
             ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
             ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 
-            p1.transform.position = respawnPosition + new Vector3(0, 3, 0);
-            p2.transform.position = respawnPosition + new Vector3(2, 3, 0);
+            p1.Respawn(respawnPosition + new Vector3(0, 3, 0));
+            p2.Respawn(respawnPosition + new Vector3(2, 3, 0));
+            
 
             metaInf.playerLives--;
 

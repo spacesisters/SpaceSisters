@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ArturPlayerOneController : ArturBasePlayerController
 {
-    
+
+    public float pushCooldownTimer;
+
     private ArturForcefieldController forcefieldController;
-    
+    private float pushCooldownTime;
 
     private void Start()
     {
@@ -35,13 +37,24 @@ public class ArturPlayerOneController : ArturBasePlayerController
     {
         base.Update();
         TranslateInput();
-        if (doForcefield)
+
+        if (pushCooldownTime > 0)
+        {
+            pushCooldownTime -= Time.deltaTime;
+        }
+        else if (pushCooldownTime < 0)
+        {
+            pushCooldownTime = 0;
+        }
+
+        if (doForcefield && pushCooldownTime == 0)
         {
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
+            pushCooldownTime = pushCooldownTimer;
+            doForcefield = false;
         }
 
-        
     }
 
     private new void FixedUpdate()
