@@ -61,4 +61,9 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         
     }
 
+    public override bool GetDoForcefield()
+    {
+        return doForcefield;
+    }
+
 }

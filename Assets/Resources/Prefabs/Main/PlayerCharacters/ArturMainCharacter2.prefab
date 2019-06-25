@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7961289838581611523}
   - component: {fileID: 1344596641814286601}
   - component: {fileID: 7377910226796747958}
+  - component: {fileID: 965859749205510016}
   m_Layer: 16
   m_Name: ArturMainCharacter2
   m_TagString: Player2
@@ -92,7 +93,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988272602171002182}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c107c59623b0f574888f1c26ff42c318, type: 2}
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
@@ -177,13 +178,33 @@ MonoBehaviour:
   maxVerticalSpeed: 25
   dashCooldown: 1
   energy: 1
-  energyDrainPerSecond: 0.1
+  energyDrainPerSecond: 0.35
+  energyRefillPerSecond: 0.075
   shootCooldown: 1
   maxJumpAcceleration: 5000
   speedBonus: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 17920
+--- !u!95 &965859749205510016
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988272602171002182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4001052076399019997
 GameObject:
   m_ObjectHideFlags: 0

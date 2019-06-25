@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ArturBasePlayerController : MonoBehaviour
+public abstract class ArturBasePlayerController : MonoBehaviour
 {
     public int playerNumber;
     public string controllerType;
@@ -20,6 +20,7 @@ public class ArturBasePlayerController : MonoBehaviour
     [SerializeField]
     public float energy;
     public float energyDrainPerSecond;
+    public float energyRefillPerSecond;
     public float shootCooldown;
     public float maxJumpAcceleration;
 
@@ -35,6 +36,7 @@ public class ArturBasePlayerController : MonoBehaviour
     protected bool isGrounded;
     protected bool doForcefield;
     protected InputManager controller;
+    protected Animator animator;
 
     private bool gravityReversed;
     [SerializeField]
@@ -55,7 +57,7 @@ public class ArturBasePlayerController : MonoBehaviour
     {
         energy = 1f;
         speedBonus = false;
-
+        animator = GetComponent<Animator>();
 
         gunScript = GetComponent<ArturGunScript>();
         controller = new InputManager(playerNumber, controllerType);
@@ -116,6 +118,30 @@ public class ArturBasePlayerController : MonoBehaviour
         {
             shootTimer = 0;
         }
+
+        if (!doForcefield)
+        {
+            if (energy < 1)
+            {
+                energy += energyRefillPerSecond * Time.deltaTime;
+            }
+            if (energy + energyRefillPerSecond * Time.deltaTime > 1)
+                energy = 1;
+        }
+
+        if (playerInput.horizontalLeft != 0)
+        {
+            ArturHelper.SetValueOfAnimator(animator, "isMoving");
+        }
+        if (doShoot)
+        {
+            ArturHelper.SetValueOfAnimator(animator, "isShooting");
+        }
+        if (playerInput.horizontalLeft == 0 && !doDash && !doForcefield && !doJump && !doShoot)
+        {
+            ArturHelper.SetValueOfAnimator(animator, "isIdle");
+        }
+        
     }
 
 
@@ -254,11 +280,13 @@ public class ArturBasePlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        /*
         capsuleCollider = GetComponent<CapsuleCollider>();
         Gizmos.color = Color.cyan;
         Vector3 center = transform.position;
         center.y -= capsuleCollider.height * 0.5f;
         Gizmos.DrawSphere(center, 0.1f);
+        */
     }
 
     [System.Serializable]
@@ -278,5 +306,7 @@ public class ArturBasePlayerController : MonoBehaviour
         if(gravityReversed)
             ReverseGravity();
     }
+
+    public abstract bool GetDoForcefield();
 }
 

@@ -17,5 +17,20 @@ public static class ArturHelper
 
         body.AddForce(accel, ForceMode.Acceleration);
     }
+
+    public static void SetValueOfAnimator(Animator anim, string variable)
+    {
+        string[] states = new string[] { "isIdle", "isMoving", "isShooting"};
+
+        foreach(string state in states)
+        {
+            if (state == variable)
+            {
+                anim.SetBool(state, true);
+            }
+            else
+                anim.SetBool(state, false);
+        }
+    }
 }
 

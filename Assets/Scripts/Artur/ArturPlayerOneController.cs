@@ -9,6 +9,7 @@ public class ArturPlayerOneController : ArturBasePlayerController
 
     private ArturForcefieldController forcefieldController;
     private float pushCooldownTime;
+    private bool playForcefieldAnimation;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class ArturPlayerOneController : ArturBasePlayerController
     {
         base.Update();
         TranslateInput();
-
+        playForcefieldAnimation = false;
         if (pushCooldownTime > 0)
         {
             pushCooldownTime -= Time.deltaTime;
@@ -47,10 +48,13 @@ public class ArturPlayerOneController : ArturBasePlayerController
             pushCooldownTime = 0;
         }
 
-        if (doForcefield && pushCooldownTime == 0)
+        if (doForcefield && pushCooldownTime == 0 && energy > energyDrainPerSecond)
         {
+            playForcefieldAnimation = true;
             forcefieldController.ActivateForcefield();
-            energy -= energyDrainPerSecond * Time.deltaTime;
+            energy -= energyDrainPerSecond;
+            if (energy < 0)
+                energy = 0;
             pushCooldownTime = pushCooldownTimer;
             doForcefield = false;
         }
@@ -67,6 +71,11 @@ public class ArturPlayerOneController : ArturBasePlayerController
     {
         base.TranslateInput();
         
+    }
+
+    public override bool GetDoForcefield()
+    {
+        return playForcefieldAnimation;
     }
 
 }
