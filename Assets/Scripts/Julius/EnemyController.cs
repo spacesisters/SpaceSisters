@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     public LayerMask blockFromLayer;
     // Attributes
     public float energyDrainPerSecond = 10.0f;
-    public float energy = 100.0f;
+    public float energyMax = 100.0f;
     public float fireRate = 1.0f;
     public Transform shotSpawn;
     public GameObject projectile;
@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     private GameObject eyes;
     private ArturForcefieldController forcefieldController;
     private float nextFire;
+    private Transform forcefield;
+    private float energy;
 
     private enum Actions
     {
@@ -40,7 +42,8 @@ public class EnemyController : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2").transform;
         forcefieldController = GetComponent<ArturForcefieldController>();
         forcefieldController.Initialize(-1);
-
+        forcefield = GameObject.Find("Shield").transform;
+        energy = energyMax;
 
         eyes = GameObject.Find("Eyes");
         agent = GetComponent<NavMeshAgent>();
@@ -155,6 +158,13 @@ public class EnemyController : MonoBehaviour
         {
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
+            float forceFieldSize = forcefieldController.radius * (energy / energyMax);
+            Debug.Log(forceFieldSize);
+            if (forceFieldSize <= 3.0f && forceFieldSize > .0f)
+                forceFieldSize = 3.0f;
+            else if (forceFieldSize <= .0f)
+                forceFieldSize = .0f;
+            forcefield.localScale = new Vector3(forceFieldSize, forceFieldSize, forceFieldSize);
         }else if(action == Actions.ATTACK)
         {
             // TODO: Shoot bullet
