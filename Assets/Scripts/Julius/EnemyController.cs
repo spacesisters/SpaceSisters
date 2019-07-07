@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     private int nextWaypoint;
     private Transform player1, player2;
     private Transform target;
-    private GameObject eyes;
+    private Transform eyes;
     private ArturForcefieldController forcefieldController;
     private float nextFire;
     private Transform forcefield;
@@ -42,10 +42,10 @@ public class EnemyController : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2").transform;
         forcefieldController = GetComponent<ArturForcefieldController>();
         forcefieldController.Initialize(-1);
-        forcefield = GameObject.Find("Shield").transform;
+        forcefield = gameObject.transform.Find("ForceField").transform;
         energy = energyMax;
 
-        eyes = GameObject.Find("Eyes");
+        eyes = gameObject.transform.Find("Eyes");
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
         waypoints = new Vector3[waypointsInitial.Length];
@@ -69,21 +69,21 @@ public class EnemyController : MonoBehaviour
     {
         List<Vector3> hits = new List<Vector3>();
         Vector2[] targets = new Vector2[3];
-        targets[0] = target.position - eyes.transform.position;
-        targets[1] = target.position + new Vector3(0, target.localScale.y / 2, 0) - eyes.transform.position;
-        targets[2] = target.position - new Vector3(0, target.localScale.y / 2, 0) - eyes.transform.position;
+        targets[0] = target.position - eyes.position;
+        targets[1] = target.position + new Vector3(0, target.localScale.y / 2, 0) - eyes.position;
+        targets[2] = target.position - new Vector3(0, target.localScale.y / 2, 0) - eyes.position;
         for(int i=0; i<targets.Length; ++i)
         {
-            if (Physics.Raycast(eyes.transform.position, targets[i], out RaycastHit hit, viewingDistance))
+            if (Physics.Raycast(eyes.position, targets[i], out RaycastHit hit, viewingDistance))
             {
                 if(hit.transform.CompareTag("Player1") || hit.transform.CompareTag("Player2"))
                 {
                     hits.Add(hit.point);
-                    Debug.DrawLine(eyes.transform.position, hit.point, Color.red);
+                    Debug.DrawLine(eyes.position, hit.point, Color.red);
                 }
                 else
                 {
-                    Debug.DrawLine(eyes.transform.position, hit.point);
+                    Debug.DrawLine(eyes.position, hit.point);
                 }                
             }
         }
@@ -109,8 +109,8 @@ public class EnemyController : MonoBehaviour
         if (action == Actions.WALK)
         {
             float distancePlayer;
-            float distancePlayer1 = Vector3.Distance(player1.position, eyes.transform.position);
-            float distancePlayer2 = Vector3.Distance(player2.position, eyes.transform.position);
+            float distancePlayer1 = Vector3.Distance(player1.position, eyes.position);
+            float distancePlayer2 = Vector3.Distance(player2.position, eyes.position);
             if (distancePlayer1 > distancePlayer2)
             {
                 target = player2;
@@ -125,16 +125,13 @@ public class EnemyController : MonoBehaviour
 
             if (distancePlayer <= viewingDistance)
             {
-                Vector2 directionToPlayer = target.position - eyes.transform.position;
-                float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.transform.forward);
+                Vector2 directionToPlayer = target.position - eyes.position;
+                float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.forward);
                 if (angleToPlayer >= -fov && angleToPlayer <= fov)
                 {
                     List<Vector3> hits = PlayerHits();
                     if (hits.Count > 0)
                     {
-                        /*
-                         * TODO: Enemy Attacks
-                         */
                         //agent.destination = target.position;
                         action = Actions.ATTACK;
                         agent.isStopped = true;
@@ -158,8 +155,8 @@ public class EnemyController : MonoBehaviour
         {
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
+
             float forceFieldSize = forcefieldController.radius * (energy / energyMax);
-            Debug.Log(forceFieldSize);
             if (forceFieldSize <= 3.0f && forceFieldSize > .0f)
                 forceFieldSize = 3.0f;
             else if (forceFieldSize <= .0f)
@@ -167,7 +164,7 @@ public class EnemyController : MonoBehaviour
             forcefield.localScale = new Vector3(forceFieldSize, forceFieldSize, forceFieldSize);
         }else if(action == Actions.ATTACK)
         {
-            // TODO: Shoot bullet
+            // TODO: Other actions?
         }
 
 
@@ -175,17 +172,17 @@ public class EnemyController : MonoBehaviour
         float halfFOV = fov / 2.0f;
         Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.back);
         Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.back);
-        Vector3 leftRayDirection = leftRayRotation * eyes.transform.forward;
-        Vector3 rightRayDirection = rightRayRotation * eyes.transform.forward;
+        Vector3 leftRayDirection = leftRayRotation * eyes.forward;
+        Vector3 rightRayDirection = rightRayRotation * eyes.forward;
         if (action == Actions.ATTACK)
         {
-            Debug.DrawRay(eyes.transform.position, leftRayDirection * viewingDistance, Color.red);
-            Debug.DrawRay(eyes.transform.position, rightRayDirection * viewingDistance, Color.red);
+            Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance, Color.red);
+            Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance, Color.red);
         }
         else
         {
-            Debug.DrawRay(eyes.transform.position, leftRayDirection * viewingDistance);
-            Debug.DrawRay(eyes.transform.position, rightRayDirection * viewingDistance);
+            Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance);
+            Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance);
         }
 
         if (action == Actions.WALK)
