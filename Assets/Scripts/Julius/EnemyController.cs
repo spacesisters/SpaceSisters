@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     private float nextFire;
     private Transform forcefield;
     private float energy;
+    private int layerMask;
 
     private enum Actions
     {
@@ -43,6 +44,7 @@ public class EnemyController : MonoBehaviour
         forcefieldController = GetComponent<ArturForcefieldController>();
         forcefieldController.Initialize(-1);
         forcefield = gameObject.transform.Find("ForceField").transform;
+        forcefield.localScale = new Vector3(.0f, .0f, .0f);
         energy = energyMax;
 
         eyes = gameObject.transform.Find("Eyes");
@@ -54,6 +56,10 @@ public class EnemyController : MonoBehaviour
             waypoints[i] = waypointsInitial[i].transform.position;
             Destroy(waypointsInitial[i]);
         }
+        action = Actions.WALK;
+
+        layerMask = 1 << 14; // 14: ReactsToForceField Layer id
+        layerMask = ~layerMask;
     }
 
     void GotoNextPoint()
@@ -74,7 +80,7 @@ public class EnemyController : MonoBehaviour
         targets[2] = target.position - new Vector3(0, target.localScale.y / 2, 0) - eyes.position;
         for(int i=0; i<targets.Length; ++i)
         {
-            if (Physics.Raycast(eyes.position, targets[i], out RaycastHit hit, viewingDistance))
+            if (Physics.Raycast(eyes.position, targets[i], out RaycastHit hit, viewingDistance, layerMask))
             {
                 if(hit.transform.CompareTag("Player1") || hit.transform.CompareTag("Player2"))
                 {
@@ -92,21 +98,29 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // Default
-        action = Actions.WALK;
+        if(action == Actions.WALK && energy > .0f){
+	        // Check for entering projectiles
+	        Collider[] projectiles = Physics.OverlapSphere(eyes.transform.position, viewingDistance/2, blockFromLayer);
+	        if(projectiles.Length > 0){
+	        	action = Actions.BLOCK;
+	        }
+	        /*
+	        foreach (Collider c in projectiles)
+	        {
+	            //Vector3 direction = transform.position - c.transform.position;
+	            //float distance = direction.magnitude;
+	            // TODO: Check direction
+	        	action = Actions.BLOCK;
+	        }
+	        */
 
-        // Check for entering projectiles
-        Collider[] projectiles = Physics.OverlapSphere(eyes.transform.position, viewingDistance/2, blockFromLayer);
-        foreach (Collider c in projectiles)
-        {
-            //Vector3 direction = transform.position - c.transform.position;
-            //float distance = direction.magnitude;
-            // TODO: Check direction
-            if(energy>0)
-                action = Actions.BLOCK;
-        }
+    	}else if(action == Actions.BLOCK && energy > .0f){
+    		action = Actions.BLOCK;
+    	}else{
+    		action = Actions.WALK;
+    	}
 
-        if (action == Actions.WALK)
+        if (action == Actions.WALK || action == Actions.ATTACK)
         {
             float distancePlayer;
             float distancePlayer1 = Vector3.Distance(player1.position, eyes.position);
@@ -143,6 +157,8 @@ public class EnemyController : MonoBehaviour
                             tmp.GetComponent<ProjectileController>().setDirection(aimAt);
                             nextFire = Time.time + fireRate;
                         }
+                    }else{
+                    	action = Actions.WALK;
                     }
                 }
             }
@@ -153,6 +169,7 @@ public class EnemyController : MonoBehaviour
          */
         if (action == Actions.BLOCK)
         {
+        	agent.isStopped = true;
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
 
@@ -184,7 +201,7 @@ public class EnemyController : MonoBehaviour
             Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance);
             Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance);
         }
-
+        
         if (action == Actions.WALK)
         {
             agent.isStopped = false;
