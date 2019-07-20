@@ -7,9 +7,12 @@ public class ArturBulletScript : MonoBehaviour
     public float bulletVelocity;
     public float targetRadius;
     public float targetVelocity;
+    public float bulletLastTime;
     public LayerMask damagable;
     public LayerMask autoAim;
     
+    
+
     private Rigidbody rBody;
     private SphereCollider sphereCollider;
 
@@ -18,6 +21,7 @@ public class ArturBulletScript : MonoBehaviour
         rBody = GetComponent<Rigidbody>();
         sphereCollider = GetComponent<SphereCollider>();
         rBody.velocity = transform.right * bulletVelocity;
+        StartCoroutine(RemoveBullet(bulletLastTime));
     }
 
     private void Update()
@@ -45,16 +49,21 @@ public class ArturBulletScript : MonoBehaviour
 
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, sphereCollider.radius * 0.525f, damagable);
-        // TODO: Apply damage.
+        
+
+
     }
 
-    private void OnDrawGizmos()
+    private void OnCollisionEnter(Collision collision)
     {
-        sphereCollider = GetComponent<SphereCollider>();
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, sphereCollider.radius * 0.525f);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 3);
-
+        Destroy(this.gameObject);      
     }
+
+
+    IEnumerator RemoveBullet(float bulletLastTime)
+    {
+        yield return new WaitForSeconds(bulletLastTime);
+        Destroy(this.gameObject);
+    }
+
 }

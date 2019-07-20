@@ -360,6 +360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArturCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3728897159867268464, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 3728897159867268465, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -21,6 +21,8 @@ TagManager:
   - SplitScreenController
   - SimpleCameraRight
   - SimpleCameraLeft
+  - RocketCamera
+  - Rocket
   layers:
   - Default
   - TransparentFX

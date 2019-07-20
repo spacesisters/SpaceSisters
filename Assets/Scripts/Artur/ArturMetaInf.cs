@@ -25,6 +25,7 @@ public class ArturMetaInf : MonoBehaviour
 
         if (playerHealth <= 0)
         {
+            playerLives--;
             ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
             ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 

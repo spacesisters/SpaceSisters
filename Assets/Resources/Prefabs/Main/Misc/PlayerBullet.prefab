@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112b759eb047cbc43ae4c8f342bee641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 2
+  bulletVelocity: 5
   targetRadius: 3
-  targetVelocity: 5
+  targetVelocity: 7
+  bulletLastTime: 2
   damagable:
     serializedVersion: 2
     m_Bits: 8192
