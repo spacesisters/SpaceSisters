@@ -8,6 +8,7 @@ public class ArturBulletScript : MonoBehaviour
     public float targetRadius;
     public float targetVelocity;
     public float bulletLastTime;
+    public int damage;
     public LayerMask damagable;
     public LayerMask autoAim;
     
@@ -50,12 +51,25 @@ public class ArturBulletScript : MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, sphereCollider.radius * 0.525f, damagable);
         
+    }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, targetRadius);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyController>().health -= damage;
+        } 
+        else if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        {
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().playerHealth -= damage;
+        }
+
         Destroy(this.gameObject);      
     }
 

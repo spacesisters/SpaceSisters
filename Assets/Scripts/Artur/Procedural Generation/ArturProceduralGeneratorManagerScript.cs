@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 {
     public int numberOfRooms;
     public string currentLevel;
+    public NavMeshSurface surface;
 
     void Awake()
     {
@@ -48,7 +50,8 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         Instantiate(firstRoom);
         Vector3 roomPosition = new Vector3(firstRoom.GetComponent<LevelMetaInf>().lastBlock.x, 
                                             firstRoom.GetComponent<LevelMetaInf>().lastBlock.y, 0);
-
+        List<GameObject> gameRooms = new List<GameObject>();
+        gameRooms.Add(firstRoom);
         for (int i = 1; i < numberOfRooms; i++)
         {
 
@@ -73,7 +76,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
 
-            
+            gameRooms.Add(nextRoom);
 
             roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
             roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
@@ -81,6 +84,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
         GameObject endRoom = Resources.Load<GameObject>(roomPath + "end");
         endRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
+
         Instantiate(endRoom, roomPosition, Quaternion.identity);
 
         string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
@@ -91,6 +95,22 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
         Instantiate(playerOne);
         Instantiate(playerTwo);
+
+        gameRooms.Add(endRoom);
+        surface.BuildNavMesh();
+        string enemyPath = "Prefabs/Main/Enemies/Enemy";
+
+        foreach(GameObject room in gameRooms)
+        {
+            LevelMetaInf inf = room.GetComponent<LevelMetaInf>();
+            foreach(Vector3 enemyPosition in inf.enemyPositions)
+            {
+                GameObject enemy = Resources.Load<GameObject>(enemyPath);
+                Instantiate(enemy, inf.instantiatedAt + enemyPosition, Quaternion.identity);
+            }
+            
+        }
+
     }
 
 }

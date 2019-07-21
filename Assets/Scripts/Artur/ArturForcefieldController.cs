@@ -24,6 +24,7 @@ public class ArturForcefieldController : MonoBehaviour
         foreach (Collider c in objects)
         {
 
+
             Vector3 direction = transform.position - c.transform.position;
             float distance = direction.magnitude;
             Rigidbody rb = c.GetComponent<Rigidbody>();
@@ -37,10 +38,10 @@ public class ArturForcefieldController : MonoBehaviour
 
     private void OnDrawGizmos()
     {   
-        /*
+        
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);    
-        */
+        
     }
 
 }

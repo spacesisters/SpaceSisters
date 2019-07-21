@@ -23,6 +23,7 @@ TagManager:
   - SimpleCameraLeft
   - RocketCamera
   - Rocket
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

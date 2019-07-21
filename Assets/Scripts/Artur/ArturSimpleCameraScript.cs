@@ -17,6 +17,10 @@ public class ArturSimpleCameraScript : MonoBehaviour
 
     void LateUpdate()
     {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        }
         transform.position = target.position + offset;
     }
 }

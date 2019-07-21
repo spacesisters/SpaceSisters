@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public float fireRate = 1.0f;
     public Transform shotSpawn;
     public GameObject projectile;
+    public int health;
 
     private Vector3[] waypoints;
     private NavMeshAgent agent;
@@ -98,116 +99,135 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if(action == Actions.WALK && energy > .0f){
-	        // Check for entering projectiles
-	        Collider[] projectiles = Physics.OverlapSphere(eyes.transform.position, viewingDistance/2, blockFromLayer);
-	        if(projectiles.Length > 0){
-	        	action = Actions.BLOCK;
-	        }
-	        /*
-	        foreach (Collider c in projectiles)
-	        {
-	            //Vector3 direction = transform.position - c.transform.position;
-	            //float distance = direction.magnitude;
-	            // TODO: Check direction
-	        	action = Actions.BLOCK;
-	        }
-	        */
-
-    	}else if(action == Actions.BLOCK && energy > .0f){
-    		action = Actions.BLOCK;
-    	}else{
-    		action = Actions.WALK;
-    	}
-
-        if (action == Actions.WALK || action == Actions.ATTACK)
+        if (health <= 0)
         {
-            float distancePlayer;
-            float distancePlayer1 = Vector3.Distance(player1.position, eyes.position);
-            float distancePlayer2 = Vector3.Distance(player2.position, eyes.position);
-            if (distancePlayer1 > distancePlayer2)
-            {
-                target = player2;
-                distancePlayer = distancePlayer2;
-            }
-            else
-            {
-                target = player1;
-                distancePlayer = distancePlayer1;
-            }
-
-
-            if (distancePlayer <= viewingDistance)
-            {
-                Vector2 directionToPlayer = target.position - eyes.position;
-                float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.forward);
-                if (angleToPlayer >= -fov && angleToPlayer <= fov)
-                {
-                    List<Vector3> hits = PlayerHits();
-                    if (hits.Count > 0)
-                    {
-                        //agent.destination = target.position;
-                        action = Actions.ATTACK;
-                        agent.isStopped = true;
-                        if (Time.time >= nextFire)
-                        {
-                            GameObject tmp = Instantiate(projectile, shotSpawn.transform.position, shotSpawn.transform.rotation);
-                            tmp.layer = 0;
-                            Vector2 aimAt = hits[Random.Range(0, hits.Count-1)] - shotSpawn.transform.position; // INFO: Random/Pick from hits
-                            tmp.GetComponent<ProjectileController>().setDirection(aimAt);
-                            nextFire = Time.time + fireRate;
-                        }
-                    }else{
-                    	action = Actions.WALK;
-                    }
-                }
-            }
-        }
-
-        /*
-         * Perform actions
-         */
-        if (action == Actions.BLOCK)
-        {
-        	agent.isStopped = true;
-            forcefieldController.ActivateForcefield();
-            energy -= energyDrainPerSecond * Time.deltaTime;
-
-            float forceFieldSize = forcefieldController.radius * (energy / energyMax);
-            if (forceFieldSize <= 3.0f && forceFieldSize > .0f)
-                forceFieldSize = 3.0f;
-            else if (forceFieldSize <= .0f)
-                forceFieldSize = .0f;
-            forcefield.localScale = new Vector3(forceFieldSize, forceFieldSize, forceFieldSize);
-        }else if(action == Actions.ATTACK)
-        {
-            // TODO: Other actions?
-        }
-
-
-        // Debugging
-        float halfFOV = fov / 2.0f;
-        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.back);
-        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.back);
-        Vector3 leftRayDirection = leftRayRotation * eyes.forward;
-        Vector3 rightRayDirection = rightRayRotation * eyes.forward;
-        if (action == Actions.ATTACK)
-        {
-            Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance, Color.red);
-            Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance, Color.red);
+            if(this.gameObject != null) 
+                Destroy(this.gameObject);
         }
         else
         {
-            Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance);
-            Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance);
+            if (action == Actions.WALK && energy > .0f)
+            {
+                // Check for entering projectiles
+                Collider[] projectiles = Physics.OverlapSphere(eyes.transform.position, viewingDistance / 2, blockFromLayer);
+                if (projectiles.Length > 0)
+                {
+                    action = Actions.BLOCK;
+                }
+                /*
+                foreach (Collider c in projectiles)
+                {
+                    //Vector3 direction = transform.position - c.transform.position;
+                    //float distance = direction.magnitude;
+                    // TODO: Check direction
+                    action = Actions.BLOCK;
+                }
+                */
+
+            }
+            else if (action == Actions.BLOCK && energy > .0f)
+            {
+                action = Actions.BLOCK;
+            }
+            else
+            {
+                action = Actions.WALK;
+            }
+
+            if (action == Actions.WALK || action == Actions.ATTACK)
+            {
+                float distancePlayer;
+                float distancePlayer1 = Vector3.Distance(player1.position, eyes.position);
+                float distancePlayer2 = Vector3.Distance(player2.position, eyes.position);
+                if (distancePlayer1 > distancePlayer2)
+                {
+                    target = player2;
+                    distancePlayer = distancePlayer2;
+                }
+                else
+                {
+                    target = player1;
+                    distancePlayer = distancePlayer1;
+                }
+
+
+                if (distancePlayer <= viewingDistance)
+                {
+                    Vector2 directionToPlayer = target.position - eyes.position;
+                    float angleToPlayer = Vector2.Angle(directionToPlayer, eyes.forward);
+                    if (angleToPlayer >= -fov && angleToPlayer <= fov)
+                    {
+                        List<Vector3> hits = PlayerHits();
+                        if (hits.Count > 0)
+                        {
+                            //agent.destination = target.position;
+                            action = Actions.ATTACK;
+                            agent.isStopped = true;
+                            if (Time.time >= nextFire)
+                            {
+                                GameObject tmp = Instantiate(projectile, shotSpawn.transform.position, shotSpawn.transform.rotation);
+                                tmp.layer = projectile.layer;
+
+                                Vector2 aimAt = hits[Random.Range(0, hits.Count - 1)] - shotSpawn.transform.position; // INFO: Random/Pick from hits
+                                tmp.GetComponent<ProjectileController>().setDirection(aimAt);
+                                nextFire = Time.time + fireRate;
+                            }
+                        }
+                        else
+                        {
+                            action = Actions.WALK;
+                        }
+                    }
+                }
+            }
+
+            /*
+             * Perform actions
+             */
+            if (action == Actions.BLOCK)
+            {
+                agent.isStopped = true;
+                forcefieldController.ActivateForcefield();
+                energy -= energyDrainPerSecond * Time.deltaTime;
+
+                float forceFieldSize = forcefieldController.radius * (energy / energyMax);
+                if (forceFieldSize <= 3.0f && forceFieldSize > .0f)
+                    forceFieldSize = 3.0f;
+                else if (forceFieldSize <= .0f)
+                    forceFieldSize = .0f;
+                forcefield.localScale = new Vector3(forceFieldSize, forceFieldSize, forceFieldSize);
+            }
+            else if (action == Actions.ATTACK)
+            {
+                // TODO: Other actions?
+            }
+
+
+            // Debugging
+            float halfFOV = fov / 2.0f;
+            Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.back);
+            Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.back);
+            Vector3 leftRayDirection = leftRayRotation * eyes.forward;
+            Vector3 rightRayDirection = rightRayRotation * eyes.forward;
+            if (action == Actions.ATTACK)
+            {
+                Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance, Color.red);
+                Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance, Color.red);
+            }
+            else
+            {
+                Debug.DrawRay(eyes.position, leftRayDirection * viewingDistance);
+                Debug.DrawRay(eyes.position, rightRayDirection * viewingDistance);
+            }
+
+            if (action == Actions.WALK)
+            {
+                agent.isStopped = false;
+                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                    GotoNextPoint();
+            }
+
         }
-        
-        if (action == Actions.WALK)
-        {
-            agent.isStopped = false;
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
-                GotoNextPoint();
-        }
-        
+
     }
 }

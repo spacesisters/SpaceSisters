@@ -41,6 +41,24 @@ public class ArturDeathScript : MonoBehaviour
                 Destroy(g);
 
             }
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+
+            string enemyPath = "Prefabs/Main/Enemies/Enemy";
+
+            foreach (GameObject room in rooms)
+            {
+                LevelMetaInf inf = room.GetComponent<LevelMetaInf>();
+                foreach (Vector3 enemyPosition in inf.enemyPositions)
+                {
+                    GameObject enemy = Resources.Load<GameObject>(enemyPath);
+                    Instantiate(enemy, inf.instantiatedAt + enemyPosition, Quaternion.identity);
+                }
+
+            }
 
         }
     }
