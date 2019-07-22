@@ -38,7 +38,7 @@ public abstract class ArturBasePlayerController : MonoBehaviour
     protected InputManager controller;
     protected Animator animator;
 
-    private bool gravityReversed;
+    public bool gravityReversed;
     [SerializeField]
     private LayerMask groundLayers;
     private Vector3 size;
@@ -90,15 +90,31 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         }
 
 
+
         //Setting rotation
-        if (playerInput.horizontalLeft > 0)
+        if(!gravityReversed)
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+            if (playerInput.horizontalLeft > 0)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 0, 0);
+            }
+            else if (playerInput.horizontalLeft < 0)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 180, 0);
+            }
         }
-        else if (playerInput.horizontalLeft < 0)
+        else
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 180, transform.eulerAngles.z);
+            if (playerInput.horizontalLeft > 0)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 180, 180);
+            }
+            else if (playerInput.horizontalLeft < 0)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, 0, 180);
+            }
         }
+
 
         // Managing dash cooldown
         if (dashTime > 0 )
@@ -276,6 +292,14 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         constForce.force = -constForce.force;
         jumpForce = -jumpForce;
         gravityReversed = !gravityReversed;
+        if(gravityReversed)
+        {
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 180);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        }
     }
 
     private void OnDrawGizmos()
