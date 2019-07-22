@@ -237,6 +237,7 @@ MonoBehaviour:
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
   roomNumber: 1
+  enemyPositions: []
 --- !u!1 &1827187596459485373
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +729,7 @@ PrefabInstance:
     - target: {fileID: 6412946578381093912, guid: 1d444e9cf6e4f1943b3b5d175941cfe3,
         type: 3}
       propertyPath: jumpForce
-      value: 40
+      value: 9000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d444e9cf6e4f1943b3b5d175941cfe3, type: 3}

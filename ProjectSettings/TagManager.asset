@@ -24,6 +24,8 @@ TagManager:
   - RocketCamera
   - Rocket
   - EnemyProjectile
+  - ScreenFader
+  - VideoPlayer
   layers:
   - Default
   - TransparentFX

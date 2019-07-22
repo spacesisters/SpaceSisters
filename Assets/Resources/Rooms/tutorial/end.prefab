@@ -153,6 +153,7 @@ MonoBehaviour:
   rocket: {fileID: 5788354580242956222}
   rocketLaunchSpeed: 5
   waitTime: 3
+  endCutsceneTime: 15
 --- !u!1 &4615122616850058401
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
   roomNumber: end
+  enemyPositions: []
 --- !u!1 &4898167891420501398
 GameObject:
   m_ObjectHideFlags: 0

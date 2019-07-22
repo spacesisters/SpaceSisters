@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class ArturEndZone : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class ArturEndZone : MonoBehaviour
     public GameObject rocket;
     public float rocketLaunchSpeed;
     public float waitTime;
+    public float endCutsceneTime;
+
+
+    private float fadeTime = 2f;
+    private bool endOfLevel = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,15 +41,41 @@ public class ArturEndZone : MonoBehaviour
             //TODO: Show final score of this lvl. 
             //TODO: Show short cutscene?
 
-            //SceneManager.LoadScene(nextScene);
         }
 
+    }
+
+    public void Update()
+    {
+        if (Input.anyKey && endOfLevel)
+        {
+            SceneManager.LoadScene(nextScene);
+        }
     }
 
     IEnumerator EndTheLevel(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().SetBool("fadeOut", true);
+        yield return new WaitForSeconds(fadeTime);
+        GameObject screenFader = GameObject.FindGameObjectWithTag("ScreenFader");
+        screenFader.SetActive(false);
+        rocket.SetActive(false);
+
+
+        GameObject gameCanvas = GameObject.FindGameObjectWithTag("GameCanvas");
+        gameCanvas.SetActive(false);
+
+        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().targetCamera = rocketCamera;
+        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().enabled = true;
+        yield return new WaitForSeconds(endCutsceneTime);
+
+        
+        gameCanvas.SetActive(true);
+
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().endOfLevel = true;
+        endOfLevel = true;
+
     }
 
 }

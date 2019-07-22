@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79be3b5ec5b64084782a3433c4997d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 2, z: -10}
+  offset: {x: 0, y: 2, z: -20}
   targetTag: Player2
 --- !u!20 &3728897159605717821
 Camera:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79be3b5ec5b64084782a3433c4997d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 2, z: -10}
+  offset: {x: 0, y: 2, z: -20}
   targetTag: Player1
 --- !u!20 &3728897160443548107
 Camera:

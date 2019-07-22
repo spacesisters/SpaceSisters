@@ -24,8 +24,9 @@ public class ArturJumpPadScript : MonoBehaviour
 
         foreach (Collider c in colliders)
         {
-            
-            c.GetComponent<Rigidbody>().velocity = new Vector3(c.GetComponent<Rigidbody>().velocity.x, jumpForce * c.transform.up.y, c.GetComponent<Rigidbody>().velocity.z);
+
+            c.GetComponent<Rigidbody>().AddForce(jumpForce * c.transform.up, ForceMode.Acceleration);
+
 
         }
     }
