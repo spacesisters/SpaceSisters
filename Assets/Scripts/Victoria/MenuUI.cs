@@ -25,14 +25,14 @@ public class MenuUI : MonoBehaviour
             }
             else if (Input.GetAxis("xbox_p1_left_vertical") != 0 || Input.GetButtonDown("xbox_p1_button_a"))
             {
-                inputModule.cancelButton = "xbox_p1_button_circle";
-                inputModule.submitButton = "xbox_p1_button_x";
+                inputModule.cancelButton = "xbox_p1_button_b";
+                inputModule.submitButton = "xbox_p1_button_a";
                 inputModule.verticalAxis = "xbox_p1_left_vertical";
                 inputModule.horizontalAxis = "xbox_p1_left_horizontal";
             }
-            else if (Input.GetAxis("xbox_p2_left_vertical") != 0 || Input.GetButtonDown("xbox_p1_button_a"))
+            else if (Input.GetAxis("xbox_p2_left_vertical") != 0 || Input.GetButtonDown("xbox_p2_button_a"))
             {
-                inputModule.cancelButton = "xbox_p2_button_x";
+                inputModule.cancelButton = "xbox_p2_button_b";
                 inputModule.submitButton = "xbox_p2_button_a";
                 inputModule.verticalAxis = "xbox_p2_left_vertical";
                 inputModule.horizontalAxis = "xbox_p2_left_horizontal";
