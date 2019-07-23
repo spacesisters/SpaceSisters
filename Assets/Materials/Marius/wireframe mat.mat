@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: wireframe
+  m_Name: wireframe mat
   m_Shader: {fileID: -6465566751694194690, guid: 6962208b0d2ea8d44ae0022d147a7a38,
     type: 3}
   m_ShaderKeywords: 
@@ -252,3 +252,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _offset: {r: 19.100279, g: 0, b: 0, a: 0}
