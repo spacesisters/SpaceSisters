@@ -44,7 +44,6 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         string roomPath = "Rooms/" + currentLevel + "/";
         System.Random rand = new System.Random();
         GameObject firstRoom = Resources.Load<GameObject>(roomPath + "start" + (rand.Next(1, numberOfStartRooms)));
-        firstRoom.GetComponent<LevelMetaInf>().respawnLocation = Vector3.zero;
         firstRoom.GetComponent<LevelMetaInf>().instantiatedAt = Vector3.zero;
 
         Instantiate(firstRoom);
@@ -93,8 +92,8 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         GameObject playerOne = Resources.Load<GameObject>(playerOnePath);
         GameObject playerTwo = Resources.Load<GameObject>(playerTwoPath);
 
-        Instantiate(playerOne);
-        Instantiate(playerTwo);
+        Instantiate(playerOne, firstRoom.GetComponent<LevelMetaInf>().respawnLocation, Quaternion.identity);
+        Instantiate(playerTwo, firstRoom.GetComponent<LevelMetaInf>().respawnLocation + new Vector3(2, 0, 0), Quaternion.identity);
 
         gameRooms.Add(endRoom);
         surface.BuildNavMesh();

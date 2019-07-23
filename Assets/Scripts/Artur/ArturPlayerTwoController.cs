@@ -6,9 +6,10 @@ public class ArturPlayerTwoController : ArturBasePlayerController
 {
     
     private ArturForcefieldController forcefieldController;
+    private bool playForcefieldAnimation;
 
 
-   
+
 
     private void Start()
     {
@@ -39,14 +40,15 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         base.Update();
         TranslateInput();
 
-
-        if (doForcefield)
+        if (doForcefield && energy > energyDrainPerSecond * Time.deltaTime)
         {           
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
+            playForcefieldAnimation = true;
         }
+        else
+            playForcefieldAnimation = false;
 
-        
     }
 
     private new void FixedUpdate()
@@ -63,7 +65,7 @@ public class ArturPlayerTwoController : ArturBasePlayerController
 
     public override bool GetDoForcefield()
     {
-        return doForcefield;
+        return playForcefieldAnimation;
     }
 
 }

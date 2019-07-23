@@ -13,7 +13,7 @@ public class ArturForcefieldAnimator : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<ArturPlayerOneController>();
+        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<ArturBasePlayerController>();
     }
 
     private void Update()
