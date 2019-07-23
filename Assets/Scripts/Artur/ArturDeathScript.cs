@@ -11,6 +11,7 @@ public class ArturDeathScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
         {
+
             StartCoroutine(Respawn(cooldown));
 
             GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().Play("fade_out_in");
