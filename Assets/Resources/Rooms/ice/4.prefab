@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -388,7 +388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
   roomNumber: 4
+  enemyPositions: []
 --- !u!1 &7899074325462323868
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +533,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

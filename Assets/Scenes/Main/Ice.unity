@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafc28a8585524346a0ac178be73c59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 671278386}
+  camera: {fileID: 2032914842}
   wireframeMat: {fileID: 2100000, guid: e129d33d8724bf84f836bb7a22215018, type: 2}
 --- !u!64 &1250118620
 MeshCollider:
@@ -1116,6 +1116,12 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!20 &2032914842 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3728897160169227234, guid: 96821966de5e10542bbd40a82c55bb93,
+    type: 3}
+  m_PrefabInstance: {fileID: 3728897160286054714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137750619
 GameObject:
   m_ObjectHideFlags: 0
