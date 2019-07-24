@@ -115,7 +115,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -206,7 +206,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -352,7 +352,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -443,7 +443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -534,7 +534,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8714f4f187b593a4f99c97d8b045a34e, type: 2}
+  - {fileID: 2100000, guid: f3fde83d596c4424c9cbbf9fce238d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -634,6 +634,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8058695597682929987, guid: ee1c14f6c8e602c439de736b86898782,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc542fc3ecd35264ca77727fa944bac0, type: 2}
     - target: {fileID: 8058695597682929984, guid: ee1c14f6c8e602c439de736b86898782,
         type: 3}
       propertyPath: positions.Array.data[0].x
