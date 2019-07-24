@@ -70,7 +70,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
              */
 
 
-            GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, numberOfRandomRooms));
+            GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, 17)); // TODO
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
             nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
