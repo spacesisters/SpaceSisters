@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 6526663693461404852}
   m_Layer: 0
   m_Name: 7
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   lastBlock: {x: 9.61, y: 8.67}
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
-  roomNumber: 
+  roomNumber: 7
   enemyPositions: []
 --- !u!1 &7578622209618422080
 GameObject:
