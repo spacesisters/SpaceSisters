@@ -8,6 +8,8 @@ public class wireframe_script : MonoBehaviour
     public Material wireframeMat;
 
     private float time_offset;
+    public float yChange = 0.01f;
+    public float yOffset = -3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,14 @@ public class wireframe_script : MonoBehaviour
         wireframeMat.SetVector("_offset", new Vector2(cameraPos.x * 0.5f + time_offset, 0.0f));
 
         new_position.x = cameraPos.x;
+        if ((cameraPos.y + yOffset) > new_position.y)
+        {
+            new_position.y += yChange;
+        }
+        else if ((cameraPos.y + yOffset) < new_position.y)
+        {
+            new_position.y -= yChange;
+        }
         transform.position = new_position;
     }
 

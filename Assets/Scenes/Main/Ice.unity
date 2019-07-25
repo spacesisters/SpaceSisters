@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: speedBonusTime
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4609974761083426173, guid: a37e80459624d5a448031ddb854e5714,
+        type: 3}
+      propertyPath: endOfLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37e80459624d5a448031ddb854e5714, type: 3}
 --- !u!1 &235345128 stripped
@@ -863,6 +868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 2032914842}
   wireframeMat: {fileID: 2100000, guid: e129d33d8724bf84f836bb7a22215018, type: 2}
+  yChange: 0.02
+  yOffset: -5
 --- !u!64 &1250118620
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1225,6 +1232,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArturCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3728897159605717820, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160443548106, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227245, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227234, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: far clip plane
+      value: 3000
+      objectReference: {fileID: 0}
     - target: {fileID: 3728897159867268465, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,27 +1307,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3728897159605717820, guid: 96821966de5e10542bbd40a82c55bb93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728897160169227245, guid: 96821966de5e10542bbd40a82c55bb93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728897160443548106, guid: 96821966de5e10542bbd40a82c55bb93,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3728897159605717821, guid: 96821966de5e10542bbd40a82c55bb93,
-        type: 3}
-      propertyPath: far clip plane
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728897160169227234, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: far clip plane
       value: 3000
@@ -1309,6 +1316,31 @@ PrefabInstance:
         type: 3}
       propertyPath: far clip plane
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: zoomLimiter
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: baseOffset.z
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: minZoom
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: maxZoom
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: baseOffset.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96821966de5e10542bbd40a82c55bb93, type: 3}

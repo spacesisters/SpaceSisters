@@ -7,8 +7,8 @@ public class ArturSplitScreenCamera : MonoBehaviour
     public Vector3 baseOffset;
     public float maxPlayerDistance;
     public float smoothTime;
-    public float minZoom = 40f;
-    public float maxZoom = 30;
+    public float minZoom = 60f;
+    public float maxZoom = 30f;
     public float zoomLimiter = 50f;
 
     public bool isSplitted;
