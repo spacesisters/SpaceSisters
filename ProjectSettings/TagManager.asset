@@ -26,6 +26,8 @@ TagManager:
   - EnemyProjectile
   - ScreenFader
   - VideoPlayer
+  - GameCanvas
+  - Background
   layers:
   - Default
   - TransparentFX

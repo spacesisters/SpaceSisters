@@ -65,9 +65,10 @@ public class ArturEndZone : MonoBehaviour
 
         GameObject gameCanvas = GameObject.FindGameObjectWithTag("GameCanvas");
         gameCanvas.SetActive(false);
-
         GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().targetCamera = rocketCamera;
         GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().enabled = true;
+        rocketCamera.farClipPlane = 1000;
+
         yield return new WaitForSeconds(endCutsceneTime);
 
         
