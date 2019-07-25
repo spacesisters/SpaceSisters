@@ -20,15 +20,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Starfield
-  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+  m_Name: Starfield Scrollable Material
+  m_Shader: {fileID: -6465566751694194690, guid: 10631cc338119c84bab1dd64937788bb,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
@@ -38,7 +38,7 @@ Material:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 6acfd92a121802e4a8de20c0f24fb635, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 0.3, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,7 +58,7 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 6acfd92a121802e4a8de20c0f24fb635, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 21.299961, y: 4.2600026}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,11 +67,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpaceBG:
+        m_Texture: {fileID: 2800000, guid: 6acfd92a121802e4a8de20c0f24fb635, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnlitColorMap:
+        m_Texture: {fileID: 2800000, guid: 6acfd92a121802e4a8de20c0f24fb635, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _space:
         m_Texture: {fileID: 2800000, guid: 6acfd92a121802e4a8de20c0f24fb635, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -143,5 +151,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UnlitColor: {r: 1, g: 1, b: 1, a: 1}
+    - _offset: {r: 0.081000075, g: 0.017460348, b: 0, a: 0}
