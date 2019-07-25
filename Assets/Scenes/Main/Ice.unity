@@ -460,8 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0e5be787aed11448c88a79b6e34e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 10
-  testSpecificRoom: 18
+  numberOfRooms: 0
+  testSpecificRoom: 0
   currentLevel: ice
   surface: {fileID: 1085681871}
 --- !u!4 &572437055
