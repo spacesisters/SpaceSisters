@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground2 Material
-  m_Shader: {fileID: -6465566751694194690, guid: 60182fb008676cb48b4d71e2216ea077,
+  m_Name: Ground Fire Material
+  m_Shader: {fileID: -6465566751694194690, guid: d0f7370bb876efe498fcf972ce50a6a1,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

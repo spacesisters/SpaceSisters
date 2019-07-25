@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 {
     public int numberOfRooms;
+    public int testSpecificRoom;
     public string currentLevel;
     public NavMeshSurface surface;
 
@@ -51,6 +52,20 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
                                             firstRoom.GetComponent<LevelMetaInf>().lastBlock.y, 0);
         List<GameObject> gameRooms = new List<GameObject>();
         gameRooms.Add(firstRoom);
+
+        if (testSpecificRoom != 0)
+        {
+            GameObject nextRoom = Resources.Load<GameObject>(roomPath + testSpecificRoom);
+            nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
+            nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
+            Instantiate(nextRoom, roomPosition, Quaternion.identity);
+
+            gameRooms.Add(nextRoom);
+
+            roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
+            roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
+        }
+
         for (int i = 1; i < numberOfRooms; i++)
         {
 
