@@ -12,7 +12,7 @@ public class ArturEndZone : MonoBehaviour
     public float rocketLaunchSpeed;
     public float waitTime;
     public float endCutsceneTime;
-
+    public bool playCutscene;
 
     private float fadeTime = 2f;
     private bool endOfLevel = false;
@@ -62,17 +62,22 @@ public class ArturEndZone : MonoBehaviour
         screenFader.SetActive(false);
         rocket.SetActive(false);
 
+        if (playCutscene)
+        {
+            GameObject gameCanvas = GameObject.FindGameObjectWithTag("GameCanvas");
+            gameCanvas.SetActive(false);
 
-        GameObject gameCanvas = GameObject.FindGameObjectWithTag("GameCanvas");
-        gameCanvas.SetActive(false);
-        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().targetCamera = rocketCamera;
-        GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().enabled = true;
-        rocketCamera.farClipPlane = 1000;
 
-        yield return new WaitForSeconds(endCutsceneTime);
+            GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().targetCamera = rocketCamera;
+            GameObject.FindGameObjectWithTag("VideoPlayer").GetComponent<VideoPlayer>().enabled = true;
+            rocketCamera.farClipPlane = 1000;
 
+            yield return new WaitForSeconds(endCutsceneTime);
+
+
+            gameCanvas.SetActive(true);
+        }
         
-        gameCanvas.SetActive(true);
 
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().endOfLevel = true;
         endOfLevel = true;

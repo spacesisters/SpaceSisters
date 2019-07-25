@@ -147,7 +147,7 @@ public class CharacterSelectionUI : MonoBehaviour
     public void StartGame()
     {
         //TODO: Load cutscene first!
-        SceneManager.LoadScene("Scenes/Main/Tutorial");
+        SceneManager.LoadScene("Scenes/Main/IntroCutScene");
     }
 
     [System.Serializable]

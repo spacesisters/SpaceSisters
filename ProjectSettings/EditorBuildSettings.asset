@@ -12,15 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Julius/Test1.unity
     guid: a7bc01604653650468df080ac22a37bb
   - enabled: 1
-    path: Assets/Scenes/Victoria/Menu.unity
-    guid: 5c4907a1c0e271d4b83c4ead7aa4db1e
-  - enabled: 1
-    path: Assets/Scenes/Victoria/Game.unity
-    guid: fdc9f8287b59a7048884f63ffd855360
-  - enabled: 1
-    path: Assets/Scenes/Victoria/Highscore.unity
-    guid: c9d27e9063eee574dafb2ab1c03f1eed
-  - enabled: 1
     path: Assets/Scenes/Main/Ice.unity
     guid: afd8570bed5b76846b8b2732e501636a
   - enabled: 1
@@ -29,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/CharacterSelection.unity
     guid: b1a348fea43c6c04b8f9a5414ceb3769
+  - enabled: 1
+    path: Assets/Scenes/Main/IntroCutScene.unity
+    guid: 867545c71c46f054b8c86230075ca273
+  - enabled: 1
+    path: Assets/Scenes/Main/Tutorial.unity
+    guid: e7391e086b43f7c45ab80bbde216848b
   m_configObjects: {}
