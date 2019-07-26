@@ -294,11 +294,11 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         gravityReversed = !gravityReversed;
         if(gravityReversed)
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 180);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y -180, 180);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y -180, 0);
         }
     }
 
