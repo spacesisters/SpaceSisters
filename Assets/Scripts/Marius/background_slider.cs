@@ -13,7 +13,7 @@ public class background_slider : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         offset.x += 0.0005f;
         offset.y = Mathf.Sin(Time.time) * 0.05f;
