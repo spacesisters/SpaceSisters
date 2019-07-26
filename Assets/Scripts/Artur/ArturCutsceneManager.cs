@@ -23,6 +23,14 @@ public class ArturCutsceneManager : MonoBehaviour
         vPlayer.loopPointReached += LoadScene;
     }
 
+    private void Update()
+    {
+        if(Input.anyKey)
+        {
+            LoadScene(vPlayer);
+        }
+    }
+
     private void LoadScene(VideoPlayer vp)
     {
         backgroundMusic.SetActive(true);
