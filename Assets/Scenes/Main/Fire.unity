@@ -1147,6 +1147,7 @@ GameObject:
   - component: {fileID: 1750355783}
   - component: {fileID: 1750355782}
   - component: {fileID: 1750355781}
+  - component: {fileID: 1750355786}
   m_Layer: 0
   m_Name: Background
   m_TagString: Background
@@ -1166,7 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3be705895e548742b5e63a6ec700225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 1823166040}
 --- !u!64 &1750355782
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1198,7 +1199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1f7fd46bf3ea7f443b0e1c0c27c8b713, type: 2}
+  - {fileID: 2100000, guid: e2dbf9713b35f04458407deffd8efde8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1240,6 +1241,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750355786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750355780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1674f620e21a5942a268397dd0ca17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0}
+  mat: {fileID: 2100000, guid: e2dbf9713b35f04458407deffd8efde8, type: 2}
 --- !u!1001 &1823166032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1332,6 +1347,11 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 3728897160443548107, guid: 96821966de5e10542bbd40a82c55bb93,
+        type: 3}
+      propertyPath: far clip plane
+      value: 3000
+      objectReference: {fileID: 0}
     - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: baseOffset.z
@@ -1351,11 +1371,6 @@ PrefabInstance:
         type: 3}
       propertyPath: zoomLimiter
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728897160443548107, guid: 96821966de5e10542bbd40a82c55bb93,
-        type: 3}
-      propertyPath: far clip plane
-      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96821966de5e10542bbd40a82c55bb93, type: 3}

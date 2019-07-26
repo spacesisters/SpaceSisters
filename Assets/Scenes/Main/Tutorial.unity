@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1451,6 +1451,7 @@ GameObject:
   - component: {fileID: 1569096252}
   - component: {fileID: 1569096251}
   - component: {fileID: 1569096250}
+  - component: {fileID: 1569096255}
   m_Layer: 0
   m_Name: Background
   m_TagString: Background
@@ -1470,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3be705895e548742b5e63a6ec700225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 643686140}
 --- !u!64 &1569096251
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1502,7 +1503,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1f7fd46bf3ea7f443b0e1c0c27c8b713, type: 2}
+  - {fileID: 2100000, guid: e2dbf9713b35f04458407deffd8efde8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1544,6 +1545,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569096255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569096249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1674f620e21a5942a268397dd0ca17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0}
+  mat: {fileID: 2100000, guid: e2dbf9713b35f04458407deffd8efde8, type: 2}
 --- !u!1 &2108592227
 GameObject:
   m_ObjectHideFlags: 0
