@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRooms: 0
-  testSpecificRoom: 0
+  testSpecificRoom: 18
   currentLevel: ice
   surface: {fileID: 1085681871}
 --- !u!4 &572437055
