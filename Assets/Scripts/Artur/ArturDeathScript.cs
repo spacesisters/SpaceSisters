@@ -75,7 +75,6 @@ public class ArturDeathScript : MonoBehaviour
             }
 
         }
-        GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().SetBool("fade_out_in", false);
 
     }
 }
