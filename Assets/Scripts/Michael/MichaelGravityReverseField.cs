@@ -100,6 +100,12 @@ public class MichaelGravityReverseField : MonoBehaviour
             collision_exit_p2 = new Vector3(0,0,0);
             collision_enter_velocity_p2 = new Vector3(0,0,0);
         }
+
+        else if (collided_object.tag == "MovableBlock")
+        {
+            reverseGravity obj = collided_object.GetComponent<reverseGravity>();
+            obj.reverseG();
+        }
     }
 
 }
