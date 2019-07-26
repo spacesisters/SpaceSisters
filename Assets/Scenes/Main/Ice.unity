@@ -1580,6 +1580,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7111982928984999820, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 860702864}
+    - target: {fileID: 7111982928984999820, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111982929616596047, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 860702864}
+    - target: {fileID: 7111982929616596047, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111982929632907797, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 860702864}
+    - target: {fileID: 7111982929632907797, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMenuScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4194695112850388875, guid: 49192977ccfb230448a12019cd8cfcaf,
         type: 3}
       propertyPath: m_Enabled
