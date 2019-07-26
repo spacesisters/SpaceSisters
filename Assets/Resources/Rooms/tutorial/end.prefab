@@ -154,7 +154,7 @@ MonoBehaviour:
   rocketLaunchSpeed: 5
   waitTime: 3
   endCutsceneTime: 15
-  playCutscene: 1
+  playCutscene: 0
 --- !u!1 &4615122616850058401
 GameObject:
   m_ObjectHideFlags: 0

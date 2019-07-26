@@ -824,8 +824,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.949963, y: 1, z: 11.951374}
+  m_Center: {x: 0.38461784, y: 0, z: 0.9965954}
 --- !u!114 &1978410750877895798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,11 +936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5625240510150574036}
     m_Modifications:
-    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
-        type: 3}
-      propertyPath: m_Name
-      value: EnergyPotion
-      objectReference: {fileID: 0}
     - target: {fileID: 5272026247313745344, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -995,6 +990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyPotion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31793b2c0e9ffe348bc44274a0d8e4de, type: 3}
@@ -1251,11 +1251,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5625240510150574036}
     m_Modifications:
-    - target: {fileID: 1373707546161050651, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
-        type: 3}
-      propertyPath: m_Name
-      value: GravityReverseField (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5980721611423190682, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1311,6 +1306,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1373707546161050651, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
+        type: 3}
+      propertyPath: m_Name
+      value: GravityReverseField (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0, type: 3}
 --- !u!4 &2598134614076603866 stripped
@@ -1326,11 +1326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5625240510150574036}
     m_Modifications:
-    - target: {fileID: 1373707546161050651, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
-        type: 3}
-      propertyPath: m_Name
-      value: GravityReverseField
-      objectReference: {fileID: 0}
     - target: {fileID: 5980721611423190682, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1385,6 +1380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373707546161050651, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
+        type: 3}
+      propertyPath: m_Name
+      value: GravityReverseField
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0, type: 3}

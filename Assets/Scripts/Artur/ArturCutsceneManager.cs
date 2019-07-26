@@ -15,7 +15,10 @@ public class ArturCutsceneManager : MonoBehaviour
     private void Awake()
     {
         backgroundMusic = GameObject.FindGameObjectWithTag("backgroundmusic");
-        backgroundMusic.SetActive(false);
+        if(backgroundMusic != null)
+        {
+            backgroundMusic.SetActive(false);
+        }
     }
 
     void Start()

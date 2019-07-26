@@ -28,6 +28,8 @@ TagManager:
   - VideoPlayer
   - GameCanvas
   - Background
+  - backgroundmusic
+  - namesInput
   layers:
   - Default
   - TransparentFX

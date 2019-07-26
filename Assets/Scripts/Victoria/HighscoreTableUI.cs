@@ -36,7 +36,8 @@ public class HighscoreTableUI : MonoBehaviour
         }
 
         highscoreEntryTransformList = new List<Transform>();
-        for(int i = 0; i < 10; i++)
+        int entries = highscores.highscoreEntryList.Count >= 10 ? 10 : highscores.highscoreEntryList.Count;
+        for(int i = 0; i < entries; i++)
         {
             HighscoreEntry highscoreEntry = highscores.highscoreEntryList[i];
             CreateHighScoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);

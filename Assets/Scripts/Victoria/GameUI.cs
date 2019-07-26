@@ -16,6 +16,10 @@ public class GameUI : MonoBehaviour
 
     private ArturPlayerOneController player1;
     private ArturPlayerTwoController player2;
+
+
+    private GameObject p1GameObject, p2GameObject;
+
     private ArturMetaInf metaInf;
 
     public void Start()
@@ -29,6 +33,10 @@ public class GameUI : MonoBehaviour
 
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
+
+        p1GameObject = GameObject.FindGameObjectWithTag("Player1");
+        p2GameObject = GameObject.FindGameObjectWithTag("Player2");
+
         metaInf = GetComponent<ArturMetaInf>();
 
         pauseScreen.SetActive(false);
@@ -79,6 +87,10 @@ public class GameUI : MonoBehaviour
         {
             if (metaInf.playerLives == 0)
             {
+                metaInf.playerLives = -1;
+                p1GameObject.SetActive(false);
+                p2GameObject.SetActive(false);
+
                 gameoverScreen.SetActive(true);
                 afterSavingNamesScreen.SetActive(false);
             }
@@ -122,11 +134,11 @@ public class GameUI : MonoBehaviour
                     GameObject.Find("Star2").SetActive(true);
                     GameObject.Find("Star3").SetActive(true);
                 }
-            else if(metaInf.endOfLevel && endOfLevelScreen.active)
+            /*else if(metaInf.endOfLevel && endOfLevelScreen.active)
                 {
                     if (Input.anyKeyDown) ChangeMenuScene("ice");
                 }
-                
+             */  
             }
         }
             
@@ -175,22 +187,36 @@ public class GameUI : MonoBehaviour
 
     public void SaveScore(string name)
     {
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = metaInf.score, name = GameObject.Find("InputNames").GetComponent<InputField>().text }; // TODO wo speichern wir den Score??
+
+        name = GameObject.FindGameObjectWithTag("namesInput").GetComponent<Text>().text;
+
+        HighscoreEntry highscoreEntry = new HighscoreEntry { score = metaInf.score, name = name }; // TODO wo speichern wir den Score??
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        if(highscores == null)
+        {
+            highscores = new Highscores();
+        }
         highscores.highscoreEntryList.Add(highscoreEntry);
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
 
-        saveScoreScreen.SetActive(false);
         afterSavingNamesScreen.SetActive(true);
+        saveScoreScreen.SetActive(false);
     }
 
     [System.Serializable]
     private class Highscores
     {
         public List<HighscoreEntry> highscoreEntryList;
+        public Highscores()
+        {
+            if (highscoreEntryList == null)
+            {
+                highscoreEntryList = new List<HighscoreEntry>();
+            }
+        }
     }
 
     /*
