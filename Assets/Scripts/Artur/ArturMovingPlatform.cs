@@ -24,7 +24,7 @@ public class ArturMovingPlatform : MonoBehaviour
     private void Update()
     {
         //thisPlatform.position = Vector3.Lerp(thisPlatform.position, nextPosition, smoothTime * Time.deltaTime);
-        thisPlatform.position = Vector3.SmoothDamp(thisPlatform.position, nextPosition, ref currentVelocity, smoothTime);
+        thisPlatform.localPosition = Vector3.SmoothDamp(thisPlatform.localPosition, nextPosition, ref currentVelocity, smoothTime);
 
     }
 
