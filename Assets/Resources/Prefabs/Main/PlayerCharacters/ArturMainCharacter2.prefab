@@ -158,7 +158,7 @@ MonoBehaviour:
   playerNumber: 2
   controllerType: Xbox
   jumpForce: 25
-  dashForce: 40
+  dashForce: 30
   maxMovementSpeedGrounded: 12
   maxAccelerationGrounded: 150
   maxMovementSpeedAir: 8
@@ -167,7 +167,7 @@ MonoBehaviour:
   dashCooldown: 1
   energy: 1
   energyDrainPerSecond: 1.5
-  energyRefillPerSecond: 0.075
+  energyRefillPerSecond: 0.15
   shootCooldown: 1
   maxJumpAcceleration: 5000
   speedBonus: 0
@@ -184,7 +184,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988272602171002182}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0e765a141f4e42349b44eb7468acfc19, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 3eb2e297bd9fefa48b5ff113116cd66c, type: 3}
   m_Controller: {fileID: 9100000, guid: 6377c01bbb6818a47a878b939030166b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
