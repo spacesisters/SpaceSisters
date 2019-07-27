@@ -2062,7 +2062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7093503169049595519
 Transform:
   m_ObjectHideFlags: 0
@@ -2559,7 +2559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8420027636237137258
 Transform:
   m_ObjectHideFlags: 0
@@ -2847,6 +2847,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4418401253656741161}
     m_Modifications:
+    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyPotion
+      objectReference: {fileID: 0}
     - target: {fileID: 5272026247313745344, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2901,11 +2906,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
-        type: 3}
-      propertyPath: m_Name
-      value: EnergyPotion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31793b2c0e9ffe348bc44274a0d8e4de, type: 3}
@@ -2982,15 +2982,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GravityReverseField
       objectReference: {fileID: 0}
-    - target: {fileID: 6690706029480030754, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4057171943725610707, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690706029480030754, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 755758285689462342, guid: 95d2a6f1cbdadfd4896fdb10ad39c3c0,
         type: 3}
@@ -3102,6 +3102,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1255687125278034770}
     m_Modifications:
+    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyPotion
+      objectReference: {fileID: 0}
     - target: {fileID: 5272026247313745344, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3156,11 +3161,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4975288971809552003, guid: 31793b2c0e9ffe348bc44274a0d8e4de,
-        type: 3}
-      propertyPath: m_Name
-      value: EnergyPotion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31793b2c0e9ffe348bc44274a0d8e4de, type: 3}

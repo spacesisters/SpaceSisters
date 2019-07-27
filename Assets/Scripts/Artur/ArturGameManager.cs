@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class ArturGameManager
 {
     public static int playerLives = 10;
-    public static int playerScore = 0;
+    public static float playerScore = 250;
 
 }
 

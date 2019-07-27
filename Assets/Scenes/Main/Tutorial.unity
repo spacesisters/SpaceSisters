@@ -559,12 +559,12 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 3000
       objectReference: {fileID: 0}
-    - target: {fileID: 3728897160443548104, guid: 96821966de5e10542bbd40a82c55bb93,
+    - target: {fileID: 3728897159605717810, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: offset.z
       value: -20
       objectReference: {fileID: 0}
-    - target: {fileID: 3728897159605717810, guid: 96821966de5e10542bbd40a82c55bb93,
+    - target: {fileID: 3728897160443548104, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: offset.z
       value: -20
@@ -1369,12 +1369,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavmeshSurface
       objectReference: {fileID: 0}
-    - target: {fileID: 3983446448320706009, guid: 874dfec864163f64dab286a66aa1b7ea,
-        type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: f155a18d3e7197943ab887b76b1a451b,
-        type: 2}
     - target: {fileID: 3983446448320706008, guid: 874dfec864163f64dab286a66aa1b7ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1430,5 +1424,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3983446448320706009, guid: 874dfec864163f64dab286a66aa1b7ea,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: f155a18d3e7197943ab887b76b1a451b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874dfec864163f64dab286a66aa1b7ea, type: 3}

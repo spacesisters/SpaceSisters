@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ArturMetaInf : MonoBehaviour
 {
 
     public int playerLives = 10;
-    public int score = 0;
+    public float score = 0;
+    public float starScore = 250;
     public bool endOfLevel;
     public int playerHealth;
     public float speedBonusTime;
@@ -15,6 +17,7 @@ public class ArturMetaInf : MonoBehaviour
     public int initialPlayerHealth;
 
     private float cooldown = 1f;
+    private float timer = 0;
 
     private void Awake()
     {
@@ -25,7 +28,15 @@ public class ArturMetaInf : MonoBehaviour
 
     private void Update()
     {
-        score += 1; // TODO 
+        if (playerLives > 0)
+        {
+            starScore -= Time.deltaTime;
+            score -= Time.deltaTime;
+
+            starScore = Math.Max(0, starScore);
+            score = Math.Max(0, score);
+
+        }
 
         if (playerHealth <= 0)
         {
@@ -96,6 +107,6 @@ public class ArturMetaInf : MonoBehaviour
 
         }
 
-        GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().SetBool("fade_out_in", false);
+        //GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().SetBool("fade_out_in", false);
     }
 }

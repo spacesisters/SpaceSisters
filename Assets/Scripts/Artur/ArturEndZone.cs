@@ -80,8 +80,8 @@ public class ArturEndZone : MonoBehaviour
         
 
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().endOfLevel = true;
-        ArturGameManager.playerLives = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().playerLives;
 
+        ArturGameManager.playerLives = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().playerLives;
         ArturGameManager.playerScore += GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ArturMetaInf>().score;
         endOfLevel = true;
 

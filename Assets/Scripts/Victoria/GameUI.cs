@@ -102,7 +102,7 @@ public class GameUI : MonoBehaviour
             if (metaInf.endOfLevel && !endOfLevelScreen.active && (ArturSceneManager.currentLevel == "ice" || ArturSceneManager.currentLevel == "tutorial"))
             {
                 //Time.timeScale = 0;
-                endLevelScore.text = metaInf.score.ToString();
+                endLevelScore.text = metaInf.score.ToString("0.0");
                 endOfLevelScreen.SetActive(true);
                 player1.enabled = false;
                 // TODO for all objects with rigidbody
@@ -116,25 +116,25 @@ public class GameUI : MonoBehaviour
                 metaInf.enabled = false;
                 // TODO do this for all objects with rigid body
 
-                if (metaInf.score < 50)
+                if (metaInf.starScore < 50)
                 {
                     GameObject.Find("Star1").SetActive(false);
                     GameObject.Find("Star2").SetActive(false);
                     GameObject.Find("Star3").SetActive(false);
                 }
-                else if (metaInf.score > 50 && metaInf.score < 100)
+                else if (metaInf.starScore > 50 && metaInf.starScore < 100)
                 {
                     GameObject.Find("Star1").SetActive(true);
                     GameObject.Find("Star2").SetActive(false);
                     GameObject.Find("Star3").SetActive(false);
                 }
-                else if (metaInf.score > 100 && metaInf.score < 200)
+                else if (metaInf.starScore > 100 && metaInf.starScore < 200)
                 {
                     GameObject.Find("Star1").SetActive(true);
                     GameObject.Find("Star2").SetActive(true);
                     GameObject.Find("Star3").SetActive(false);
                 }
-                else if (metaInf.score > 200)
+                else if (metaInf.starScore > 200)
                 {
                     GameObject.Find("Star1").SetActive(true);
                     GameObject.Find("Star2").SetActive(true);
@@ -148,7 +148,7 @@ public class GameUI : MonoBehaviour
             } else if (metaInf.endOfLevel && !endOfLevelScreenFire.active && ArturSceneManager.currentLevel == "fire")
             {
                 Time.timeScale = 0;
-                endLevelScoreF.text = metaInf.score.ToString();
+                endLevelScoreF.text = metaInf.score.ToString("0.0");
                 endOfLevelScreenFire.SetActive(true);
                 player1.enabled = false;
                 // TODO for all objects with rigidbody
@@ -162,25 +162,25 @@ public class GameUI : MonoBehaviour
                 metaInf.enabled = false;
                 // TODO do this for all objects with rigid body
 
-                if (metaInf.score < 50)
+                if (metaInf.starScore < 50)
                 {
                     GameObject.Find("Star1F").SetActive(false);
                     GameObject.Find("Star2F").SetActive(false);
                     GameObject.Find("Star3F").SetActive(false);
                 }
-                else if (metaInf.score > 50 && metaInf.score < 100)
+                else if (metaInf.starScore > 50 && metaInf.starScore < 100)
                 {
                     GameObject.Find("Star1F").SetActive(true);
                     GameObject.Find("Star2F").SetActive(false);
                     GameObject.Find("Star3F").SetActive(false);
                 }
-                else if (metaInf.score > 100 && metaInf.score < 200)
+                else if (metaInf.starScore > 100 && metaInf.starScore < 200)
                 {
                     GameObject.Find("Star1F").SetActive(true);
                     GameObject.Find("Star2F").SetActive(true);
                     GameObject.Find("Star3F").SetActive(false);
                 }
-                else if (metaInf.score > 200)
+                else if (metaInf.starScore > 200)
                 {
                     GameObject.Find("Star1F").SetActive(true);
                     GameObject.Find("Star2F").SetActive(true);
@@ -245,7 +245,7 @@ public class GameUI : MonoBehaviour
             name = GameObject.Find("Actual Names Fire").GetComponent<Text>().text;
         }
 
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = metaInf.score, name = name }; 
+        HighscoreEntry highscoreEntry = new HighscoreEntry { score = Mathf.RoundToInt(metaInf.score), name = name }; 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         if(highscores == null)
@@ -257,7 +257,7 @@ public class GameUI : MonoBehaviour
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
 
-        if(ArturSceneManager.currentLevel == "ice")
+        if(ArturSceneManager.currentLevel == "ice" || ArturSceneManager.currentLevel == "tutorial")
         {
             afterSavingNamesScreen.SetActive(true);
             saveScoreScreen.SetActive(false);
@@ -266,7 +266,6 @@ public class GameUI : MonoBehaviour
             ChangeMenuScene("EndScene");
         }
 
-        Debug.Log(name + " " + metaInf.score);
 
     }
 

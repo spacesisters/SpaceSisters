@@ -152,7 +152,7 @@ public class BarUI : MonoBehaviour
         if (metaInf.playerLives > 0){
             foreach(GameObject score in scoretexts)
             {
-                score.GetComponent<Text>().text = metaInf.score.ToString();
+                score.GetComponent<Text>().text = metaInf.score.ToString("0");
             }
             foreach (GameObject live in livetexts)
             {
