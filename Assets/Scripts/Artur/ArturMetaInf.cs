@@ -19,6 +19,8 @@ public class ArturMetaInf : MonoBehaviour
     private void Awake()
     {
         playerHealth = initialPlayerHealth;
+        playerLives = ArturGameManager.playerLives;
+        score = ArturGameManager.playerScore;
     }
 
     private void Update()

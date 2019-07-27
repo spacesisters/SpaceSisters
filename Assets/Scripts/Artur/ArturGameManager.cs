@@ -1,0 +1,14 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+
+
+public class ArturGameManager
+{
+    public static int playerLives = 10;
+    public static int playerScore = 0;
+
+}
+

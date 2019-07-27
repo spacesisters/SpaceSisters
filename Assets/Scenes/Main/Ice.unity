@@ -1354,12 +1354,12 @@ PrefabInstance:
     - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: minZoom
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
       propertyPath: maxZoom
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3728897160169227232, guid: 96821966de5e10542bbd40a82c55bb93,
         type: 3}
