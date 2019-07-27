@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRooms: 0
-  testSpecificRoom: 18
+  testSpecificRoom: 19
   currentLevel: ice
   surface: {fileID: 1085681871}
 --- !u!4 &572437055
@@ -1629,6 +1629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243120882322007447, guid: 49192977ccfb230448a12019cd8cfcaf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49192977ccfb230448a12019cd8cfcaf, type: 3}

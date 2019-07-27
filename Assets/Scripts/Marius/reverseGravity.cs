@@ -17,16 +17,12 @@ public class reverseGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isReversed)
-        {
-            gForce *= -1;
-        }
-
         rb.AddForce(new Vector3(0.0f, gForce, 0.0f), ForceMode.Acceleration);
     }
 
     public void reverseG()
     {
         isReversed = !isReversed;
+        gForce *= -1;
     }
 }
