@@ -5,13 +5,17 @@ using UnityEngine;
 public class reverseGravity : MonoBehaviour
 {
     private Rigidbody rb;
-    private float gForce = 9.81f;
-    public bool isReversed = false;
+    private float gForce = -9.81f;
+    public bool isReversed;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (isReversed)
+        {
+            gForce *= -1.0f;
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +26,6 @@ public class reverseGravity : MonoBehaviour
 
     public void reverseG()
     {
-        isReversed = !isReversed;
-        gForce *= -1;
+        gForce *= -1.0f;
     }
 }

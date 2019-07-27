@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4747738165735070349}
   - component: {fileID: 7411441602568675149}
   m_Layer: 14
-  m_Name: Movable Object
+  m_Name: Movable Object Reversed
   m_TagString: MovableBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffbc756d9ad85846a393c0f25f53c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReversed: 0
+  isReversed: 1
