@@ -509,8 +509,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0378532, y: 1, z: 20.119314}
-  m_Center: {x: -0.01892662, y: 0, z: 2.6906004}
+  m_Size: {x: 1.0378532, y: 1.144722, z: 4.6779575}
+  m_Center: {x: -0.01892662, y: 0.07236099, z: -0.22621632}
 --- !u!114 &4514409840881258459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,11 +621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3200691546112391493}
     m_Modifications:
-    - target: {fileID: 6412946578381093913, guid: 1d444e9cf6e4f1943b3b5d175941cfe3,
-        type: 3}
-      propertyPath: m_Name
-      value: JumpPad
-      objectReference: {fileID: 0}
     - target: {fileID: 6412946578381093916, guid: 1d444e9cf6e4f1943b3b5d175941cfe3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,6 +680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412946578381093913, guid: 1d444e9cf6e4f1943b3b5d175941cfe3,
+        type: 3}
+      propertyPath: m_Name
+      value: JumpPad
       objectReference: {fileID: 0}
     - target: {fileID: 6412946578381093912, guid: 1d444e9cf6e4f1943b3b5d175941cfe3,
         type: 3}

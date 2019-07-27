@@ -47,7 +47,7 @@ public class ArturEndZone : MonoBehaviour
 
     public void Update()
     {
-        if (Input.anyKey && endOfLevel)
+        if (Input.anyKey && endOfLevel && !(ArturSceneManager.currentLevel == "fire"))
         {
             SceneManager.LoadScene(nextScene);
         }

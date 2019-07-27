@@ -99,9 +99,9 @@ public class GameUI : MonoBehaviour
                 gameoverScreen.SetActive(true);
                 afterSavingNamesScreen.SetActive(false);
             }
-            if (metaInf.endOfLevel && !endOfLevelScreen.active && ArturSceneManager.currentLevel == "ice")
+            if (metaInf.endOfLevel && !endOfLevelScreen.active && (ArturSceneManager.currentLevel == "ice" || ArturSceneManager.currentLevel == "tutorial"))
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 endLevelScore.text = metaInf.score.ToString();
                 endOfLevelScreen.SetActive(true);
                 player1.enabled = false;
