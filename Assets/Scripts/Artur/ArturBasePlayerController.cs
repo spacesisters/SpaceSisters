@@ -332,5 +332,28 @@ public abstract class ArturBasePlayerController : MonoBehaviour
     }
 
     public abstract bool GetDoForcefield();
+
+    public bool isDashing()
+    {
+        return doDash;
+    }
+
+    public bool isShooting()
+    {
+        return doShoot;
+    }
+
+    public bool isForcefielding()
+    {
+        return doForcefield;
+    }
+
+    public bool isJumping()
+    {
+        return doJump;
+        
+    }
+
+    
 }
 
