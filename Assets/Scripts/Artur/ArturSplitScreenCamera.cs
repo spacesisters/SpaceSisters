@@ -31,8 +31,18 @@ public class ArturSplitScreenCamera : MonoBehaviour
         SetPlayers();
     }
 
+    private void Update()
+    {
+        if (player1 == null || player2 == null)
+        {
+            SetPlayers();
+        }
+    }
+
     private void LateUpdate()
     {
+        
+
         Move();
         Zoom();
 

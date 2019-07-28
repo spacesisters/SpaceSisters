@@ -16,8 +16,6 @@ public class ArturDeathScript : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().Play("fade_out_in");
 
-
-
         }
 
     }
@@ -33,12 +31,27 @@ public class ArturDeathScript : MonoBehaviour
 
         Vector3 respawnPosition = levelMetaInf.respawnLocation;
 
+        string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
+        string playerTwoPath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter2";
+
         ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 
+        Destroy(GameObject.FindGameObjectWithTag("Player1"));
+        Destroy(GameObject.FindGameObjectWithTag("Player2"));
+
+        GameObject playerOne = Resources.Load<GameObject>(playerOnePath);
+        GameObject playerTwo = Resources.Load<GameObject>(playerTwoPath);
+
+        Instantiate(playerOne, respawnPosition + new Vector3(0, 3, 0), Quaternion.identity);
+        Instantiate(playerTwo, respawnPosition + new Vector3(2, 3, 0), Quaternion.identity);
+
+        playerOne.GetComponent<ArturBasePlayerController>().gravityReversed = p1.gravityReversed;
+        playerTwo.GetComponent<ArturBasePlayerController>().gravityReversed = p2.gravityReversed;
+
+
         p1.Respawn(respawnPosition + new Vector3(0, 3, 0));
         p2.Respawn(respawnPosition + new Vector3(2, 3, 0));
-
 
         metaInf.playerLives--;
 

@@ -99,6 +99,13 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (player1 == null || player2 == null)
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player1").transform;
+            player2 = GameObject.FindGameObjectWithTag("Player2").transform;
+        }
+
+
         if (health <= 0)
         {
             if(this.gameObject != null) 

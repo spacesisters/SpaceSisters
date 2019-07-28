@@ -43,7 +43,10 @@ public class ArturMetaInf : MonoBehaviour
             playerLives--;
             GameObject.FindGameObjectWithTag("ScreenFader").GetComponent<Animator>().Play("fade_out_in");
 
-            StartCoroutine(Respawn(cooldown));
+            if (playerLives > 0)
+            {
+                StartCoroutine(Respawn(cooldown));
+            }
             playerHealth = initialPlayerHealth;
 
         }
@@ -60,12 +63,14 @@ public class ArturMetaInf : MonoBehaviour
             Destroy(enemy);
         }
 
+
         ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 
         ArturBasePlayerController behind = p1;
         if (p2.transform.position.x < p1.transform.position.x)
             behind = p2;
+
 
         GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
         LevelMetaInf levelMetaInf = rooms[0].GetComponent<LevelMetaInf>();
@@ -78,8 +83,20 @@ public class ArturMetaInf : MonoBehaviour
             }
         }
         Vector3 respawnPosition = levelMetaInf.respawnLocation;
-        p1.transform.position = respawnPosition + new Vector3(0, 3, 0);
-        p2.transform.position = respawnPosition + new Vector3(2, 3, 0);
+
+        Destroy(GameObject.FindGameObjectWithTag("Player1"));
+        Destroy(GameObject.FindGameObjectWithTag("Player2"));
+
+        string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
+        string playerTwoPath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter2";
+
+
+        GameObject playerOne = Resources.Load<GameObject>(playerOnePath);
+        GameObject playerTwo = Resources.Load<GameObject>(playerTwoPath);
+
+        Instantiate(playerOne, respawnPosition + new Vector3(0, 3, 0), Quaternion.identity);
+        Instantiate(playerTwo, respawnPosition + new Vector3(2, 3, 0), Quaternion.identity);
+
 
         foreach (GameObject g in rooms)
         {
@@ -93,10 +110,6 @@ public class ArturMetaInf : MonoBehaviour
             Destroy(g);
 
         }
-
-        
-
-
 
         string enemyPath = "Prefabs/Main/Enemies/Enemy";
         List<Vector3> allEnemyPositions = GameObject.FindGameObjectWithTag("ProceduralGenerator").GetComponent<ArturProceduralGeneratorManagerScript>().allEnemyPositions;
