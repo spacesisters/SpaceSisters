@@ -41,13 +41,21 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         TranslateInput();
 
         if (doForcefield && energy > energyDrainPerSecond * Time.deltaTime)
-        {           
+        {
+            if (playForcefieldSound)
+            {
+                audioSource.PlayOneShot(sfxForcefield);
+                playForcefieldSound = false;
+            }
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond * Time.deltaTime;
             playForcefieldAnimation = true;
         }
         else
+        {
             playForcefieldAnimation = false;
+            playForcefieldSound = true;
+        }
 
     }
 

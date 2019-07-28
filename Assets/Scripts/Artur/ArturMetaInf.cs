@@ -16,7 +16,7 @@ public class ArturMetaInf : MonoBehaviour
     [SerializeField]
     public int initialPlayerHealth;
 
-    private float cooldown = 1f;
+    private float cooldown = 0.1f;
     private float timer = 0;
 
     private void Awake()
@@ -53,6 +53,7 @@ public class ArturMetaInf : MonoBehaviour
     IEnumerator Respawn(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {

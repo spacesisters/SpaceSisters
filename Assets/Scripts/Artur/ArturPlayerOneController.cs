@@ -51,6 +51,13 @@ public class ArturPlayerOneController : ArturBasePlayerController
         if (doForcefield && pushCooldownTime == 0 && energy > energyDrainPerSecond)
         {
             playForcefieldAnimation = true;
+
+            if (playForcefieldSound)
+            {
+                audioSource.PlayOneShot(sfxForcefield);
+                playForcefieldSound = false;
+            }
+
             forcefieldController.ActivateForcefield();
             energy -= energyDrainPerSecond;
             if (energy < 0)
@@ -58,6 +65,8 @@ public class ArturPlayerOneController : ArturBasePlayerController
             pushCooldownTime = pushCooldownTimer;
             doForcefield = false;
         }
+        else
+            playForcefieldSound = true;
 
     }
 

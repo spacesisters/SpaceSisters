@@ -11,7 +11,7 @@ public class ArturObjectSwitch : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("MovableBlock"))
         {
             target.SetActive(!target.activeSelf);
         }
@@ -19,7 +19,7 @@ public class ArturObjectSwitch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("MovableBlock"))
         {
             if (!permanent)
             {

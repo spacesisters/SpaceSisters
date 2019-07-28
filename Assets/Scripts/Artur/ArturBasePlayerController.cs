@@ -43,6 +43,8 @@ public abstract class ArturBasePlayerController : MonoBehaviour
     protected bool doForcefield;
     protected InputManager controller;
     protected Animator animator;
+    protected bool playForcefieldSound = true;
+
 
     public bool gravityReversed;
     [SerializeField]
@@ -203,6 +205,8 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         {
             rBody.velocity = new Vector3(rBody.velocity.x, maxVerticalSpeed, 0);
         }
+
+        
     }
 
 
@@ -278,10 +282,12 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         if (playerInput.forcefieldButton && energy > 0)
         {
             doForcefield = true;
-            audioSource.PlayOneShot(sfxForcefield);
+            
         }
         else
+        {
             doForcefield = false;
+        }
 
         if (playerInput.shootButton && shootTimer == 0)
         {
