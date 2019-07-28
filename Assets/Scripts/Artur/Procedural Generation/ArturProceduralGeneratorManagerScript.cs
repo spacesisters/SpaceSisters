@@ -32,7 +32,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         else if (currentLevel == "fire")
         {
             numberOfStartRooms = 1;
-            numberOfRandomRooms = 11;
+            numberOfRandomRooms = 12;
             numberOfPuzzleRooms = 1;
         }
         else if (currentLevel == "michael_test")
@@ -41,7 +41,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             numberOfRandomRooms = 1;
             numberOfPuzzleRooms = 1;
         }
-
+        numberOfRooms = ArturGameManager.numberOfRooms;
         allEnemyPositions = new List<Vector3>();
         string roomPath = "Rooms/" + currentLevel + "/";
         System.Random rand = new System.Random();

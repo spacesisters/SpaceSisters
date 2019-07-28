@@ -798,7 +798,7 @@ MonoBehaviour:
   lastBlock: {x: 44, y: 35}
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
-  roomNumber: 5
+  roomNumber: 6
   enemyPositions: []
 --- !u!1 &4958202239711151999
 GameObject:

@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRooms: 10
-  testSpecificRoom: 10
+  testSpecificRoom: 12
   currentLevel: fire
   surface: {fileID: 1307751260}
   allEnemyPositions: []
