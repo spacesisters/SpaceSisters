@@ -12,13 +12,21 @@ class ArturOptionsScript : MonoBehaviour
         int numberOfRooms;
         string nORooms = GameObject.FindGameObjectWithTag("NumberOfRoomsOption").GetComponent<Text>().text;
         bool isNumeric = int.TryParse(nORooms, out numberOfRooms);
-        if (isNumeric)
-        {        
+        if (isNumeric && !nORooms.Equals(""))
+        {
             numberOfRooms = Convert.ToInt32(nORooms);
             GameObject.FindGameObjectWithTag("NumberOfRoomsPlaceholder").GetComponent<Text>().text = nORooms;
+
+            RoomNumber roomnumber = new RoomNumber { numberOfRooms = numberOfRooms };
+            string json = JsonUtility.ToJson(roomnumber);
+            PlayerPrefs.SetString("numberOfRooms", json);
+            PlayerPrefs.Save();
         }
+    }
 
-        ArturGameManager.numberOfRooms = numberOfRooms;
-
+    [System.Serializable]
+    private class RoomNumber
+    {
+        public int numberOfRooms;
     }
 }
