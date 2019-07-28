@@ -28,7 +28,7 @@ public class ArturCutsceneManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.anyKey)
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             LoadScene(vPlayer);
         }

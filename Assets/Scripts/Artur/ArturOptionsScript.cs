@@ -13,10 +13,9 @@ class ArturOptionsScript : MonoBehaviour
         string nORooms = GameObject.FindGameObjectWithTag("NumberOfRoomsOption").GetComponent<Text>().text;
         bool isNumeric = int.TryParse(nORooms, out numberOfRooms);
         if (isNumeric)
-        {
+        {        
             numberOfRooms = Convert.ToInt32(nORooms);
             GameObject.FindGameObjectWithTag("NumberOfRoomsPlaceholder").GetComponent<Text>().text = nORooms;
-
         }
 
         ArturGameManager.numberOfRooms = numberOfRooms;
