@@ -24,6 +24,12 @@ public abstract class ArturBasePlayerController : MonoBehaviour
     public float shootCooldown;
     public float maxJumpAcceleration;
 
+    public AudioClip sfxJump;
+    public AudioClip sfxDash;
+    public AudioClip sfxShot;
+    public AudioClip sfxForcefield;
+
+    public AudioSource audioSource;
 
     // public float improvedAmmo; // between 0 and 1 // **
     public bool speedBonus;
@@ -52,13 +58,11 @@ public abstract class ArturBasePlayerController : MonoBehaviour
     private bool doShoot;
     private float groundCheckRadius = 0.1f;
 
-
     protected void Initialize()
     {
         energy = 1f;
         speedBonus = false;
         animator = GetComponent<Animator>();
-
         gunScript = GetComponent<ArturGunScript>();
         controller = new InputManager(playerNumber, controllerType);
 
@@ -71,6 +75,8 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         //size = new Vector3(boxCollider.size.x * 0.975f, boxCollider.size.y * 0.025f, boxCollider.size.z);
         constForce.force = new Vector3(0, ArturSceneManager.gravity, 0);
         gravityReversed = false;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void Update()
@@ -256,6 +262,7 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         if (playerInput.dashButton && dashTime == 0)
         {
             doDash = true;
+            audioSource.PlayOneShot(sfxDash);
         }
         else
             doDash = false;
@@ -263,6 +270,7 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         if (playerInput.jumpButton && isGrounded)
         {
             doJump = true;
+            audioSource.PlayOneShot(sfxJump);
         }
         else
             doJump = false;
@@ -270,6 +278,7 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         if (playerInput.forcefieldButton && energy > 0)
         {
             doForcefield = true;
+            audioSource.PlayOneShot(sfxForcefield);
         }
         else
             doForcefield = false;
@@ -277,6 +286,7 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         if (playerInput.shootButton && shootTimer == 0)
         {
             doShoot = true;
+            audioSource.PlayOneShot(sfxShot);
         }
         else
             doShoot = false;

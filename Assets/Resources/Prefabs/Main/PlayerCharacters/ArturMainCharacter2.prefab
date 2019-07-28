@@ -171,6 +171,10 @@ MonoBehaviour:
   energyRefillPerSecond: 0.15
   shootCooldown: 1
   maxJumpAcceleration: 5000
+  sfxJump: {fileID: 8300000, guid: 714ca8e0baf0f824ab76f9fcf94a72a1, type: 3}
+  sfxDash: {fileID: 8300000, guid: 1aa3495f56404a74888c96b43449a139, type: 3}
+  sfxShot: {fileID: 8300000, guid: 6661eb5783dd9c8418a7d5568855810c, type: 3}
+  sfxForcefield: {fileID: 8300000, guid: 966aa16c23ee74f40acdc5b77712efef, type: 3}
   speedBonus: 0
   gravityReversed: 0
   groundLayers:
@@ -185,7 +189,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988272602171002182}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3eb2e297bd9fefa48b5ff113116cd66c, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 42243021d7be7c04596e0a9c8536c173, type: 3}
   m_Controller: {fileID: 9100000, guid: 6377c01bbb6818a47a878b939030166b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
