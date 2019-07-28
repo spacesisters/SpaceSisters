@@ -53,6 +53,11 @@ public class ArturMetaInf : MonoBehaviour
     IEnumerator Respawn(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
         ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 
@@ -87,11 +92,7 @@ public class ArturMetaInf : MonoBehaviour
 
         }
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
+        
 
 
 
