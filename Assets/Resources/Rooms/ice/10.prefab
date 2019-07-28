@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee0ee8ac7cce9b419e8a1853afa0e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastBlock: {x: 23.41, y: 0}
+  lastBlock: {x: 23.83, y: 0}
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
   roomNumber: 10

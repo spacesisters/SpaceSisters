@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 446335995643737526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.57, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 266066629903481862}
   m_RootOrder: 4
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee0ee8ac7cce9b419e8a1853afa0e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastBlock: {x: 15.49, y: 31.5}
+  lastBlock: {x: 15.49, y: 0}
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
   roomNumber: 6
@@ -412,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 5039426017919342464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.55, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 266066629903481862}
   m_RootOrder: 1
@@ -503,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 6958329674645648795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 13.92, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 266066629903481862}
   m_RootOrder: 5
