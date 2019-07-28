@@ -58,6 +58,7 @@ public class ArturMetaInf : MonoBehaviour
         {
             Destroy(enemy);
         }
+
         ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
         ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
 

@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 572437054}
   m_Layer: 0
   m_Name: ArturProceduralGeneratorManager
-  m_TagString: Untagged
+  m_TagString: ProceduralGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,9 +331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRooms: 10
-  testSpecificRoom: 19
+  testSpecificRoom: 15
   currentLevel: ice
   surface: {fileID: 1085681871}
+  allEnemyPositions: []
 --- !u!4 &572437055
 Transform:
   m_ObjectHideFlags: 0
