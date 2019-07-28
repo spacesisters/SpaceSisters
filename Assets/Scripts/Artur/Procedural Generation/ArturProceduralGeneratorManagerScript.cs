@@ -9,6 +9,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
     public int testSpecificRoom;
     public string currentLevel;
     public NavMeshSurface surface;
+    public List<Vector3> allEnemyPositions;
 
     void Awake()
     {
@@ -41,7 +42,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             numberOfPuzzleRooms = 1;
         }
 
-
+        allEnemyPositions = new List<Vector3>();
         string roomPath = "Rooms/" + currentLevel + "/";
         System.Random rand = new System.Random();
         GameObject firstRoom = Resources.Load<GameObject>(roomPath + "start" + (rand.Next(1, numberOfStartRooms)));
@@ -52,6 +53,12 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
                                             firstRoom.GetComponent<LevelMetaInf>().lastBlock.y, 0);
         List<GameObject> gameRooms = new List<GameObject>();
         gameRooms.Add(firstRoom);
+
+        for(int i = 0; i < firstRoom.GetComponent<LevelMetaInf>().enemyPositions.Count; i++)
+        {
+            allEnemyPositions.Add(firstRoom.GetComponent<LevelMetaInf>().enemyPositions[i] + firstRoom.GetComponent<LevelMetaInf>().instantiatedAt);
+        }
+
 
         if (testSpecificRoom != 0)
         {
@@ -94,6 +101,13 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
             roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
             roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
+
+
+            for (int j = 0; j < nextRoom.GetComponent<LevelMetaInf>().enemyPositions.Count; j++)
+            {
+                allEnemyPositions.Add(nextRoom.GetComponent<LevelMetaInf>().enemyPositions[j] + nextRoom.GetComponent<LevelMetaInf>().instantiatedAt);
+            }
+
         }
 
         GameObject endRoom = Resources.Load<GameObject>(roomPath + "end");
@@ -114,16 +128,12 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         surface.BuildNavMesh();
         string enemyPath = "Prefabs/Main/Enemies/Enemy";
 
-        foreach(GameObject room in gameRooms)
+        foreach(Vector3 enemyPos in allEnemyPositions)
         {
-            LevelMetaInf inf = room.GetComponent<LevelMetaInf>();
-            foreach(Vector3 enemyPosition in inf.enemyPositions)
-            {
-                GameObject enemy = Resources.Load<GameObject>(enemyPath);
-                Instantiate(enemy, inf.instantiatedAt + enemyPosition, Quaternion.identity);
-            }
-            
+            GameObject enemy = Resources.Load<GameObject>(enemyPath);
+            Instantiate(enemy, enemyPos, Quaternion.identity);
         }
+
 
     }
 

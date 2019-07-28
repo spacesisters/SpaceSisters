@@ -64,16 +64,11 @@ public class ArturDeathScript : MonoBehaviour
         }
 
         string enemyPath = "Prefabs/Main/Enemies/Enemy";
-
-        foreach (GameObject room in rooms)
+        List<Vector3> allEnemyPositions = GameObject.FindGameObjectWithTag("ProceduralGenerator").GetComponent<ArturProceduralGeneratorManagerScript>().allEnemyPositions;
+        foreach (Vector3 enemyPos in allEnemyPositions)
         {
-            LevelMetaInf inf = room.GetComponent<LevelMetaInf>();
-            foreach (Vector3 enemyPosition in inf.enemyPositions)
-            {
-                GameObject enemy = Resources.Load<GameObject>(enemyPath);
-                Instantiate(enemy, inf.instantiatedAt + enemyPosition, Quaternion.identity);
-            }
-
+            GameObject enemy = Resources.Load<GameObject>(enemyPath);
+            Instantiate(enemy, enemyPos, Quaternion.identity);
         }
 
     }

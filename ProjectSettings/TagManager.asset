@@ -30,6 +30,7 @@ TagManager:
   - Background
   - backgroundmusic
   - namesInput
+  - ProceduralGenerator
   layers:
   - Default
   - TransparentFX
