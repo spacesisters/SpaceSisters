@@ -42,6 +42,12 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             numberOfPuzzleRooms = 1;
         }
         numberOfRooms = ArturGameManager.numberOfRooms;
+
+        if (currentLevel == "tutorial")
+        {
+            numberOfRooms = 0;
+        }
+
         allEnemyPositions = new List<Vector3>();
         string roomPath = "Rooms/" + currentLevel + "/";
         System.Random rand = new System.Random();

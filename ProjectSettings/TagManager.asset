@@ -31,6 +31,9 @@ TagManager:
   - backgroundmusic
   - namesInput
   - ProceduralGenerator
+  - DoorSwitch
+  - NumberOfRoomsOption
+  - NumberOfRoomsPlaceholder
   layers:
   - Default
   - TransparentFX
