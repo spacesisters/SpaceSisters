@@ -32,7 +32,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         else if (currentLevel == "fire")
         {
             numberOfStartRooms = 1;
-            numberOfRandomRooms = 4;
+            numberOfRandomRooms = 6;
             numberOfPuzzleRooms = 1;
         }
         else if (currentLevel == "michael_test")
@@ -71,6 +71,11 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 
             roomPosition.x += nextRoom.GetComponent<LevelMetaInf>().lastBlock.x + 1;
             roomPosition.y += nextRoom.GetComponent<LevelMetaInf>().lastBlock.y;
+
+            for (int j = 0; j < nextRoom.GetComponent<LevelMetaInf>().enemyPositions.Count; j++)
+            {
+                allEnemyPositions.Add(nextRoom.GetComponent<LevelMetaInf>().enemyPositions[j] + nextRoom.GetComponent<LevelMetaInf>().instantiatedAt);
+            }
         }
 
         for (int i = 1; i < numberOfRooms; i++)

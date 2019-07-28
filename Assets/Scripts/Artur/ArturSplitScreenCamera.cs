@@ -36,7 +36,7 @@ public class ArturSplitScreenCamera : MonoBehaviour
         Move();
         Zoom();
 
-        if (GetPlayerDistance() > maxPlayerDistance)
+        if ((GetPlayerDistanceX() > maxPlayerDistance) || (GetPlayerDistanceY() > maxPlayerDistance))
         {
             cameraLeft.enabled = true;
             cameraRight.enabled = true;
@@ -55,7 +55,7 @@ public class ArturSplitScreenCamera : MonoBehaviour
 
     private void Zoom()
     {
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetPlayerDistance() / zoomLimiter);
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetPlayerDistanceX() / zoomLimiter);
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
     }
 
@@ -82,10 +82,17 @@ public class ArturSplitScreenCamera : MonoBehaviour
         return bounds.center;
     }
 
-    private float GetPlayerDistance()
+    private float GetPlayerDistanceX()
     {
         var bounds = new Bounds(player1.transform.position, Vector3.zero);
         bounds.Encapsulate(player2.transform.position);
         return bounds.size.x;
+    }
+
+    private float GetPlayerDistanceY()
+    {
+        var bounds = new Bounds(player1.transform.position, Vector3.zero);
+        bounds.Encapsulate(player2.transform.position);
+        return bounds.size.y;
     }
 }
