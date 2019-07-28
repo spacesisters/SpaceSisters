@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -887,7 +887,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1475,13 +1475,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1863916814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafc28a8585524346a0ac178be73c59b, type: 3}
+  m_Script: {fileID: 11500000, guid: 073b6be5513184d4da66c5a0a99616b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1489160730}
-  wireframeMat: {fileID: 2100000, guid: e129d33d8724bf84f836bb7a22215018, type: 2}
-  yChange: 0.02
-  yOffset: -5
 --- !u!64 &1863916816
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1549,7 +1545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863916814}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: -22.5}
+  m_LocalPosition: {x: 0, y: -2, z: -22.5}
   m_LocalScale: {x: 400, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
