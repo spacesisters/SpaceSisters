@@ -31,11 +31,17 @@ public class ArturDeathScript : MonoBehaviour
 
         Vector3 respawnPosition = levelMetaInf.respawnLocation;
 
-        string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
-        string playerTwoPath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter2";
 
-        ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
-        ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
+        GameObject playerOne = GameObject.FindGameObjectWithTag("Player1");
+        GameObject playerTwo = GameObject.FindGameObjectWithTag("Player2");
+
+        playerOne.transform.parent = null;
+        playerTwo.transform.parent = null;
+
+        ArturPlayerOneController p1 = playerOne.GetComponent<ArturPlayerOneController>();
+        ArturPlayerTwoController p2 = playerTwo.GetComponent<ArturPlayerTwoController>();
+
+        /*
 
         Destroy(GameObject.FindGameObjectWithTag("Player1"));
         Destroy(GameObject.FindGameObjectWithTag("Player2"));
@@ -49,9 +55,12 @@ public class ArturDeathScript : MonoBehaviour
         playerOne.GetComponent<ArturBasePlayerController>().gravityReversed = p1.gravityReversed;
         playerTwo.GetComponent<ArturBasePlayerController>().gravityReversed = p2.gravityReversed;
 
-
+        */
         p1.Respawn(respawnPosition + new Vector3(0, 3, 0));
         p2.Respawn(respawnPosition + new Vector3(2, 3, 0));
+
+        //playerOne.GetComponent<ArturForcefieldAnimator>().GetPlayerTarget();
+        //playerTwo.GetComponent<ArturForcefieldAnimator>().GetPlayerTarget();
 
         metaInf.playerLives--;
 

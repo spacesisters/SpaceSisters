@@ -62,10 +62,14 @@ public class ArturMetaInf : MonoBehaviour
         {
             Destroy(enemy);
         }
+        GameObject playerOne = GameObject.FindGameObjectWithTag("Player1");
+        GameObject playerTwo = GameObject.FindGameObjectWithTag("Player2");
 
+        playerOne.transform.parent = null;
+        playerTwo.transform.parent = null;
 
-        ArturPlayerOneController p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<ArturPlayerOneController>();
-        ArturPlayerTwoController p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<ArturPlayerTwoController>();
+        ArturPlayerOneController p1 = playerOne.GetComponent<ArturPlayerOneController>();
+        ArturPlayerTwoController p2 = playerTwo.GetComponent<ArturPlayerTwoController>();
 
         ArturBasePlayerController behind = p1;
         if (p2.transform.position.x < p1.transform.position.x)
@@ -84,19 +88,8 @@ public class ArturMetaInf : MonoBehaviour
         }
         Vector3 respawnPosition = levelMetaInf.respawnLocation;
 
-        Destroy(GameObject.FindGameObjectWithTag("Player1"));
-        Destroy(GameObject.FindGameObjectWithTag("Player2"));
-
-        string playerOnePath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter1";
-        string playerTwoPath = "Prefabs/Main/PlayerCharacters/ArturMainCharacter2";
-
-
-        GameObject playerOne = Resources.Load<GameObject>(playerOnePath);
-        GameObject playerTwo = Resources.Load<GameObject>(playerTwoPath);
-
-        Instantiate(playerOne, respawnPosition + new Vector3(0, 3, 0), Quaternion.identity);
-        Instantiate(playerTwo, respawnPosition + new Vector3(2, 3, 0), Quaternion.identity);
-
+        p1.Respawn(respawnPosition + new Vector3(0, 3, 0));
+        p2.Respawn(respawnPosition + new Vector3(2, 3, 0));
 
         foreach (GameObject g in rooms)
         {

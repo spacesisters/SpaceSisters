@@ -19,7 +19,18 @@ public class ArturForcefieldAnimator : MonoBehaviour
     private void Update()
     {
         bool doForcefield = player.GetDoForcefield();
+
+        if (doForcefield)
+        {
+            print(playerTag + " " + doForcefield);
+
+        }
+
         animator.SetBool("isForcefielding", doForcefield);
     }
 
+    public void GetPlayerTarget()
+    {
+        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<ArturBasePlayerController>();
+    }
 }
