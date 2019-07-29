@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5411403575899888594}
   - component: {fileID: 4812869603648105521}
   m_Layer: 0
-  m_Name: 13
+  m_Name: 14
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   lastBlock: {x: 41, y: 0}
   respawnLocation: {x: 0, y: 0, z: 0}
   instantiatedAt: {x: 0, y: 0, z: 0}
-  roomNumber: 13
+  roomNumber: 14
   enemyPositions: []
 --- !u!1 &261848234741220426
 GameObject:
