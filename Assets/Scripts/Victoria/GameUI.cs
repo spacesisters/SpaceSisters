@@ -257,13 +257,14 @@ public class GameUI : MonoBehaviour
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
 
-        if(ArturSceneManager.currentLevel == "ice" || ArturSceneManager.currentLevel == "tutorial")
+        if(ArturSceneManager.currentLevel == "fire" && metaInf.playerLives > -1)
+        {
+            ChangeMenuScene("EndScene");
+        }
+        else
         {
             afterSavingNamesScreen.SetActive(true);
             saveScoreScreen.SetActive(false);
-        } else if(ArturSceneManager.currentLevel == "fire")
-        {
-            ChangeMenuScene("EndScene");
         }
 
 
