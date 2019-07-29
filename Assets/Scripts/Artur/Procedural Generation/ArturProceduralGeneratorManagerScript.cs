@@ -32,7 +32,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         else if (currentLevel == "fire")
         {
             numberOfStartRooms = 1;
-            numberOfRandomRooms = 12;
+            numberOfRandomRooms = 13;
             numberOfPuzzleRooms = 1;
         }
         else if (currentLevel == "michael_test")
