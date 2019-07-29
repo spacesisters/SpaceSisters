@@ -41,26 +41,9 @@ public class ArturDeathScript : MonoBehaviour
         ArturPlayerOneController p1 = playerOne.GetComponent<ArturPlayerOneController>();
         ArturPlayerTwoController p2 = playerTwo.GetComponent<ArturPlayerTwoController>();
 
-        /*
-
-        Destroy(GameObject.FindGameObjectWithTag("Player1"));
-        Destroy(GameObject.FindGameObjectWithTag("Player2"));
-
-        GameObject playerOne = Resources.Load<GameObject>(playerOnePath);
-        GameObject playerTwo = Resources.Load<GameObject>(playerTwoPath);
-
-        Instantiate(playerOne, respawnPosition + new Vector3(0, 3, 0), Quaternion.identity);
-        Instantiate(playerTwo, respawnPosition + new Vector3(2, 3, 0), Quaternion.identity);
-
-        playerOne.GetComponent<ArturBasePlayerController>().gravityReversed = p1.gravityReversed;
-        playerTwo.GetComponent<ArturBasePlayerController>().gravityReversed = p2.gravityReversed;
-
-        */
         p1.Respawn(respawnPosition + new Vector3(0, 3, 0));
         p2.Respawn(respawnPosition + new Vector3(2, 3, 0));
 
-        //playerOne.GetComponent<ArturForcefieldAnimator>().GetPlayerTarget();
-        //playerTwo.GetComponent<ArturForcefieldAnimator>().GetPlayerTarget();
 
         metaInf.playerLives--;
 

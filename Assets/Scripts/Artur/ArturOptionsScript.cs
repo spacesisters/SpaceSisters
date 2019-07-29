@@ -25,7 +25,7 @@ class ArturOptionsScript : MonoBehaviour
     }
 
     [System.Serializable]
-    private class RoomNumber
+    public class RoomNumber
     {
         public int numberOfRooms;
     }

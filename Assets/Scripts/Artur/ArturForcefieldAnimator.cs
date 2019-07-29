@@ -20,11 +20,6 @@ public class ArturForcefieldAnimator : MonoBehaviour
     {
         bool doForcefield = player.GetDoForcefield();
 
-        if (doForcefield)
-        {
-            print(playerTag + " " + doForcefield);
-
-        }
 
         animator.SetBool("isForcefielding", doForcefield);
     }

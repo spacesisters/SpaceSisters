@@ -7,7 +7,17 @@ public class VictoriaGetPlayerPrefs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ArturGameManager.numberOfRooms = JsonUtility.FromJson<RoomNumber>(PlayerPrefs.GetString("numberOfRooms")).numberOfRooms;
+        if(JsonUtility.FromJson<RoomNumber>(PlayerPrefs.GetString("numberOfRooms")) == null)
+        {
+            RoomNumber roomnumber = new RoomNumber { numberOfRooms = 10 };
+            string json = JsonUtility.ToJson(roomnumber);
+            PlayerPrefs.SetString("numberOfRooms", json);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            ArturGameManager.numberOfRooms = JsonUtility.FromJson<RoomNumber>(PlayerPrefs.GetString("numberOfRooms")).numberOfRooms;
+        }
     }
 
     [System.Serializable]
