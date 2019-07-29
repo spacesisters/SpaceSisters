@@ -10,7 +10,7 @@ public class ArturGameManager
     public static int playerLives = 10;
     public static float playerScore = 250;
 
-    public static int numberOfRooms;
+    public static int numberOfRooms = 10;
 
 }
 

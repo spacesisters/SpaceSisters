@@ -13,6 +13,7 @@ public class VictoriaGetPlayerPrefs : MonoBehaviour
             string json = JsonUtility.ToJson(roomnumber);
             PlayerPrefs.SetString("numberOfRooms", json);
             PlayerPrefs.Save();
+            ArturGameManager.numberOfRooms = 10;
         }
         else
         {
