@@ -35,6 +35,16 @@ public class ArturForcefieldController : MonoBehaviour
             Rigidbody rb = c.GetComponent<Rigidbody>();
             if (rb)
             {
+                /*
+                Debug.Log("Direction normalized:" + direction.normalized);
+                Debug.Log("Distance" + distance);
+                Debug.Log("Radius" + radius_updated);
+                Debug.Log("Push Value:" + direction.normalized * forceMagnitude * fieldType * (radius_updated - distance));
+                */
+                if(distance > radius_updated)
+                {
+                    distance = radius_updated;
+                }
                 rb.AddForce(direction.normalized * forceMagnitude * fieldType * (radius_updated - distance), ForceMode.Acceleration); //.Impulse
             }
         }
