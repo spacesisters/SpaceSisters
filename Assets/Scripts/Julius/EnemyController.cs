@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         }
         action = Actions.WALK;
 
-        layerMask = 1 << 14; // 14: ReactsToForceField Layer id
+        layerMask = 1 << 12; // 12: PlayerShot ??? -> 14: ReactsToForceField Layer id
         layerMask = ~layerMask;
     }
 
@@ -193,6 +193,7 @@ public class EnemyController : MonoBehaviour
              */
             if (action == Actions.BLOCK)
             {
+                //Debug.Log("Blocking");
                 agent.isStopped = true;
                 forcefieldController.ActivateForcefield();
                 energy -= energyDrainPerSecond * Time.deltaTime;
