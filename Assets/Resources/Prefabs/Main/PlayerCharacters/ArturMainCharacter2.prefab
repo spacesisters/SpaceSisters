@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  forceMagnitude: 75
+  forceMagnitude: 50
   reactToForcefieldLayer:
     serializedVersion: 2
     m_Bits: 21504

@@ -38,6 +38,13 @@ public class ArturPlayerOneController : ArturBasePlayerController
     {
         base.Update();
         TranslateInput();
+        
+
+    }
+
+    private new void FixedUpdate()
+    {
+        base.FixedUpdate();
         playForcefieldAnimation = false;
         if (pushCooldownTime > 0)
         {
@@ -67,13 +74,6 @@ public class ArturPlayerOneController : ArturBasePlayerController
         }
         else
             playForcefieldSound = true;
-
-    }
-
-    private new void FixedUpdate()
-    {
-        base.FixedUpdate();
-        
     }
 
     private new void TranslateInput()

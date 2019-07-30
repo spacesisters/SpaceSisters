@@ -40,6 +40,13 @@ public class ArturPlayerTwoController : ArturBasePlayerController
         base.Update();
         TranslateInput();
 
+        
+
+    }
+
+    private new void FixedUpdate()
+    {
+        base.FixedUpdate();
         if (doForcefield && energy > energyDrainPerSecond * Time.deltaTime)
         {
             if (playForcefieldSound)
@@ -56,13 +63,6 @@ public class ArturPlayerTwoController : ArturBasePlayerController
             playForcefieldAnimation = false;
             playForcefieldSound = true;
         }
-
-    }
-
-    private new void FixedUpdate()
-    {
-        base.FixedUpdate();
-        
     }
 
     private new void TranslateInput()
