@@ -419,7 +419,7 @@ MonoBehaviour:
   minDistancePlayer: 5
   blockFromLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 20480
   energyDrainPerSecond: 10
   energyMax: 100
   fireRate: 1
@@ -439,11 +439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b14351662fe53c448665f24f8f581de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  radius: 5
   forceMagnitude: 400
   reactToForcefieldLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 20480
 --- !u!1 &5167529574687585831
 GameObject:
   m_ObjectHideFlags: 0

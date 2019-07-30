@@ -5,12 +5,17 @@ using UnityEngine;
 public class ArturForcefieldController : MonoBehaviour
 {
     public float radius = 5.0f;
+    public float radius_updated;
     public float forceMagnitude = 10.0f;
 
     [SerializeField]
     private LayerMask reactToForcefieldLayer;
     private int fieldType;
 
+    void Awake()
+    {
+        radius_updated = radius;
+    }
 
     public void Initialize(int fieldType)
     {
@@ -20,7 +25,7 @@ public class ArturForcefieldController : MonoBehaviour
     public void ActivateForcefield()
     {
 
-        Collider[] objects = Physics.OverlapSphere(transform.position, radius, reactToForcefieldLayer);
+        Collider[] objects = Physics.OverlapSphere(transform.position, radius_updated, reactToForcefieldLayer);
         foreach (Collider c in objects)
         {
 
@@ -30,7 +35,7 @@ public class ArturForcefieldController : MonoBehaviour
             Rigidbody rb = c.GetComponent<Rigidbody>();
             if (rb)
             {
-                rb.AddForce(direction.normalized * forceMagnitude * fieldType * (radius - distance), ForceMode.Acceleration); //.Impulse
+                rb.AddForce(direction.normalized * forceMagnitude * fieldType * (radius_updated - distance), ForceMode.Acceleration); //.Impulse
             }
         }
 
@@ -40,7 +45,7 @@ public class ArturForcefieldController : MonoBehaviour
     {   
         
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);    
+        Gizmos.DrawWireSphere(transform.position, radius_updated);    
         
     }
 

@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         }
         action = Actions.WALK;
 
-        layerMask = 1 << 12; // 12: PlayerShot ??? -> 14: ReactsToForceField Layer id
+        layerMask = 1 << 14; // 12: PlayerShot ??? -> 14: ReactsToForceField Layer id
         layerMask = ~layerMask;
     }
 
@@ -195,15 +195,13 @@ public class EnemyController : MonoBehaviour
             {
                 //Debug.Log("Blocking");
                 agent.isStopped = true;
-                forcefieldController.ActivateForcefield();
                 energy -= energyDrainPerSecond * Time.deltaTime;
-
-                float forceFieldSize = forcefieldController.radius * (energy / energyMax);
-                if (forceFieldSize <= 3.0f && forceFieldSize > .0f)
-                    forceFieldSize = 3.0f;
-                else if (forceFieldSize <= .0f)
+                float forceFieldSize = 3.0f + (forcefieldController.radius - 3.0f) * (energy / energyMax);
+                if (energy <= .0f)
                     forceFieldSize = .0f;
-                forcefield.localScale = new Vector3(forceFieldSize, forceFieldSize, forceFieldSize);
+                forcefield.localScale = new Vector3(forceFieldSize*2, forceFieldSize*2, forceFieldSize*2);
+                forcefieldController.radius_updated = forceFieldSize;
+                forcefieldController.ActivateForcefield();
             }
             else if (action == Actions.ATTACK)
             {
