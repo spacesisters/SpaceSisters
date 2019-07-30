@@ -20,7 +20,7 @@ public static class ArturHelper
 
     public static void SetValueOfAnimator(Animator anim, string variable)
     {
-        string[] states = new string[] { "isIdle", "isMoving", "isShooting"};
+        string[] states = new string[] { "isIdle", "isMoving", "isShooting", "isDashing", "isJumping"};
 
         foreach(string state in states)
         {

@@ -165,6 +165,14 @@ public abstract class ArturBasePlayerController : MonoBehaviour
         {
             ArturHelper.SetValueOfAnimator(animator, "isIdle");
         }
+        if (doJump)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        if (doDash)
+        {
+            animator.SetBool("isDashing", true);
+        }
         
     }
 
