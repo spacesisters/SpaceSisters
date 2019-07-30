@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRooms: 10
-  testSpecificRoom: 1
+  testSpecificRoom: 0
   currentLevel: ice
   surface: {fileID: 1085681871}
   allEnemyPositions: []

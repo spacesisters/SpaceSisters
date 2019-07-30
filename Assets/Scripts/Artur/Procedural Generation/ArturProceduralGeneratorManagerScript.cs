@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
+using System.Linq;
 
 public class ArturProceduralGeneratorManagerScript : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
         else if (currentLevel == "ice")
         {
             numberOfStartRooms = 1;
-            numberOfRandomRooms = 17;
+            numberOfRandomRooms = 19;
             numberOfPuzzleRooms = 1;
         }
         else if (currentLevel == "fire")
@@ -84,7 +86,28 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
             }
         }
 
-        for (int i = 1; i < numberOfRooms; i++)
+
+
+        List<int> roomsOrder = Enumerable.Range(1, numberOfRandomRooms).ToList();
+
+
+        int extraRooms = 0;
+
+        if (numberOfRooms > numberOfRandomRooms)
+        {
+            extraRooms = numberOfRooms - numberOfRandomRooms;
+        }
+
+        for (int i = 0; i < extraRooms; i++)
+        {
+            roomsOrder.Add(rand.Next(1, numberOfRandomRooms));
+        }
+
+        int[] randomRoomsOrder = ArturHelper.Shuffle<int>(new System.Random(), roomsOrder.ToArray());
+
+
+
+        for (int i = 0; i < numberOfRooms; i++)
         {
 
             /*
@@ -103,7 +126,11 @@ public class ArturProceduralGeneratorManagerScript : MonoBehaviour
              */
 
 
-            GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, numberOfRandomRooms)); // TODO
+
+
+
+            //GameObject nextRoom = Resources.Load<GameObject>(roomPath + rand.Next(1, numberOfRandomRooms)); // TODO
+            GameObject nextRoom = Resources.Load<GameObject>(roomPath + randomRoomsOrder[i]); // 
             nextRoom.GetComponent<LevelMetaInf>().respawnLocation = roomPosition;
             nextRoom.GetComponent<LevelMetaInf>().instantiatedAt = roomPosition;
             Instantiate(nextRoom, roomPosition, Quaternion.identity);
