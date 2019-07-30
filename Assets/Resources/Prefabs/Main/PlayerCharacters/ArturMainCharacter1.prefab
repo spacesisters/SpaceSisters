@@ -263,7 +263,7 @@ MonoBehaviour:
   energyRefillPerSecond: 0.15
   shootCooldown: 1
   maxJumpAcceleration: 5000
-  sfxJump: {fileID: 8300000, guid: 714ca8e0baf0f824ab76f9fcf94a72a1, type: 3}
+  sfxJump: {fileID: 8300000, guid: f11ae16259dd81f4198bb45ad9575fa2, type: 3}
   sfxDash: {fileID: 8300000, guid: 1aa3495f56404a74888c96b43449a139, type: 3}
   sfxShot: {fileID: 8300000, guid: 6661eb5783dd9c8418a7d5568855810c, type: 3}
   sfxForcefield: {fileID: 8300000, guid: 966aa16c23ee74f40acdc5b77712efef, type: 3}
@@ -345,7 +345,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -473,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
+  radius_updated: 0
   forceMagnitude: 650
   reactToForcefieldLayer:
     serializedVersion: 2
