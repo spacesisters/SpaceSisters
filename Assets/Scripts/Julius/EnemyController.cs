@@ -18,6 +18,9 @@ public class EnemyController : MonoBehaviour
     public GameObject projectile;
     public int health;
 
+    public AudioClip sfxShot;
+
+
     private Vector3[] waypoints;
     private NavMeshAgent agent;
     private int nextWaypoint;
@@ -29,6 +32,8 @@ public class EnemyController : MonoBehaviour
     private Transform forcefield;
     private float energy;
     private int layerMask;
+
+    private AudioSource audioSource;
 
     private enum Actions
     {
@@ -61,6 +66,8 @@ public class EnemyController : MonoBehaviour
 
         layerMask = 1 << 14; // 12: PlayerShot ??? -> 14: ReactsToForceField Layer id
         layerMask = ~layerMask;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void GotoNextPoint()
@@ -177,6 +184,7 @@ public class EnemyController : MonoBehaviour
 
                                 Vector2 aimAt = hits[Random.Range(0, hits.Count - 1)] - shotSpawn.transform.position; // INFO: Random/Pick from hits
                                 tmp.GetComponent<ProjectileController>().setDirection(aimAt);
+                                audioSource.PlayOneShot(sfxShot);
                                 nextFire = Time.time + fireRate;
                             }
                         }
