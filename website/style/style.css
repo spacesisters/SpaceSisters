@@ -19,6 +19,11 @@ header::before {
     overflow: hidden;
 }
 
+.container{
+    padding-bottom: 5rem !important;
+    padding-top: 5rem !important;
+}
+
 .center {
     text-align: center;
 }
@@ -39,7 +44,7 @@ header::before {
     padding: 0 !important;
 }
 
-.vimeo_embedd iframe {
+.video_embedd video {
     border-radius: 4px 4px 0 0;
 }
 
